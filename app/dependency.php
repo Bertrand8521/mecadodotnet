@@ -85,6 +85,10 @@ $container['BaseController'] = function($c){
   return new \App\Controllers\BaseController($c);
 };
 
+$container['ExempleController'] = function($c){
+  return new \App\Controllers\ExempleController($c);
+};
+
 /*
 **Adding the Shop Controller to the container
 */
