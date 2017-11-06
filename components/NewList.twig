@@ -1,3 +1,14 @@
+<head>
+
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script>
+    $( function() {
+      $( "#datepicker" ).datepicker();
+    } );
+  </script>
+</head>
+
+
 <p></p>
 <form class="" action="index.html" method="post">
 
@@ -14,12 +25,14 @@
 
   <label for="">Date de validité</label>
   <span class="red">*</span>
-  <p>insert date form </p>
+  <input type="text" id="datepicker">
 
   <label for="check_dest">Êtes-vous le destinataire de cette liste</label>
-  <input type="checkbox" name="check_dest" id="check_dest" value="" >
+  <input type="checkbox" name="check_dest" id="check_dest" onclick="check()" >
 
   <label for="nom_dest">nom du destinataire</label>
-  <input type="text" name="nom_dest" id="nom_dest" value="nom"  disabled>
+  <input type="text" name="nom_dest" id="nom_dest" value="nom"  disabled >
 
+  <input type="button" name="validate" id="validate" value="Créer la liste">
+https://secure.php.net/manual/fr/tutorial.forms.php
 </form>

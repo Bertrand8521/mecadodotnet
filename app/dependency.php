@@ -22,7 +22,7 @@ $container['view'] = function ($c) {
         $c['request']->getUri()
     ));
     $view->addExtension(new Twig_Extension_Debug());
-    $view->getEnvironment()->addGlobal('session', $_SESSION);    
+    $view->getEnvironment()->addGlobal('session', $_SESSION);
     $view->getEnvironment()->addGlobal('flash', $c['flash']);
     return $view;
 };
@@ -85,6 +85,14 @@ $container['BaseController'] = function($c){
   return new \App\Controllers\BaseController($c);
 };
 
+$container['ExempleController'] = function($c){
+  return new \App\Controllers\ExempleController($c);
+};
+
+
+$container['NewList'] = function($c){
+  return new \App\Controllers\NewList($c);
+};
 /*
 **Adding the Shop Controller to the container
 */
