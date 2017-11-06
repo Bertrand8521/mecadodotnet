@@ -6,25 +6,25 @@
     // return false;
 // }
 
-require PATH_ROOT . '/../vendor/autoload.php';
+require PATH_ROOT . '/vendor/autoload.php';
 
 session_start();
 
 // Instantiate the app
-$settings = require PATH_ROOT . '/../config/setting.php';
+$settings = require PATH_ROOT . '/config/setting.php';
 $app = new \Slim\App($settings);
 
 // Set up dependencies
-require PATH_ROOT . '../app/dependency.php';
+require PATH_ROOT . '/app/dependency.php';
 
 // Register middleware
-require PATH_ROOT . '../app/middleware.php';
+require PATH_ROOT . '/app/middleware.php';
 
 // Register routes
-require PATH_ROOT . '../app/route.php';
+require PATH_ROOT . '/app/route.php';
 
 // Register database
-require PATH_ROOT . '/../config/database.php';
+require PATH_ROOT . '/config/database.php';
 
 // Run app
 $app->run();
