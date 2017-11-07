@@ -9,7 +9,7 @@
 		<meta charset="UTF-8">
 		<title>
 			{% block title %}
-				mecadodotnet -
+				Mecado.net - Votre solution pour vos cadeaux !
 			{% endblock %}
 		</title>
 
@@ -22,29 +22,31 @@
 
 		<header>
 			<div class="header">
+				<h1>Mecado.net</h1>
+				<div class="navbar">
 
-				{% if not  %}
+					<ul>
+  						<li><a href="#home">Home</a></li>
+  						<li><a href="#list">List</a></li>
+  						<li><a href="#contact">Contact</a></li>
+  						<li style="float:right"><a class="active" href="#login">Login</a></li>
+  						<li style="float:right"><a class="active" href="#signin">Sign In</a></li>
+					</ul>
+
+				</div>
+
+				
 					
 
-				{% else %}
+				
    				 	<a class="" href=""></a>
    				 	<div class="">
    				 		
    				 	</div>
-				{% endif %}
+				
 			</div>	
 			
-			<div class="">
-				<ul>				
-
-					<li><a href=""></a></li>
-					
-					<li><a href=""></a></li>
-					<li><a href=""></a></li>
-
-				
-				</ul>
-			</div>
+			
 		</header>
 
 			{% block content %}
@@ -52,6 +54,8 @@
 			{% endblock %}
 
 		<footer>
+			Site par BISELX Charles, ESCAMILLA Valentin, MEDJMADJ Issam, PENGUILLY Bertrand
+
 			<div>
 
 				<a class=""></a>  
