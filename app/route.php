@@ -3,9 +3,9 @@
 	Routes
 
 */
-$app->get('/', 'ExempleController:exemple')->setName('index');
+$app->get('/', 'HomeController:home')->setName('home');
 
-$app->get('/userRegister', 'UserController:registerUser')->setName('register');
+$app->get('/CreatorRegister', 'CreatorController:registerCreator')->setName('register');
 
 $app->get('/newlist', 'NewListController:addlist')->setName('AddList');
 
