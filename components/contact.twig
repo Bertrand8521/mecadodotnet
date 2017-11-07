@@ -1,0 +1,47 @@
+{% extends 'templates/base_layout.twig' %}
+
+	{% block title %}
+		{{ parent() }} Login
+	{% endblock %}
+
+
+
+{% block content %}
+
+	<h2 class="section-container">Connexion createur</h2>
+
+	{# <form name="register"  method="post" action="{{ path_for('creatorRegistered') }}"> #}
+		<div class="containerFormLogin">
+
+			<div class="containerInput">
+				<label for="name">Nom</label>
+				<span class="required">*</span><br>
+				<input class= "form contact" id="nom" type="text" name="nom" placeholder="Entrez votre nom">
+			</div>
+
+			<div class="containerInput">
+				<label for="name">Prénom</label>
+				<span class="required">*</span><br>
+				<input class= "form contact" id="prenom" type="text" name="prenom" placeholder="Entrez votre prénom">
+			</div>
+
+			<div class="containerInput">
+				<label for="name">Adresse email</label>
+				<span class="required">*</span><br>
+				<input class= "form contact" id="mail" type="text" name="mail" placeholder="Entrez votre adresse email">
+			</div>
+
+			<div class="containerInput">
+				<label for="name">Adresse email</label>
+				<span class="required">*</span><br>
+				<textarea class= "form contact hight-10" id="msg" type="text" name="msg" placeholder="Entrez votre message"></textarea>
+			</div>
+
+			<div>
+				<button class="button success marginButton" type="submit" value="submit" name="buttonSubmit">Envoyer</button>
+			</div>
+
+		</div>
+	</form>
+
+{% endblock %}

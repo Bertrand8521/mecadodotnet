@@ -104,6 +104,10 @@ $container['NewListController'] = function($c){
 $container['ShowListsController'] = function($c){
   return new \App\Controllers\ShowListsController($c);
 };
+
+$container['ContactController'] = function($c){
+  return new \App\Controllers\ContactController($c);
+};
 /*
 **Adding the Shop Controller to the container
 */
