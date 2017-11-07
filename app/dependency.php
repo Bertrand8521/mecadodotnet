@@ -93,6 +93,9 @@ $container['HomeController'] = function($c){
   return new \App\Controllers\HomeController($c);
 };
 
+$container['ItemController'] = function($c){
+  return new \App\Controllers\ItemController($c);
+};
 
 $container['NewListController'] = function($c){
   return new \App\Controllers\ListController($c);
