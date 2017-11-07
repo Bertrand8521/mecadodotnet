@@ -22,7 +22,7 @@ $container['view'] = function ($c) {
         $c['request']->getUri()
     ));
     $view->addExtension(new Twig_Extension_Debug());
-    $view->getEnvironment()->addGlobal('session', $_SESSION);    
+    $view->getEnvironment()->addGlobal('session', $_SESSION);
     $view->getEnvironment()->addGlobal('flash', $c['flash']);
     return $view;
 };
@@ -87,6 +87,10 @@ $container['BaseController'] = function($c){
 
 $container['ExempleController'] = function($c){
   return new \App\Controllers\ExempleController($c);
+};
+
+$container['ItemController'] = function($c){
+  return new \App\Controllers\ItemController($c);
 };
 
 /*

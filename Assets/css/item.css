@@ -1,0 +1,32 @@
+.item {
+  display: flex;
+  width: 480px;
+  background: orange;
+  border-color: red;
+  border-style: solid;
+  border-radius: 5px;
+  border-width: 5px;
+}
+
+.nomItem {
+  width: 20%;
+  text-align: left;
+}
+
+.nomItem:after {
+  content: "|"
+}
+
+.descItem {
+  width: 70%;
+  text-align: center;
+}
+
+.tarifItem:before {
+  content: "|";
+}
+
+.tarifItem {
+  width: 10%;
+  text-align: right
+}
