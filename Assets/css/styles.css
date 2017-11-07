@@ -75,6 +75,9 @@
   animation-iteration-count: infinite; }
 
 /* Forms : Bertrand's Framework */
+.red{
+  color : red;
+}
 
 .form, .form-error, .form-warning, .form-success {
   border-color: lightgrey;

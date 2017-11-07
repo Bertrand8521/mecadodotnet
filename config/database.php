@@ -6,8 +6,8 @@ $capsule = new Capsule;
 
 $capsule->addConnection([
     'driver'    => 'mysql',
-    'host'      => '',
-    'database'  => '',
+    'host'      => 'localhost',
+    'database'  => 'mecadodotnet',
     'username'  => '',
     'password'  => '',
     'charset'   => 'utf8',
