@@ -93,6 +93,13 @@ $container['ItemController'] = function($c){
   return new \App\Controllers\ItemController($c);
 };
 
+$container['NewListController'] = function($c){
+  return new \App\Controllers\ListController($c);
+};
+
+$container['ShowListsController'] = function($c){
+  return new \App\Controllers\ShowListsController($c);
+};
 /*
 **Adding the Shop Controller to the container
 */

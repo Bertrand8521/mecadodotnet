@@ -75,6 +75,9 @@
   animation-iteration-count: infinite; }
 
 /* Forms : Bertrand's Framework */
+.red{
+  color : red;
+}
 
 .form, .form-error, .form-warning, .form-success {
   border-color: lightgrey;
@@ -187,4 +190,9 @@
 
 body {
 	font-family: sans-serif;
+	background-color: #EEEEEE;
+}
+
+footer {
+	background-color: #C6C6C6;
 }

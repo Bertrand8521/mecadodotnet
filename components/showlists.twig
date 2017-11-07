@@ -1,0 +1,24 @@
+{% extends "templates/base_layout.twig" %}
+
+{% block title %}
+  {{ parent() }} show list
+{% endblock %}
+
+
+
+
+{% block content %}
+  <!--if connected-->
+    {% for row in  range(0,5) %}
+
+      <div class="box large-6">
+        <h1>nom</h1>
+        <h2>date de validité : date </h2>
+        <h2>destinataire : nom</h2>
+        <p>description</p>
+        <p>lien de partage</p>
+
+      </div>
+    {% endfor %}
+
+{% endblock %}
