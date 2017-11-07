@@ -17,7 +17,7 @@ final class ListController extends BaseController
         return $this->container->view->render($response, 'addlist.twig');
     }
 
-    public function postList(){
+    public function postList(Request $request, Response $response, $args){
       $name        = $_POST['name'];
       $description = $_POST['description'];
       $date        = $_POST['date'];
