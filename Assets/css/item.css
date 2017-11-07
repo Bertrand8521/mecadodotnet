@@ -2,10 +2,10 @@
   display: flex;
   width: 480px;
   background: orange;
-  border-color: red;
+  border-color: orange;
   border-style: solid;
   border-radius: 5px;
-  border-width: 5px;
+  border-width: 3px;
 }
 
 .nomItem {
