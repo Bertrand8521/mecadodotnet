@@ -9,7 +9,7 @@ $app->get('/CreatorRegister', 'CreatorController:registerCreator')->setName('reg
 
 $app->get('/CreatorLogin', 'CreatorController:creatorLogin')->setName('login');
 
-$app->get('/item', 'ItemController:item');
+$app->get('/item', 'ItemController:item')->setName('item');
 
 $app->get('/item/{liste_id}', 'ItemController:getItemsFromListeId');
 
