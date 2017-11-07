@@ -10,7 +10,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
   <script>
     $( function() {
-      $("#datepicker").datepicker();
+      $("#datepicker").datepicker({dateFormat: 'yy-mm-dd'});
     } );
   </script>
 {% endblock %}
@@ -35,7 +35,7 @@
 
     <label for="">Date de validité</label>
     <span class="red">*</span>
-    <input type="text" id="datepicker" id="datepicker"><br>
+    <input type="text" name="date" id="datepicker" id="datepicker"><br>
 
     <label for="check_dest">Êtes-vous le destinataire de cette liste</label>
     <input type="checkbox" name="check_dest" id="check_dest" onclick="check()" ><br>
@@ -43,7 +43,7 @@
     <label for="nom_dest">nom du destinataire</label>
     <input type="text" name="nom_dest" id="nom_dest" value="nom"   ><br>
 
-    <p type="button" class="button" name="validate" id="validate" value="Créer la liste">Créer la liste</p>
+    <input type="submit" class="button" name="validate" id="validate" value="Créer la liste">
   https://secure.php.net/manual/fr/tutorial.forms.php
   </form>
 
