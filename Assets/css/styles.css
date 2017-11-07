@@ -1,0 +1,73 @@
+
+
+
+
+.button {
+  display: inline-block;
+  vertical-align: middle;
+  margin: 0 0 0.5em 0;
+  text-decoration: inherit;
+  padding: 0.5em 0.8em 0.5em 0.8em;
+  -webkit-appearance: none;
+  border: 2px solid;
+  border-color: black;
+  border-radius: 6px;
+  transition: background-color 0.25s ease-out, color 0.25s ease-out;
+  font-size: 0.9em;
+  line-height: 1;
+  text-align: center;
+  cursor: pointer;
+  background-color: moccasin;
+  color: black; }
+
+.button:hover, .button:focus {
+  background-color: black;
+  color: #fefefe; }
+
+.button.secondary {
+  background-color: #767676;
+  color: black; }
+
+.button.secondary:hover, .button.secondary:focus {
+  background-color: #333333;
+  color: #fefefe; }
+
+.button.success {
+  background-color: #99ff66;
+  color: #0a0a0a; }
+
+.button.success:hover, .button.success:focus {
+  background-color: #2a8000;
+  color: #0a0a0a; }
+
+@keyframes alert_annimation {
+  0% {
+    background-color: #ff0000;
+    left: 0px;
+    top: 0px; }
+  25% {
+    background-color: #ff8000;
+    left: 200px;
+    top: 0px; }
+  50% {
+    background-color: #ffd11a;
+    left: 200px;
+    top: 200px; }
+  75% {
+    background-color: #e65c00;
+    left: 0px;
+    top: 200px; }
+  100% {
+    background-color: #ff0000;
+    left: 0px;
+    top: 0px; } }
+.button.alert {
+  background-color: #cc4b37;
+  color: #fefefe; }
+
+.button.alert:hover, .button.alert:focus {
+  background-color: #a53b2a;
+  color: #fefefe;
+  animation-name: alert_annimation;
+  animation-duration: 2s;
+  animation-iteration-count: infinite; }
