@@ -8,8 +8,8 @@
 
 
 {% block content %}
-  {% if online %}
-    {% for row in  list %}
+  <!--if connected-->
+    {% for row in  range(0,5) %}
 
       <div class="box large-6">
         <h1>nom</h1>
@@ -19,6 +19,6 @@
         <p>lien de partage</p>
 
       </div>
-    {% endif %}
-  {% endif %}
+    {% endfor %}
+
 {% endblock %}
