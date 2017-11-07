@@ -206,7 +206,7 @@ body {
   margin-bottom: 5px;
 }
 
-.register{
+.register, .login{
     width: 60%;
     height: 34px;
     padding: 6px 12px;
@@ -218,13 +218,27 @@ body {
   margin-left: 250px;
   margin-top: 2%;
 }
+
+.containerFormLogin{
+  margin-left: 400px;
+  margin-top: 2%;
+}
+
 .containerInput{
   margin-top: 2%;
   margin-bottom: 2%;
 }
-	background-color: #EEEEEE;
+
+.login{
+  width: 50%;
 }
+
+.marginButton{
+  margin-bottom: 5%;
+}
+
 
 footer {
 	background-color: #C6C6C6;
 }
+

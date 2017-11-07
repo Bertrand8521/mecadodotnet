@@ -32,12 +32,12 @@
 				<div class="navbar">
 
 					<ul>
-  						<li><a href="/">Home</a></li>
-  						<li><a href="/showlists">My lists</a></li>
-							<li><a href="/newlist">New List</a></li>
+  						<li><a href="{{ path_for('home') }}">Home</a></li>
+  						<li><a href="{{ path_for('showLists') }}">My lists</a></li>
+							<li><a href="{{ path_for('addList') }}">New List</a></li>
   						<li><a href="#contact">Contact</a></li>
-  						<li style="float:right"><a class="active" href="#login">Login</a></li>
-  						<li style="float:right"><a class="active" href="#signin">Sign In</a></li>
+  						<li style="float:right"><a class="active" href="{{ path_for('register') }}">Login</a></li>
+  						<li style="float:right"><a class="active" href="{{ path_for('login') }}">Sign In</a></li>
 					</ul>
 
 				</div>
