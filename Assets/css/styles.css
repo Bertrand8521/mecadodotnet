@@ -187,4 +187,9 @@
 
 body {
 	font-family: sans-serif;
+	background-color: #EEEEEE;
+}
+
+footer {
+	background-color: #C6C6C6;
 }
