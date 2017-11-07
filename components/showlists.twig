@@ -8,13 +8,17 @@
 
 
 {% block content %}
-  <p>test</p>
-{% endblock %}
-
   {% if online %}
-    {% for row in  %}
-      <div class="">
+    {% for row in  list %}
+
+      <div class="box large-6">
+        <h1>nom</h1>
+        <h2>date de validité : date </h2>
+        <h2>destinataire : nom</h2>
+        <p>description</p>
+        <p>lien de partage</p>
 
       </div>
     {% endif %}
   {% endif %}
+{% endblock %}
