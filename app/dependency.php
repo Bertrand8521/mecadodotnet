@@ -90,8 +90,8 @@ $container['ExempleController'] = function($c){
 };
 
 
-$container['NewList'] = function($c){
-  return new \App\Controllers\NewList($c);
+$container['NewListController'] = function($c){
+  return new \App\Controllers\ListController($c);
 };
 /*
 **Adding the Shop Controller to the container
