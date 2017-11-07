@@ -182,9 +182,40 @@
 .active {
     background-color: #4CAF50;
 }
+.active:hover{
+  background-color: #228B22;
+}
 
 /* Body */
 
 body {
 	font-family: sans-serif;
+}
+
+.section-container{
+  background-color:#D3D3D3;
+  text-align: center;
+  padding: 2px 0 4px 0;
+  margin-top: 5%;
+}
+.required{
+  color:red;
+  margin-bottom: 5px;
+}
+
+.register{
+    width: 60%;
+    height: 34px;
+    padding: 6px 12px;
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+.containerForm{
+  margin-left: 250px;
+  margin-top: 2%;
+}
+.containerInput{
+  margin-top: 2%;
+  margin-bottom: 2%;
 }
