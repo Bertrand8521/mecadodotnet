@@ -9,13 +9,13 @@
 
 {% block content %}
   <!--if connected-->
-    {% for row in  range(0,5) %}
+    {% for liste in listes %}
 
       <div class="box large-6">
-        <h1>nom</h1>
-        <h2>date de validité : date </h2>
-        <h2>destinataire : nom</h2>
-        <p>description</p>
+        <h1>{{ liste.nom }}</h1>
+        <h2>date de validité : {{ liste.date_val }} </h2>
+        <h2>destinataire : {{ liste.destinataire }}</h2>
+        <p>{{ liste.description }}</p>
         <p>lien de partage</p>
 
       </div>

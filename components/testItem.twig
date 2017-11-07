@@ -3,5 +3,7 @@
   <link rel="stylesheet" type="text/css" href="/Assets/css/item.css">
 {% endblock %}
 {% block content %}
-  {% include "templates/item.twig" %}
+  {% for item in items %}
+    {% include "templates/item.twig" %}
+  {% endfor %}
 {% endblock %}
