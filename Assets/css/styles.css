@@ -79,6 +79,11 @@
   color : red;
 }
 
+input{
+  vertical-align: top;
+  text-align: left;
+}
+
 .form, .form-error, .form-warning, .form-success {
   border-color: lightgrey;
   border-width: 2px;
@@ -190,4 +195,8 @@
 
 body {
 	font-family: sans-serif;
+}
+
+.hight-10{
+  height: 10em;
 }
