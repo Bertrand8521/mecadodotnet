@@ -196,6 +196,9 @@ body {
 footer {
 	background-color: #C6C6C6;
 }
+ul.navbar li.right {float: right;}
+
+
 
 /* another navbar style */
 
@@ -226,3 +229,11 @@ footer {
   display: inline-block;
   padding: 16px;
   text-decoration: none; }
+/* responsive design */
+  @media handheld and (max-width: 800px) {
+  	body {
+  		font-size: 14;
+  	}
+  	ul.navbar li.right, 
+    ul.navbar li {float: none;}
+  }
