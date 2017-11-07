@@ -18,3 +18,5 @@ $app->get('/newlist', 'NewListController:addlist')->setName('addList');
 $app->get('/showlists', 'ShowListsController:showlists')->setName('showLists');
 
 $app->get('/contact', 'ContactController:contact')->setName('contact');
+
+$app->post('/contact', 'ContactController:sendmail')->setName('sendmail');

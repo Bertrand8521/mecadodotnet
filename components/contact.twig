@@ -10,7 +10,7 @@
 
 	<h2 class="section-container">Connexion createur</h2>
 
-	{# <form name="register"  method="post" action="{{ path_for('creatorRegistered') }}"> #}
+	{# <form name="contact"  method="post" action="{{ path_for('sendmail') }}"> #}
 		<div class="containerFormLogin">
 
 			<div class="containerInput">
@@ -34,11 +34,11 @@
 			<div class="containerInput">
 				<label for="name">Adresse email</label>
 				<span class="required">*</span><br>
-				<textarea class= "form contact hight-10" id="msg" type="text" name="msg" placeholder="Entrez votre message"></textarea>
+				<textarea class= "form contact hight-10" id="message" type="text" name="message" placeholder="Entrez votre message"></textarea>
 			</div>
 
 			<div>
-				<button class="button success marginButton" type="submit" value="submit" name="buttonSubmit">Envoyer</button>
+				<button class="button success marginButton" type="submit" value="submit" name="buttonSubmit" >Envoyer</button>
 			</div>
 
 		</div>
