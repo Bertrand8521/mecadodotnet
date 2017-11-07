@@ -1,6 +1,8 @@
 
 
 
+/* Buttons : Charles's Framework */
+
 
 .button {
   display: inline-block;
@@ -71,3 +73,115 @@
   animation-name: alert_annimation;
   animation-duration: 2s;
   animation-iteration-count: infinite; }
+
+/* Forms : Bertrand's Framework */
+
+.form, .form-error, .form-warning, .form-success {
+  border-color: lightgrey;
+  border-width: 2px;
+  border-radius: 4px;
+  border-style: solid;
+  padding: 4px;
+  transition: 0.5s; }
+
+.form-error {
+  border-color: red; }
+
+.form-warning {
+  border-color: orange; }
+
+.form-success {
+  border-color: green; }
+
+.form:focus {
+  border-color: blue; }
+
+/* Grid : Charles's Framework */
+
+.cell {
+  margin-left: 1%;
+  margin-right: 1%;
+  min-height: 0px;
+  min-width: 0px; }
+
+.large-1 {
+  display: inline-block;
+  width: calc( 7.3% - 6% ); }
+
+.large-2 {
+  display: inline-block;
+  width: calc( 19.7% - 6% ); }
+
+.large-3 {
+  display: inline-block;
+  width: calc( 24% - 6% ); }
+
+.large-4 {
+  display: inline-block;
+  width: calc( 32.3% - 6% ); }
+
+.large-5 {
+  display: inline-block;
+  width: calc( 40.6% - 6% ); }
+
+.large-6 {
+  display: inline-block;
+  width: calc( 49% - 6% ); }
+
+.large-7 {
+  display: inline-block;
+  width: calc( 57.3% - 6% ); }
+
+.large-8 {
+  display: inline-block;
+  width: calc( 65.7% - 6% ); }
+
+.large-9 {
+  display: inline-block;
+  width: calc( 74% - 6% ); }
+
+.large-10 {
+  display: inline-block;
+  width: calc( 82.3%- 6% ); }
+
+.large-11 {
+  display: inline-block;
+  width: calc( 90.6% - 6% ); }
+
+.large-12 {
+  display: inline-block;
+  width: calc( 99% - 6% ); }
+
+
+/* navbar */
+
+.navbar ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+
+.navbar li {
+    float: left;
+}
+
+.navbar li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.navbar li a:hover:not(.active) {
+    background-color: #111;
+}
+
+.active {
+    background-color: #4CAF50;
+}
+
+/* Body */
+
