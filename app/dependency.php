@@ -85,10 +85,17 @@ $container['BaseController'] = function($c){
   return new \App\Controllers\BaseController($c);
 };
 
-$container['ExempleController'] = function($c){
-  return new \App\Controllers\ExempleController($c);
+$container['CreatorController'] = function($c){
+  return new \App\Controllers\CreatorController($c);
 };
 
+$container['HomeController'] = function($c){
+  return new \App\Controllers\HomeController($c);
+};
+
+$container['ItemController'] = function($c){
+  return new \App\Controllers\ItemController($c);
+};
 
 $container['NewListController'] = function($c){
   return new \App\Controllers\ListController($c);

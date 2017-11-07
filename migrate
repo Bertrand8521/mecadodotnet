@@ -22,7 +22,7 @@ class Migrator {
 
                 $table->integer('id', true);
                 $table->string('nom');
-                $table->string('prenom');
+                $table->string('prenom')->nullable();
                 $table->string('email');
                 $table->string('login');
                 $table->string('password');
