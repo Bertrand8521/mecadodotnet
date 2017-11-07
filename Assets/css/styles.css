@@ -1,0 +1,190 @@
+
+
+
+/* Buttons : Charles's Framework */
+
+
+.button {
+  display: inline-block;
+  vertical-align: middle;
+  margin: 0 0 0.5em 0;
+  text-decoration: inherit;
+  padding: 0.5em 0.8em 0.5em 0.8em;
+  -webkit-appearance: none;
+  border: 2px solid;
+  border-color: black;
+  border-radius: 6px;
+  transition: background-color 0.25s ease-out, color 0.25s ease-out;
+  font-size: 0.9em;
+  line-height: 1;
+  text-align: center;
+  cursor: pointer;
+  background-color: moccasin;
+  color: black; }
+
+.button:hover, .button:focus {
+  background-color: black;
+  color: #fefefe; }
+
+.button.secondary {
+  background-color: #767676;
+  color: black; }
+
+.button.secondary:hover, .button.secondary:focus {
+  background-color: #333333;
+  color: #fefefe; }
+
+.button.success {
+  background-color: #99ff66;
+  color: #0a0a0a; }
+
+.button.success:hover, .button.success:focus {
+  background-color: #2a8000;
+  color: #0a0a0a; }
+
+@keyframes alert_annimation {
+  0% {
+    background-color: #ff0000;
+    left: 0px;
+    top: 0px; }
+  25% {
+    background-color: #ff8000;
+    left: 200px;
+    top: 0px; }
+  50% {
+    background-color: #ffd11a;
+    left: 200px;
+    top: 200px; }
+  75% {
+    background-color: #e65c00;
+    left: 0px;
+    top: 200px; }
+  100% {
+    background-color: #ff0000;
+    left: 0px;
+    top: 0px; } }
+.button.alert {
+  background-color: #cc4b37;
+  color: #fefefe; }
+
+.button.alert:hover, .button.alert:focus {
+  background-color: #a53b2a;
+  color: #fefefe;
+  animation-name: alert_annimation;
+  animation-duration: 2s;
+  animation-iteration-count: infinite; }
+
+/* Forms : Bertrand's Framework */
+
+.form, .form-error, .form-warning, .form-success {
+  border-color: lightgrey;
+  border-width: 2px;
+  border-radius: 4px;
+  border-style: solid;
+  padding: 4px;
+  transition: 0.5s; }
+
+.form-error {
+  border-color: red; }
+
+.form-warning {
+  border-color: orange; }
+
+.form-success {
+  border-color: green; }
+
+.form:focus {
+  border-color: blue; }
+
+/* Grid : Charles's Framework */
+
+.cell {
+  margin-left: 1%;
+  margin-right: 1%;
+  min-height: 0px;
+  min-width: 0px; }
+
+.large-1 {
+  display: inline-block;
+  width: calc( 7.3% - 6% ); }
+
+.large-2 {
+  display: inline-block;
+  width: calc( 19.7% - 6% ); }
+
+.large-3 {
+  display: inline-block;
+  width: calc( 24% - 6% ); }
+
+.large-4 {
+  display: inline-block;
+  width: calc( 32.3% - 6% ); }
+
+.large-5 {
+  display: inline-block;
+  width: calc( 40.6% - 6% ); }
+
+.large-6 {
+  display: inline-block;
+  width: calc( 49% - 6% ); }
+
+.large-7 {
+  display: inline-block;
+  width: calc( 57.3% - 6% ); }
+
+.large-8 {
+  display: inline-block;
+  width: calc( 65.7% - 6% ); }
+
+.large-9 {
+  display: inline-block;
+  width: calc( 74% - 6% ); }
+
+.large-10 {
+  display: inline-block;
+  width: calc( 82.3%- 6% ); }
+
+.large-11 {
+  display: inline-block;
+  width: calc( 90.6% - 6% ); }
+
+.large-12 {
+  display: inline-block;
+  width: calc( 99% - 6% ); }
+
+
+/* navbar */
+
+.navbar ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+
+.navbar li {
+    float: left;
+}
+
+.navbar li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.navbar li a:hover:not(.active) {
+    background-color: #111;
+}
+
+.active {
+    background-color: #4CAF50;
+}
+
+/* Body */
+
+body {
+	font-family: sans-serif;
+}
