@@ -1,0 +1,9 @@
+{% extends "templates/base_layout.twig" %}
+{% block custom_assets %}
+  <link rel="stylesheet" type="text/css" href="/Assets/css/item.css">
+{% endblock %}
+{% block content %}
+  {% for item in items %}
+    {% include "templates/item.twig" %}
+  {% endfor %}
+{% endblock %}
