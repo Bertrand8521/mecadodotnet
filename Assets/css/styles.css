@@ -362,10 +362,16 @@ ul.navbar li.right {float: right;}
     background-color: #111;
 }
 
-@media screen and (min-width: 1400px) {
+@media screen and (min-width: 1100px) {
   .main_list {
-    flex-flow: row; } }
-@media screen and (min-width: 600px) and (max-width: 1400px) {
+    flex-flow: row; }
+
+  .cell{
+      display: block;
+      width: calc( 98% - 2% );
+    }
+  }
+@media screen and (min-width: 600px) and (max-width: 1100px) {
   .main_list {
     flex-flow: row;
     justify-content: center; } }
@@ -389,22 +395,6 @@ ul.navbar li.right {float: right;}
     ul.navbar li {float: none;}
   }
 
-
-  @media screen and (  max-width:1400px  ){
-    .cell{
-      display: block;
-      width: calc( 98% - 2% );
-    }
-  }
-
-
-/*
-  @media screen and ( min-width: 600px )
-                and ( max-width: 1400px){
-    .main_list{
-      flex-flow: row;
-      justify-content: center;
-    }*/
 
   .no-style{
     animation : none;
