@@ -1,1 +1,53 @@
-<h1>Test</h1>
+{% extends 'templates/base_layout.twig' %}
+
+	{% block title %}
+		{{ parent() }} Register
+	{% endblock %}
+
+
+
+{% block content %}
+
+	<h2 class="section-container">Formulaire d'inscription</h2>
+			
+	{# <form name="register"  method="post" action="{{ path_for('creatorRegistered') }}"> #}
+		<div class="containerForm">
+
+			<div class="containerInput">
+				<label for="name">Nom</label>
+				<span class="required">*</span><br>
+				<input class= "form register" id="name" type="text" name="name" placeholder="Enrez votre nom"/>	
+			</div>	
+
+			<div class="containerInput">
+				<label for="name">Pseudo</label>
+				<span class="required">*</span><br>
+				<input class= "form register" id="pseudo" type="text" name="pseudo" placeholder="Enrez votre pseudo"/>	
+			</div>			
+
+			<div class="containerInput">
+				<label for="mail">E-mail</label>
+				<span class="required">*</span><br>
+				<input class="form register" id="mail" type="text" name="email" placeholder="Entrez votre adresse E-mail"/>	
+			</div>
+
+			<div class="containerInput">
+				<label for="password">Mot de passe</label>
+				<span class="required">*</span><br>
+				<input class="form register" id="password" type="password" name="password" placeholder="Entrez votre mot de passe" />					
+			</div>
+
+			<div class="containerInput">
+				<label for="password">Confirmation de mot de passe</label>
+				<span class="required">*</span><br>
+				<input class="form register" id="passwordConfirm" type="password" name="passwordConfirm" placeholder="Confirmez votre mot de passe" />					
+			</div>
+
+			<div>
+				<button class="button success marginButton" type="submit" value="submit" name="buttonSubmit">Envoyer</button>
+			</div>
+
+		</div>					
+	</form>
+
+{% endblock %}

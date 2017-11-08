@@ -19,32 +19,41 @@
 {% block content %}
 
 
-  <p>texte de création </p>
-  <form class="" action="index.html" method="post">
+  <p>blabla de création </p>
+  {# <form name="newlist"  method="post" action="{{ path_for('postlist') }}"> #}
+    <div class="containerForm">
+      <div class="containerInput">
+        <label for="name">Nom de la liste </label>
+        <span class="required">*</span>
+        <small>(25 charactère max)</small><br>
+        <input class= "form newlist" type="textarea" name="name"  id="name" value="" maxlength="25"><br>
+      </div>
 
-    <label for="name">Nom de la liste </label>
-    <span class="red">*</span>
-    <small>(25 charactère max)</small>
-    <input type="textarea" name="name"  id="name" value="" maxlength="25"><br>
+      <div class="containerInput">
+        <label for="description">Description de la liste de cadeau</label>
+        <span class="required">*</span>
+        <small>(500 charactère max)</small><br>
+        <textarea class="form newlist hight-10" type="text" name="description"  id="description" value="" maxlength="500"></textarea> <br>
+      </div>
+
+      <div class="containerInput">
+        <label for="">Date de validité</label>
+        <span class="requirequired">*</span><br>
+        <input class= "form newlist" type="text" id="datepicker" id="datepicker"><br>
+      </div>
 
 
-    <label for="description">Description de la liste de cadeau</label>
-    <span class="red">*</span>
-    <small>(500 charactère max)</small>
-    <input type="textarea" name="description"  id="description" value="" maxlength="500"><br>
+      <div class="containerInput">
+        <label for="check_dest">Êtes-vous le destinataire de cette liste</label>
+        <input type="checkbox" name="check_dest" id="check_dest" onclick="check()" ><br>
+      </div>
 
-    <label for="">Date de validité</label>
-    <span class="red">*</span>
-    <input type="text" id="datepicker" id="datepicker"><br>
-
-    <label for="check_dest">Êtes-vous le destinataire de cette liste</label>
-    <input type="checkbox" name="check_dest" id="check_dest" onclick="check()" ><br>
-
-    <label for="nom_dest">nom du destinataire</label>
-    <input type="text" name="nom_dest" id="nom_dest" value="nom"   ><br>
-
-    <p type="button" class="button" name="validate" id="validate" value="Créer la liste">Créer la liste</p>
-  https://secure.php.net/manual/fr/tutorial.forms.php
+      <div class="containerInput">
+        <label for="nom_dest">nom du destinataire</label><br>
+        <input class= "form newlist" type="text" name="nom_dest" id="nom_dest" value="nom"><br>
+      </div>
+      <p type="button" class="button" name="validate" id="validate" value="Créer la liste">Créer la liste</p>
+    </div>
   </form>
 
 {% endblock %}

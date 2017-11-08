@@ -15,4 +15,9 @@ final class CreatorController extends BaseController
     {   
         return $this->container->view->render($response, 'formRegisterCreator.twig');
     }
+
+    public function creatorLogin(Request $request, Response $response, $args)
+    {   
+        return $this->container->view->render($response, 'loginForm.twig');
+    }
  }
