@@ -20,7 +20,7 @@ final class ItemController extends BaseController
         return $this->container->view->render($response, "testItem.twig", $item);
     }
 
-    public function getItemsFromListeId(Request $request, Response $response, $args)
+    public function getItemsFromListeId(Request $request, Response $response, $args)//token dans args
     {
         $items = Item::where('liste_id', '=', $args['liste_id'])->get()->toArray();
         return $this->container->view->render($response, "testItem.twig", [items => $items]);

@@ -54,9 +54,9 @@ final class ListController extends BaseController
       $description = $_POST['description'];
       $date        = $_POST['date'];
       if( $_POST['check_dest']) {
-        $destinataire = "test" ; //nom du créateur
-      }else{
         $destinataire = $_POST['check_dest'];
+      }else{
+        $destinataire = "test" ; //nom du créateur
       }
 
       $token = md5(time() . mt_rand());
