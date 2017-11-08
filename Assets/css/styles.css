@@ -1,6 +1,10 @@
 
 
-
+/* img */
+.img_item{
+  max-width: 200px;
+  max-height: 200px;
+}
 /* Buttons : Charles's Framework */
 
 
@@ -562,6 +566,11 @@ ul.navbar li.right {float: right;}
   .floatRight{
     float: right;
   }
+
+  .floatLeft{
+    float: left;
+  }
+
   .alignright{
     text-align: right;
   }

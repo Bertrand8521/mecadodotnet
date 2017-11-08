@@ -1,18 +1,4 @@
 
-<!--
-<div class="item">
-  <span class="nomItem">
-    {{ item.nom }}
-  </span>
-  <span class="descItem">
-    {{ item.description }}
-  </span>
-  <span class="tarifItem">
-    {{ item.tarif }}
-  </span>
-</div>
--->
-
 <div class="box cell large-4" >
   <div class="inline large-8" >
     <h3>{{ item.nom }}</h3>
@@ -21,6 +7,15 @@
     <h2>{{ item.tarif }} €</h2>
   </div>
 
-    <p>{{ item.description }}</p>
+  {% if item.lien_image is not empty %}
+    <img class="img_item  floatLeft" src="{{ item.lien_image }}" alt="image de {{ item.nom }} ">
+  {% endif %}
+  <p>{{ item.description }}</p>
+
+  {% if item.lien_url is not empty %}
+    <p>lien fourni :
+    <a href="{{item.lien_url }}"> ici</a> </p>
+  {% endif %}
+
 
 </div>
