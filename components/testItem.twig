@@ -6,6 +6,9 @@
 {% endblock %}
 
 {% block content %}
+  <p class="tall aligncentert">
+    <strong>Lien de la liste : </strong> <a href="{{path_for('item') }}/{{token}}">www.mecado.net{{path_for('item') }}/{{token}}</a>
+  </p>
 
   <h3> Ajouter un nouvel item </h3>
     <input class="form" name="item.name" type="text" placeholder="Nom de l'item">
