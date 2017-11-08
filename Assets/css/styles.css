@@ -112,10 +112,6 @@ input{
   border-radius: 5px
 }
 
-.right{
-  float: right;
-  text-align: right;
-}
 
 .cell {
   height: auto;
@@ -260,7 +256,9 @@ body {
 	font-family: sans-serif;
 }
 
-
+.tall{
+  font-size: 120%;
+}
 
 
 .section-container{
@@ -564,4 +562,10 @@ ul.navbar li.right {float: right;}
   .floatRight{
     float: right;
   }
+  .alignright{
+    text-align: right;
+  }
 
+  .aligncentert{
+    text-align: center;
+  }
