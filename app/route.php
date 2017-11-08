@@ -13,6 +13,8 @@ $app->get('/CreatorLogin', 'CreatorController:creatorLogin')->setName('login');
 
 $app->post('/CreatorLogged', 'CreatorController:creatorLogged')->setName('logged');
 
+$app->get('/LogOut', 'CreatorController:creatorLogOut')->setName('LogOut');
+
 $app->get('/item', 'ItemController:item');
 
 $app->get('/item/{liste_id}', 'ItemController:getItemsFromListeId');

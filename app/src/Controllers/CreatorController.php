@@ -133,7 +133,13 @@ final class CreatorController extends BaseController
 
     }
 
-    
+     public function creatorLogOut(Request $request, Response $response, $args){
+        unset($_SESSION['isConnected']);
+        setcookie("remember",null,-1,"/");
+        $this->container->flash->addMessage("InfoDeconnected","Vous avez été déconnecté");
+        return $response->withRedirect("/");
+    }
+
 
     // method generates a random string for tocken
     function randomString($length) {
