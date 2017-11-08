@@ -2,9 +2,12 @@
 
 /* img */
 .img_item{
+  float: left;
   max-width: 200px;
   max-height: 200px;
+
 }
+
 /* Buttons : Charles's Framework */
 
 
@@ -121,13 +124,14 @@ input{
 
 
 .cell {
+  overflow: hidden;
   height: auto;
   vertical-align: text-top;
   display: block;
-  margin-top: 1vw;
+  margin-top: 7px;
   margin-left: 1%;
   margin-right: 1%;
-  margin-bottom: 1vw;
+  margin-bottom: 5px;
   min-height: 0px;
   min-width: 0px;
   animation-name: cell_unhover;
@@ -558,6 +562,11 @@ ul.navbar li.right {float: right;}
   all: initial;
   all: unset;
   }
+
+.no-marge{
+  margin: 0;
+  padding: 0;
+}
 
   footer {
     text-align: center;
