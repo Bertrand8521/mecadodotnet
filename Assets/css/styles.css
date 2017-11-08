@@ -591,7 +591,14 @@ ul.navbar li.right {float: right;}
   vertical-align : middle;
 }
 
+@font-face {
+  font-family: "Christmas Time";
+  src: url("../fonts/ChristmasTime.ttf"); }
+
 .titre {
   text-align: left;
+  font-family: "Christmas Time";
+  font-weight: inherit;
+  /*font-size: 200%;*/
   }
 
