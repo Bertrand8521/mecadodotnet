@@ -196,6 +196,7 @@ input{
   width: calc( 99% - 2% ); }
 
 
+
 /* navbar */
 
 .navbar ul {
@@ -329,6 +330,31 @@ ul.navbar li.right {float: right;}
   	ul.navbar li.right,
     ul.navbar li {float: none;}
   }
+
+  @media screen and (  max-width:1400px  ){
+    .large-1,
+    .large-2,
+    .large-3,
+    .large-4,
+    .large-5,
+    .large-6,
+    .large-7,
+    .large-8,
+    .large-9,
+    .large-10,
+    .large-11,
+    .large-12 {
+      display: block;
+      width: calc( 98% - 2% );
+    }
+  }
+/*
+  @media screen and ( min-width: 600px )
+                and ( max-width: 1400px){
+    .main_list{
+      flex-flow: row;
+      justify-content: center;
+    }*/
 
   .no-style{
     animation : none;
