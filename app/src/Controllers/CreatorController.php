@@ -72,7 +72,7 @@ final class CreatorController extends BaseController
             $creator->nom=$postDonne["name"];
             $creator->login=$postDonne["pseudo"];
             $creator->email=$postDonne["email"];
-            $creator->password=password_hash($postDonne["password"],PASSWORD_BCRYPT);
+            $creator->password=password_hash($postDonne["password"], PASSWORD_DEFAULT);
             $creator->save();
             $this->container->flash->addMessage("RegisterSuccss","Votre inscription a bien été enregistrée");
             return $response->withRedirect("/CreatorRegister");
