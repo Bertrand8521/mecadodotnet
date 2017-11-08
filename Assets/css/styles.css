@@ -273,6 +273,7 @@ body {
   text-align: center;
   padding: 2px 0 4px 0;
   margin-top: 5%;
+  border-radius: 5px;
 }
 .required{
   color:red;
@@ -339,6 +340,7 @@ body {
 
 footer {
 	background-color: #C6C6C6;
+  border-radius: 10px;
 }
 ul.navbar li.right {float: right;}
 
@@ -591,4 +593,5 @@ ul.navbar li.right {float: right;}
 
 .titre {
   text-align: left;
-}
+  }
+
