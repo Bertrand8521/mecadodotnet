@@ -10,19 +10,19 @@
 
 	<h2 class="section-container">Connexion createur</h2>
 			
-	{# <form name="register"  method="post" action="{{ path_for('creatorRegistered') }}"> #}
+	<form name="login"  method="post" action="{{ path_for('creatorLogged') }}">
 		<div class="containerFormLogin">	
 
 			<div class="containerInput">
 				<label for="name">Pseudo</label>
 				<span class="required">*</span><br>
-				<input class= "form login" id="pseudo" type="text" name="pseudo" placeholder="Enrez votre pseudo"/>	
+				<input class= "form login" id="pseudo" type="text" name="pseudo" placeholder="Enrez votre pseudo">	
 			</div>
 
 			<div class="containerInput">
 				<label for="password">Mot de passe</label>
 				<span class="required">*</span><br>
-				<input class="form login" id="password" type="password" name="password" placeholder="Entrez votre mot de passe" />					
+				<input class="form login" id="password" type="password" name="password" placeholder="Entrez votre mot de passe" >					
 			</div>
 
 			<div>
