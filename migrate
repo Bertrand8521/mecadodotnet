@@ -73,6 +73,8 @@ class Migrator {
                 $table->string('liste_token');
                 $table->string('nom');
                 $table->text('description');
+                $table->string('lien_image');
+                $table->string('lien_url');
                 $table->integer('tarif');
                 $table->timestamps();
 
