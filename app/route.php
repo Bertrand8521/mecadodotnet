@@ -15,9 +15,9 @@ $app->post('/CreatorLogged', 'CreatorController:creatorLogged')->setName('logged
 
 $app->get('/LogOut', 'CreatorController:creatorLogOut')->setName('LogOut');
 
-$app->get('/item', 'ItemController:item');
+$app->get('/item', 'ItemController:item')->setName('item');
 
-$app->get('/item/{liste_id}', 'ItemController:getItemsFromListeId');
+$app->get('/item/{token}', 'ItemController:getItemsFromToken');
 
 $app->get('/newlist', 'NewListController:addlist')->setName('addList');
 

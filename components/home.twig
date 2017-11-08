@@ -3,6 +3,7 @@
 {% block content %}
 
 
+
   {% if flash.getMessage('InfoSuccess')[0] %}
       <div class="alertSuccess">
         <b>{{ flash.getMessage('InfoSuccess')[0] }}</b>
@@ -15,6 +16,14 @@
       </div>
   {% endif %}
 
+
+<h1>Bienvenue sur Mecado.net !</h1>
+
+<p>Vous êtes vous déja retrouvé a échanger des cadeaux qui ne vous plaisaient pas ? Fini avec Mecado.net ! <br>
+Mecado.net vous offre un moyen de faire une liste de cadeaux et d'éviter les déceptions en invitant vos amis à reserver les cadeaux qu'ils vous acheterons en évitant les doublons.</p>
+
+<p>Interessé ? <a href="{{ path_for('login') }}">Connectez</a> vous dès maintenant ou <a href="{{ path_for('register') }}">rejoignez</a> nous si vous n'avez pas de compte !</p>
+{# exemple de présentation
 <h1>Bonjour, je suis un exemple de présentation</h1>
 
 <h3> Des boutons ! Ils sont pas mal hein ?</h3>
@@ -66,5 +75,5 @@
           </div>
 
           <hr/>
-
+#}
 {% endblock %}
