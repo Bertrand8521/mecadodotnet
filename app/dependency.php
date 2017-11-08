@@ -85,8 +85,12 @@ $container['BaseController'] = function($c){
   return new \App\Controllers\BaseController($c);
 };
 
-$container['ExempleController'] = function($c){
-  return new \App\Controllers\ExempleController($c);
+$container['CreatorController'] = function($c){
+  return new \App\Controllers\CreatorController($c);
+};
+
+$container['HomeController'] = function($c){
+  return new \App\Controllers\HomeController($c);
 };
 
 $container['ItemController'] = function($c){
@@ -99,6 +103,10 @@ $container['NewListController'] = function($c){
 
 $container['ShowListsController'] = function($c){
   return new \App\Controllers\ShowListsController($c);
+};
+
+$container['ContactController'] = function($c){
+  return new \App\Controllers\ContactController($c);
 };
 /*
 **Adding the Shop Controller to the container

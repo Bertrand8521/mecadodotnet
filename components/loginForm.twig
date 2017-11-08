@@ -1,0 +1,35 @@
+{% extends 'templates/base_layout.twig' %}
+
+	{% block title %}
+		{{ parent() }} Login
+	{% endblock %}
+
+
+
+{% block content %}
+
+	<h2 class="section-container">Connexion createur</h2>
+			
+	{# <form name="register"  method="post" action="{{ path_for('creatorRegistered') }}"> #}
+		<div class="containerFormLogin">	
+
+			<div class="containerInput">
+				<label for="name">Pseudo</label>
+				<span class="required">*</span><br>
+				<input class= "form login" id="pseudo" type="text" name="pseudo" placeholder="Enrez votre pseudo"/>	
+			</div>
+
+			<div class="containerInput">
+				<label for="password">Mot de passe</label>
+				<span class="required">*</span><br>
+				<input class="form login" id="password" type="password" name="password" placeholder="Entrez votre mot de passe" />					
+			</div>
+
+			<div>
+				<button class="button success marginButton" type="submit" value="submit" name="buttonSubmit">Envoyer</button>
+			</div>
+
+		</div>					
+	</form>
+
+{% endblock %}
