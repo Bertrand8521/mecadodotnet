@@ -9,6 +9,17 @@
 
 {% block content %}
   <!--if connected-->
+    {% if flash.getMessage('Error')[0] %}
+        <div class="alertDanger">
+            <b>{{ flash.getMessage('Error')[0] }}</b>
+        </div>
+    {% endif %}
+    {% if flash.getMessage('Success')[0] %}
+   			 <div class="alertSuccess">
+        		<b>{{ flash.getMessage('Success')[0] }}</b>
+    		</div>
+		{% endif %}
+
     {% for liste in listes %}
 
       <div class="box large-6">

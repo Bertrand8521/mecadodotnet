@@ -18,6 +18,11 @@
 
 {% block content %}
 
+  {% if flash.getMessage('Error')[0] %}
+      <div class="alertDanger">
+          <b>{{ flash.getMessage('Error')[0] }}</b>
+      </div>
+  {% endif %}
 
   <form name="newlist"  method="post" action="{{ path_for('postList') }}">
     <div class="containerForm">
