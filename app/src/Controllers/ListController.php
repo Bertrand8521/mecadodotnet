@@ -60,7 +60,7 @@ final class ListController extends BaseController
       }
       else {
         $this->container->flash->addMessage("Error", $valid);
-        return $this->container->view->render($response, 'addlist.twig');
+        return $response->withRedirect('/newlist');
       }
     }
 
