@@ -10,7 +10,7 @@
 {% block content %}
   <!--if connected-->
     {% for liste in listes %}
-    <a class="no-style" href="{{path_for('item') }}?token={{liste.token}}">
+    <a class="no-style" href="{{path_for('item') }}/{{liste.token}}">
       <div class="cell large-6" >
 
           <h1>{{ liste.nom }}</h1>
