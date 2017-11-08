@@ -112,6 +112,9 @@ input{
 .form:focus {
   border-color: blue; }
 
+.form-error:focus {
+    border-color: purple; }
+
 /* Grid : Charles's Framework */
 .box{
   border-color: grey;

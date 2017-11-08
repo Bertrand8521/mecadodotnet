@@ -53,7 +53,7 @@ final class ListController extends BaseController
         $liste->nom = $post['name'];
         $liste->description = $post['description'];
         $liste->date_val = $post['date'];
-        $liste->destinataire = $post['nom_dest'] || Createur::whereId($createur_id)->first()['nom'];
+        $liste->destinataire = $post['check_dest'] ? Createur::where('id', '=', $createur_id)->first()['nom'] : $post['nom_dest'];
         $liste->save();
         $this->container->flash->addMessage("Success", "Votre liste a bien été crée");
         return $response->withRedirect("/showlists");
