@@ -2,9 +2,12 @@
 
 /* img */
 .img_item{
+  float: left;
   max-width: 200px;
   max-height: 200px;
+
 }
+
 /* Buttons : Charles's Framework */
 
 
@@ -118,6 +121,7 @@ input{
 
 
 .cell {
+  overflow: hidden;
   height: auto;
   vertical-align: text-top;
   display: block;
