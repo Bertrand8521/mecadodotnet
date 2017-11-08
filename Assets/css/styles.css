@@ -349,7 +349,12 @@ ul.navbar li.right {float: right;}
   margin: 0;
   padding: 0;
   overflow: hidden;
-  background-color: moccasin; }
+  background-color: #333;
+   }
+
+.main_list li a:hover:not(.active) {
+    background-color: #111;
+}
 
 @media screen and (min-width: 1400px) {
   .main_list {
@@ -363,11 +368,12 @@ ul.navbar li.right {float: right;}
   text-align: center; }
 
 .main_link a {
-  color: black;
+  color: white;
   text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
   display: inline-block;
-  padding: 16px;
-  text-decoration: none; }
+  padding: 16px; }
 /* responsive design */
   @media handheld and (max-width: 800px) {
   	body {
@@ -376,6 +382,7 @@ ul.navbar li.right {float: right;}
   	ul.navbar li.right,
     ul.navbar li {float: none;}
   }
+
 
   @media screen and (  max-width:1400px  ){
     .cell{
@@ -546,3 +553,15 @@ ul.navbar li.right {float: right;}
   all: initial;
   all: unset;
   }
+
+  footer {
+    text-align: center;
+  }
+
+  .linksfooter {
+    color: black;
+  }
+  .floatRight{
+    float: right;
+  }
+
