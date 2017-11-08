@@ -32,7 +32,7 @@ final class CreatorController extends BaseController
             $error['name']="Vous avez pas rentré un nom ou nom incorrect";
         }
 
-        if(!array_key_exists('pseudo',$_POST)|| $_POST['pseudo']=='' ||  !preg_match("/[a-zA-Z0-9]+$/", $_POST['pseudo'])){
+        if(!array_key_exists('pseudo',$_POST)|| $_POST['pseudo']=='' ||  !preg_match("/[-a-zA-Z0-9_]+$/", $_POST['pseudo'])){
             $error['pseudo']="Vous n'avez pas rentré un pseudo ou pseudo incorrect";
         }
 
@@ -81,7 +81,7 @@ final class CreatorController extends BaseController
     }
 
      public function creatorLogged(Request $request, Response $response, $args)
-    {   
+    {
         $postDonne=$request->getParsedBody();
         $errorsLogin=[];
 
@@ -115,20 +115,20 @@ final class CreatorController extends BaseController
                 if(isset($postDonne["remember"])){
                     $token= $this->randomString(20);
                     setcookie("remember",$token,time()+60*60,"/");
-                    $creator->token=$token; 
+                    $creator->token=$token;
                     $creator->save();
 
                 }
 
-                $_SESSION['isConnected'] = $creator;                            
-                
+                $_SESSION['isConnected'] = $creator;
+
                 $this->container->flash->addMessage("InfoSuccess","Connexion réussie");
                 return $response->withRedirect("/");
             }else{
                 $this->container->flash->addMessage("ErreurPassLog","Votre mot de passe est incorrecte");
                 return $response->withRedirect("/CreatorLogin");
             }
-            
+
         }
 
     }
