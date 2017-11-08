@@ -9,8 +9,29 @@
 {% block content %}
 
 	<h2 class="section-container">Connexion createur</h2>
-			
-	<form name="login"  method="post" action="{{ path_for('creatorLogged') }}">
+
+	{% if session.errorLoginCreator %}
+   		<div class="alertDanger">
+		   	<b>{{ flash.getMessage('ErrorLogin')[0] }}</b>
+		   	{% for session in session.errorLoginCreator %}	
+		       	<p>{{ session }}</p>
+		    {% endfor %}
+    	</div>
+	{% endif %}
+	
+	{% if flash.getMessage('ErrorPseudo')[0] %}
+   		<div class="alertDanger">
+        <b>{{ flash.getMessage('ErrorPseudo')[0] }}</b>
+    	</div>
+	{% endif %}
+
+	{% if flash.getMessage('ErreurPassLog')[0] %}
+   		<div class="alertDanger">
+        <b>{{ flash.getMessage('ErreurPassLog')[0] }}</b>
+    	</div>
+	{% endif %}
+
+	<form name="login"  method="post" action="{{ path_for('logged') }}">
 		<div class="containerFormLogin">	
 
 			<div class="containerInput">
@@ -25,8 +46,14 @@
 				<input class="form login" id="password" type="password" name="password" placeholder="Entrez votre mot de passe" >					
 			</div>
 
+			<div class="checkbox">
+				<label>
+				<input type="checkbox" name="remember"/> Maintenir la connexion
+				</label>
+			</div><br>
+
 			<div>
-				<button class="button success marginButton" type="submit" value="submit" name="buttonSubmit">Envoyer</button>
+				<button class="button success marginButton" type="submit" value="connect" name="buttonConnect">Se connecter</button>
 			</div>
 
 		</div>					
