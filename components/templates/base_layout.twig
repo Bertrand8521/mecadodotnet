@@ -30,7 +30,19 @@
 		<header>
 			<div class="header">
 				<h1>Mecado.net</h1>
-				<div class="navbar">
+				<div class ="main_list">
+					<ul class = "main_list">
+					<li class="main_link"><a href ="{{ path_for('home') }}">Home</a></li>
+					<li class="main_link"><a class="main_link" href ="{{ path_for('showLists') }}">My Lists</a></li>
+					<li class="main_link"><a class="main_link" href ="{{ path_for('addList') }}">New List</a></li>
+					<li class="main_link"><a class="main_link" href ="{{ path_for('contact') }}">Contact</a></li>
+					<li class="main_link"><a class="main_link" href ="/item">Item</a></li>
+					<li class="main_link"><a class="active" href ="{{ path_for('register') }}">Login</a></li>
+					<li class="main_link"><a class="active" href ="{{ path_for('login') }}">Sign In</a></li>
+				</ul>
+
+				</div>
+				{#<div class="navbar">
 
 					<ul>
   						<li><a href="{{ path_for('home') }}">Home</a></li>
@@ -43,7 +55,7 @@
 
 					</ul>
 
-				</div>
+				</div>#}
 
 
    				 	<a class="" href=""></a>
@@ -55,6 +67,7 @@
 
 
 		</header>
+
 
 			{% block content %}
 
