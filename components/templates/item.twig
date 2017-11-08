@@ -6,16 +6,18 @@
   <div class="inline floatRight  alignright large-3" >
     <h2>{{ item.tarif }} €</h2>
   </div>
+  <div class="large-12 no-marge">
+    {% if item.lien_image is not empty %}
+      <img class="img_item " src="{{ item.lien_image }}" alt="image de {{ item.nom }} ">
+    {% endif %}
+    <p>{{ item.description }}</p>
 
-  {% if item.lien_image is not empty %}
-    <img class="img_item " src="{{ item.lien_image }}" alt="image de {{ item.nom }} ">
-  {% endif %}
-  <p>{{ item.description }}</p>
+    {% if item.lien_url is not empty %}
+      <p>lien fourni :
+      <a href="{{item.lien_url }}"> ici</a> </p>
+    {% endif %}
+  </div>
 
-  {% if item.lien_url is not empty %}
-    <p>lien fourni :
-    <a href="{{item.lien_url }}"> ici</a> </p>
-  {% endif %}
 
 
 </div>
