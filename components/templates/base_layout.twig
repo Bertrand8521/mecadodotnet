@@ -16,7 +16,7 @@
 		<meta charset="UTF-8">
 		<title>
 			{% block title %}
-				Mecado.net - Votre solution pour vos cadeaux !
+				Mecado.net
 			{% endblock %}
 		</title>
 
@@ -37,7 +37,7 @@
   						<li><a href="{{ path_for('showLists') }}">My lists</a></li>
 							<li><a href="{{ path_for('addList') }}">New List</a></li>
   						<li><a href="{{ path_for('contact') }}">Contact</a></li>
-  						<li><a href="{{ path_for('item') }}">Item</a></li>
+  						<li><a href="/item">Item</a></li>
   						<li style="float:right"><a class="active" href="{{ path_for('register') }}">Login</a></li>
   						<li style="float:right"><a class="active" href="{{ path_for('login') }}">Sign In</a></li>
 
@@ -62,16 +62,17 @@
 		</br>
 
 		<footer>
-			Site par BISELX Charles, ESCAMILLA Valentin, MEDJMADJ Issam, PENGUILLY Bertrand
-
+			
 			<div>
 
-				<a class=""></a>
-				<a class="" href=""></a>
-				<a class="" href=""></a>
+				<a class="linksfooter" href ="{{ path_for('home') }}">Home</a> - 
+				<a class="linksfooter" href="{{ path_for('showLists') }}">Add a list</a> - 
+				<a class="linksfooter" href="{{ path_for('contact') }}">Contact</a> 
 
 				<p></p>
 			</div>
+			Site par BISELX Charles, ESCAMILLA Valentin, MEDJMADJ Issam, PENGUILLY Bertrand<br>
+			©Mecado.net - 2017
 		</footer>
 	</body>
 </html>

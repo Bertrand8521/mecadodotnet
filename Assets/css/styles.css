@@ -294,3 +294,11 @@ ul.navbar li.right {float: right;}
   	ul.navbar li.right, 
     ul.navbar li {float: none;}
   }
+
+  footer {
+    text-align: center;
+  }
+
+  .linksfooter {
+    color: black;
+  }
