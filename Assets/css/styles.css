@@ -583,3 +583,14 @@ ul.navbar li.right {float: right;}
   .aligncentert{
     text-align: center;
   }
+
+.logo {
+  float: left;
+  height: 50px;
+  width: 50px;
+  vertical-align : middle;
+}
+
+.titre {
+  text-align: left;
+}
