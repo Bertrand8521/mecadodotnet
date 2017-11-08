@@ -45,7 +45,7 @@ final class ListController extends BaseController
       $post = $request->getParsedBody();
       $valid = $this->validate($post);
       if ($valid === "ok") {
-        $createur_id = 1; // TODO get user id from auth
+        $createur_id = $_SESSION['id'];
 
         $liste = new Liste();
         $liste->createur_id = $createur_id;

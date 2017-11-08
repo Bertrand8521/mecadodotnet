@@ -14,8 +14,7 @@ final class ShowListsController extends BaseController
 
     public function showlists(Request $request, Response $response, $args)
     {
-        // TODO createur_id
-        $createur_id = 1;
+        $createur_id = $_SESSION['id'];
         $listes = Liste::where('createur_id', '=', $createur_id)->get()->toArray();
 
         return $this->container->view->render($response, 'showlists.twig', [listes => $listes]);

@@ -121,6 +121,7 @@ final class CreatorController extends BaseController
                 }
 
                 $_SESSION['isConnected'] = $creator;
+                $_SESSION['id'] = $creator->id;
 
                 $this->container->flash->addMessage("InfoSuccess","Connexion réussie");
                 return $response->withRedirect("/");
@@ -135,6 +136,7 @@ final class CreatorController extends BaseController
 
      public function creatorLogOut(Request $request, Response $response, $args){
         unset($_SESSION['isConnected']);
+        unset($_SESSION['id']);
         setcookie("remember",null,-1,"/");
         $this->container->flash->addMessage("InfoDeconnected","Vous avez été déconnecté");
         return $response->withRedirect("/");
