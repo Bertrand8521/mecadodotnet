@@ -7,6 +7,8 @@ $app->get('/', 'HomeController:home')->setName('home');
 
 $app->get('/CreatorRegister', 'CreatorController:registerCreator')->setName('register');
 
+$app->post('/CreatorRegistered', 'CreatorController:registeredCreator')->setName('creatorRegistered');
+
 $app->get('/CreatorLogin', 'CreatorController:creatorLogin')->setName('login');
 
 $app->get('/item', 'ItemController:item');
