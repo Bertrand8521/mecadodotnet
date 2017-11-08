@@ -19,7 +19,7 @@
 {% block content %}
 
 
-  {# <form name="newlist"  method="post" action="{{ path_for('postlist') }}"> #}
+  <form name="newlist"  method="post" action="{{ path_for('postList') }}">
     <div class="containerForm">
       <div class="containerInput">
         <label for="name">Nom de la liste </label>
@@ -37,8 +37,8 @@
 
       <div class="containerInput">
         <label for="">Date de validité</label>
-        <span class="requirequired">*</span><br>
-        <input class= "form newlist" type="text" id="datepicker" id="datepicker"><br>
+        <span class="required">*</span><br>
+        <input class="form newlist" name="date" type="text" id="datepicker" id="datepicker"><br>
       </div>
 
 
