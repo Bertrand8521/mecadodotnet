@@ -11,6 +11,8 @@ $app->post('/CreatorRegistered', 'CreatorController:registeredCreator')->setName
 
 $app->get('/CreatorLogin', 'CreatorController:creatorLogin')->setName('login');
 
+$app->post('/CreatorLogged', 'CreatorController:creatorLogged')->setName('logged');
+
 $app->get('/item', 'ItemController:item');
 
 $app->get('/item/{liste_id}', 'ItemController:getItemsFromListeId');

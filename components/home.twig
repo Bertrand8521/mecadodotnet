@@ -1,6 +1,14 @@
  {% extends 'templates/base_layout.twig' %}
 
 {% block content %}
+
+
+  {% if flash.getMessage('InfoSuccess')[0] %}
+      <div class="alertSuccess">
+        <b>{{ flash.getMessage('InfoSuccess')[0] }}</b>
+      </div>
+  {% endif %}
+  
 <h1>Bonjour, je suis un exemple de présentation</h1>
 
 <h3> Des boutons ! Ils sont pas mal hein ?</h3>

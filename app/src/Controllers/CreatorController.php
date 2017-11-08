@@ -79,5 +79,66 @@ final class CreatorController extends BaseController
 
         }
     }
+
+     public function creatorLogged(Request $request, Response $response, $args)
+    {   
+        $postDonne=$request->getParsedBody();
+        $errorsLogin=[];
+
+         if(!array_key_exists('pseudo',$_POST)|| $_POST['pseudo']=='' ||  !preg_match("/[a-zA-Z0-9]+$/", $_POST['pseudo'])){
+            $errorsLogin['pseudo']="Vous n'avez pas rentré un pseudo ou pseudo incorrecte ";
+        }
+
+        if(!array_key_exists('password',$_POST) || $_POST['password']==''){
+            $errorsLogin['password']="Vous n'avez pas rentré un mot de passe ou mot de passe incorrecte";
+        }
+
+        $_SESSION['errorLoginCreator']=$errorsLogin;
+
+            if(isset ($postDonne) && $postDonne["buttonConnect"]=="connect"){
+            	if(!empty($_SESSION['errorLoginCreator'])){
+                	$this->container->flash->addMessage("ErrorLogin", "Erreur :");
+                	return $response->withRedirect("/CreatorLogin");
+           		}
+
+                $password=$postDonne ["password"];
+                $creator=Createur::where("login",$postDonne["pseudo"])->first();
+
+                if (null === $creator){
+                    $this->container->flash->addMessage("ErrorPseudo","Votre pseudo est incorrecte");
+                    return $response->withRedirect("/CreatorLogin");
+            }
+
+            $pass=$creator->password;
+
+            if (password_verify($password, $pass)){
+                if(isset($postDonne["remember"])){
+                    $token= $this->randomString(20);
+                    setcookie("remember",$token,time()+60*60,"/");
+                    $creator->token=$token; 
+                    $creator->save();
+
+                }
+
+                $_SESSION['isConnected'] = $creator;                            
+                
+                $this->container->flash->addMessage("InfoSuccess","Connexion réussie");
+                return $response->withRedirect("/");
+            }else{
+                $this->container->flash->addMessage("ErreurPassLog","Votre mot de passe est incorrecte");
+                return $response->withRedirect("/CreatorLogin");
+            }
+            
+        }
+
+    }
+
+    
+
+    // method generates a random string for tocken
+    function randomString($length) {
+        return substr(str_shuffle(str_repeat($x='0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ', ceil($length/strlen($x)) )),1,$length);
+    }
 }
 unset($_SESSION['errorSignupUser']);
+unset($_SESSION['errorLoginCreator']);
