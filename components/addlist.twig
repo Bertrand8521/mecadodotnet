@@ -19,8 +19,7 @@
 {% block content %}
 
 
-  <p>blabla de création </p>
-  {# <form name="newlist"  method="post" action="{{ path_for('postlist') }}"> #}
+  <form name="newlist"  method="post" action="{{ path_for('postList') }}">
     <div class="containerForm">
       <div class="containerInput">
         <label for="name">Nom de la liste </label>
@@ -38,8 +37,8 @@
 
       <div class="containerInput">
         <label for="">Date de validité</label>
-        <span class="requirequired">*</span><br>
-        <input class= "form newlist" type="text" id="datepicker" id="datepicker"><br>
+        <span class="required">*</span><br>
+        <input class="form newlist" name="date" type="text" id="datepicker" id="datepicker"><br>
       </div>
 
 
@@ -52,7 +51,7 @@
         <label for="nom_dest">nom du destinataire</label><br>
         <input class= "form newlist" type="text" name="nom_dest" id="nom_dest" value="nom"><br>
       </div>
-      <p type="button" class="button" name="validate" id="validate" value="Créer la liste">Créer la liste</p>
+      <input type="submit" class="button" name="validate" id="validate" value="Créer la liste">
     </div>
   </form>
 

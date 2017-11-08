@@ -15,49 +15,37 @@ final class ListController extends BaseController
       return $len > 0 && $len <= $max_len;
     }
 
-    private function validate($r) {
-      if (!valid($r->post('nom'), 25)) {
+    private function validate($p) {
+      if (!$this->valid($p['nom'], 25)) {
         return "le nom doit être rempli faire moins de 25 caractères";
       }
-      if (!valid($r->post('description'), 250)) {
+      if (!$this->valid($p['description'], 250)) {
         return "la description doit être remplie faire moins de 500 caractères";
       }
-      $date = new strtotime($r->post('date'));
+      $date = new strtotime($p['date']);
       if ($date === FALSE) {
         return "date invalide";
       }
       else if ($date < time()) {
         return "date trop proche ou ancienne";
       }
-      if ($r->post('check_dest') && !valid($r->post('nom'), 25)) {
+      if ($p['check_dest'] && !$this->valid($p['nom'], 25)) {
         return "le nom du destinataire doit être rempli faire moins de 25 caractères";
       }
       return "ok";
     }
 
-    public function addlist(Request $request, Response $response, $args)
-    {
-        if ($request->isPost()) {
-          $valid = validate($request);
-          if ($valid === "ok") {
-
-          }
-          else {
-
-          }
-        }
-        return $this->container->view->render($response, 'addlist.twig');
-    }
-
     public function postList(Request $request, Response $response, $args){
-      $name        = $_POST['name'];
-      $description = $_POST['description'];
-      $date        = $_POST['date'];
-      if( $_POST['check_dest']) {
-        $destinataire = $_POST['check_dest'];
-      }else{
-        $destinataire = "test" ; //nom du créateur
+      $valid = $this->validate($request->getParsedBody());
+      if ($valid === "ok") {
+
       }
+      else {
+
+
+
+      }
+      return $this->container->view->render($response, 'addlist.twig');
 
       $token = md5(time() . mt_rand());
 
