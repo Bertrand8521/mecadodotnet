@@ -11,13 +11,13 @@
   <!--if connected-->
     {% for liste in listes %}
     <a class="no-style" href="{{path_for('item') }}/{{liste.token}}">
-      <div class="cell large-6" >
+      <div class="box cell large-6" >
 
           <h1>{{ liste.nom }}</h1>
           <h2>date de validité : {{ liste.date_val }} </h2>
           <h2>destinataire : {{ liste.destinataire }}</h2>
           <p>{{ liste.description }}</p>
-          <p>lien de partage</p>
+          <p>www.mecado.net{{path_for('item') }}/{{liste.token}}</p>
 
       </div>
   </a>
