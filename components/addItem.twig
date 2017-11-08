@@ -1,0 +1,70 @@
+{% extends "templates/base_layout.twig" %}
+
+
+{% block custom_assets %}
+  <link rel="stylesheet" type="text/css" href="/Assets/css/item.css">
+{% endblock %}
+
+{% block content %}
+  <p class="tall aligncentert">
+    <strong>Lien de la liste : </strong> <a href="{{path_for('item') }}/{{token}}">www.mecado.net{{path_for('item') }}/{{token}}</a>
+  </p>
+
+  <h2 class="section-container">Ajouter un nouvel item </h2>
+
+  {% if session.errorItem %}
+      <div class="alertDanger">
+        <b>{{ flash.getMessage('ErrorItem')[0] }}</b>
+        {% for session in session.errorItem %}  
+            <p>{{ session }}</p>
+        {% endfor %}
+      </div>
+  {% endif %}
+
+   {% if flash.getMessage('successAddItem')[0] %}
+      <div class="alertSuccess">
+        <b>{{ flash.getMessage('successAddItem')[0] }}</b>
+      </div>
+  {% endif %}
+
+<form name="addItem"  method="post" action="{{ path_for('addItem') }}">
+  <div class="containerFormItem">  
+
+      <div class="containerInput">
+        <label for="name">Nom de l'item</label>
+        <span class="required">*</span><br>
+        <input class= "form login" id="name" type="text" name="name" placeholder="Enrez le nom de l'item">
+      </div> 
+
+      <div class="containerInput">
+        <label for="tarif">Tarif minimum</label>
+        <span class="required">*</span><br>
+        <input class= "form login" id="tarif" type="number" name="tarif" placeholder="Enrez le tarif de l'item">
+      </div>
+
+      <div class="containerInput">
+        <label for="url">URL d'exemple</label><br>
+        <input class= "form login" id="url" type="text" name="url" placeholder="Enrez l'url d'exemple">
+      </div> 
+
+      <div class="containerInput">
+        <label for="description">Description</label>
+        <span class="required">*</span><br>
+        <textarea class= "form login hight-10 nonempty" id="description" type="text" name="description" placeholder="" ></textarea>
+      </div>
+
+      <div>           
+        <label for="image">Image </label><br>
+        <input type="file" id="imageUpload" name="image"/>
+      </div><br>    
+    
+      <button class="button success marginButton" type="submit" value="ajoutItem" name="buttonAjoutItem">Ajouter Item</button>
+  </div>
+</form>
+
+  {% for item in items %}
+    {% include "templates/item.twig" %}
+  {% endfor %}
+
+</br>
+{% endblock %}
