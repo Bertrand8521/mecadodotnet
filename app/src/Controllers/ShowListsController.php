@@ -26,10 +26,16 @@ final class ShowListsController extends BaseController
         $option_id = $post['delete_list_option'];
         $listes = Liste::find($option_id);
         $nom = $listes->nom;
-        liste::destroy($option_id);
 
+
+        $items = Item::where('liste_token', '=', $listes->nom)->get()->toArray();
+        var_dump($items);
+        return;
+
+        //liste::destroy($option_id);
+        
         $this->container->flash->addMessage("Success", $nom." a été supprimé");
-        return $response->withRedirect("/item");
+        //return $response->withRedirect("/showlists");
     }
 
  }
