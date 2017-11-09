@@ -598,7 +598,7 @@ ul.navbar li.right {float: right;}
     text-align: center;
   }
 
-<<<<<<< HEAD
+
 .logo {
   float: left;
   height: 50px;
@@ -607,16 +607,15 @@ ul.navbar li.right {float: right;}
 }
 
 @font-face {
-  font-family: "Christmas Time";
+  font-family: "ChristmasTime";
   src: url("../fonts/ChristmasTime.ttf"); }
 
 .titre {
   text-align: left;
+  font-family: "ChristmasTime";
 }
-=======
-  .commentaires {
+
+.commentaires {
     transition: all 0.8s cubic-bezier(1, 0, 0, 1) 0s;
     max-height: 0px;
-  }
-
->>>>>>> origin/bertrand
+     }
