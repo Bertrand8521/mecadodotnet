@@ -21,11 +21,17 @@ $app->get('/item', 'ItemController:item')->setName('item');
 
 $app->get('/item/{token}', 'ItemController:getItemsFromToken');
 
-$app->post('/item', 'ItemController:deleteitem')->setName('deleteitem');
 
 $app->get('/addItem', 'ItemController:addItem')->setName('addItem');
 
 $app->post('/postItem', 'ItemController:postItem')->setName('postItem');
+
+
+$app->post('/item', 'ItemController:deleteitem')->setName('deleteitem');
+
+$app->post('/addItem', 'ItemController:addItem')->setName('addItem');
+
+
 
 $app->get('/newlist', 'NewListController:addlist')->setName('addList');
 
@@ -38,3 +44,5 @@ $app->post('/showlists', 'ShowListsController:deletelist')->setName('deletelist'
 $app->get('/contact', 'ContactController:contact')->setName('contact');
 
 $app->post('/contact', 'ContactController:sendmail')->setName('sendmail');
+
+$app->post('/reservationItem', 'ItemController:reservationItem')->setName('reservationItem');

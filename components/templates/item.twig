@@ -17,6 +17,13 @@
       <a href="{{item.lien_url }}"> ici</a> </p>
     {% endif %}
 
+    {% if item.reserve == 0 %}
+    <form name="addItem" enctype="multipart/form-data" method="post" action="{{ path_for('reservationItem', {'id': item.id }) }}">
+    <input type="submit" class="button" name="Reserver_{{i}}" id="reserver_{{i}}" value="Reserver">
+  </form>
+    {% else %}
+    <p>Cet item est deja reservé</p>
+    {% endif %}
     {% if nbCommentaires[i] == 0 %}
       <p>Pas de commentaire</p>
     {% elseif nbCommentaires[i] == 1 %}

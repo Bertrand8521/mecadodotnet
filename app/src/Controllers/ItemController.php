@@ -46,6 +46,18 @@ final class ItemController extends BaseController
         // return $this->container->view->render($response, "testItem.twig", ['items' => $items, 'nbCommentaires' => $nbCommentaires, 'token' => $args['token'] ] );
     }
 
+
+
+    public function reservationItem(Request $request, Response $response, $args)
+    {
+        $item = Item::where('id', '=', $args['id'])->first();
+        if ($item['reserve'] = 0) {
+            $item['reserve'] = 1;
+            $item->save();
+            return $this->container->view->render($response, 'showlists.twig');
+        }
+    }
+
     public function postItem(Request $request, Response $response, $args) {
       $postDonne=$request->getParsedBody();
       $item=new Item();
@@ -88,6 +100,7 @@ final class ItemController extends BaseController
           $this->container->flash->addMessage("successAddItem","L'item a été ajoutée avec succès");
           return $response->withRedirect("/item/{token}");
         }
+
 
     }
 
