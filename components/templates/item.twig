@@ -16,6 +16,14 @@
       <p>lien fourni :
       <a href="{{item.lien_url }}"> ici</a> </p>
     {% endif %}
+
+    {% if nbCommentaires[nbCommentairesIndex] == 0 %}
+      <p>Pas de commentaire</p>
+    {% elseif nbCommentaires[nbCommentairesIndex] == 1 %}
+      <p>1 commentaire</p>
+    {% else %}
+      <p>{{ nbCommentaires[nbCommentairesIndex] }} commentaires</p>
+    {% endif %}
   </div>
 
 

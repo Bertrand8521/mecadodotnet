@@ -29,4 +29,9 @@ final class CommentaireController extends BaseController {
 
 		return Commentaire_liste::where('liste_id', '=', $id)->count();
 	}
+
+	public function nbCommentaireItem($id) {
+
+		return Commentaire_item::where('liste_id', '=', $id)->count();
+	}
 }
