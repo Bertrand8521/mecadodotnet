@@ -25,4 +25,13 @@ final class ItemController extends BaseController
         $items = Item::where('liste_token', '=', $args['token'])->get()->toArray();
         return $this->container->view->render($response, "testItem.twig", [items => $items, token=>$args['token'] ] );
     }
+
+    public function reservationItem(Request $request, Response $response, $args)
+    {
+        $item = Item::where('id', '=', $args['id'])->first();
+        if ($item['reserve'] = 0) {
+            $item['reserve'] = 1
+            $item->save();
+        }
+    }
  }

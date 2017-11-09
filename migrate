@@ -76,6 +76,9 @@ class Migrator {
                 $table->string('lien_image');
                 $table->string('lien_url');
                 $table->integer('tarif');
+                $table->boolean('reserve')->default('0');
+                $table->boolean('cagnotte')->default('0');
+                $table->integer('sommereservee')->nullable();
                 $table->timestamps();
 
                 // We'll need to ensure that MySQL uses the InnoDB engine to
