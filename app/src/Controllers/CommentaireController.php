@@ -34,4 +34,8 @@ final class CommentaireController extends BaseController {
 
 		return Commentaire_item::where('liste_id', '=', $id)->count();
 	}
+
+	public function postCommentItem(Request $request, Response $response, $args) {
+		// TODO
+	}
 }

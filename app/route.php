@@ -15,6 +15,8 @@ $app->post('/CreatorLogged', 'CreatorController:creatorLogged')->setName('logged
 
 $app->get('/LogOut', 'CreatorController:creatorLogOut')->setName('LogOut');
 
+$app->post('/postCommentItem', 'CommentaireController:postCommentItem')->setName('postCommentItem');
+
 $app->get('/item', 'ItemController:item')->setName('item');
 
 $app->get('/item/{token}', 'ItemController:getItemsFromToken');

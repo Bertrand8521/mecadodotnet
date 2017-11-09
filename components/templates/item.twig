@@ -17,12 +17,26 @@
       <a href="{{item.lien_url }}"> ici</a> </p>
     {% endif %}
 
-    {% if nbCommentaires[nbCommentairesIndex] == 0 %}
+    {% if nbCommentaires[i] == 0 %}
       <p>Pas de commentaire</p>
-    {% elseif nbCommentaires[nbCommentairesIndex] == 1 %}
+    {% elseif nbCommentaires[i] == 1 %}
       <p>1 commentaire</p>
     {% else %}
-      <p>{{ nbCommentaires[nbCommentairesIndex] }} commentaires</p>
+      <p>{{ nbCommentaires[i] }} commentaires</p>
+    {% endif %}
+
+    {% if true %} {# TODO si l'utilisateur a acces aux commentaires #}
+      <div class="commentaires">
+        <form name="form_{{i}}" onsubmit="return validateForm()" method="post" action="{{ path_for('postCommentItem') }}">
+          <label for="nom_{{i}}">Votre nom</label>
+          <span class="required">*<br></span>
+          <input class= "form newlist nonempty" type="textarea" name="nom_{{i}}"  id="nom_{{i}}" value="" maxlength="25"><br>
+          <label for="comment_{{i}}">Commentaire</label>
+          <span class="required">*<br></span>
+          <textarea class="form newlist hight-10 nonempty" type="text" name="description"  id="description" value="" maxlength="255"></textarea> <br>
+          <input type="submit" class="button" name="validate_{{i}}" id="validate_{{i}}" value="Ajouter commentaire">
+        </form>
+      </div>
     {% endif %}
   </div>
 
