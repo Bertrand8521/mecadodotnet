@@ -19,7 +19,11 @@ $app->get('/item', 'ItemController:item')->setName('item');
 
 $app->get('/item/{token}', 'ItemController:getItemsFromToken');
 
+
 $app->post('/item', 'ItemController:deleteitem')->setName('deleteitem');
+
+$app->post('/addItem', 'ItemController:addItem')->setName('addItem');
+
 
 $app->get('/newlist', 'NewListController:addlist')->setName('addList');
 
