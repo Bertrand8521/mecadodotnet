@@ -70,8 +70,7 @@
       </div>
   {% endif %}
 
-
-<form name="addItem" enctype="multipart/form-data" method="post" action="{{ path_for('addItem') }}">
+<form name="addItem" enctype="multipart/form-data" method="post" action="{{ path_for('postItem') }}">
 
   <div class="containerFormItem">
 
@@ -102,6 +101,8 @@
         <label for="image">Image </label><br>
         <input type="file" id="imageUpload" name="image"/>
       </div><br>
+
+      <input type="hidden" name="liste_id" value="{{liste.id}}"/>
 
       <button class="button success marginButton" type="submit" value="ajoutItem" name="buttonAjoutItem">Ajouter Item</button>
   </div>
