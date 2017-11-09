@@ -7,7 +7,8 @@
 
 {% block content %}
   <p class="tall aligncentert">
-    <strong>Lien de la liste : </strong> <a href="{{path_for('item') }}/{{token}}">www.mecado.net{{path_for('item') }}/{{token}}</a>
+    <strong>Lien de la liste : </strong> <a href="{{ path_for('item') }}/{{ token }}">
+    www.mecado.net/{{ path_for('item') }}/{{ token }}</a>
   </p>
 
   <h2 class="section-container">Ajouter un nouvel item </h2>

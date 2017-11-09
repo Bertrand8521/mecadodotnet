@@ -15,7 +15,7 @@ final class ItemController extends BaseController
 
     public function getItemsFromToken(Request $request, Response $response, $args)
     {
-        $item = Item::where('liste_id', '=', $args['token'])->get()->toArray();
+        $item = Item::where('liste_id', '=', $args['token'])->get();
         return $this->container->view->render($response, "addItem.twig", [items => $items, token=>$args['token'] ] );
 
     }
@@ -38,10 +38,6 @@ final class ItemController extends BaseController
             $errorAddItem['description']="Vous n'avez pas rentré une description de l'item";
         }
 
-        if(!array_key_exists('image',$_POST)|| $_POST['image']==''){
-            $errorAddItem['image']="Vous n'avez pas téléchargé une image";
-        }
-
         $_SESSION['errorItem']=$errorAddItem;
 
         if(isset ($postDonne) && $postDonne['buttonAjoutItem']=="ajoutItem"){
@@ -54,16 +50,14 @@ final class ItemController extends BaseController
             $item->tarif=$postDonne["tarif"];
             $item->description=$postDonne["description"];
 
-            $uploads_dir ="/Assets/images/" ;
+            $uploads_dir =$this->container->uploads.DIRECTORY_SEPARATOR ;
             $error = $_FILES["image"]["error"] ;
             if ($error == UPLOAD_ERR_OK) {
                 $tmp_name = $_FILES['image']['tmp_name'];
-                // var_dump($_FILE);return;
                 $name = uniqid('img-'.date('Ymd').'-');                           
                 move_uploaded_file($tmp_name, $uploads_dir.''.$name);
                 $item->lien_image = $name;
-            }
-            // var_dump($postDonne);return;                  
+            }                  
 
             $item->save(); 
             $this->container->flash->addMessage("successAddItem","L'item a été ajoutée avec succès");
