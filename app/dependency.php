@@ -149,3 +149,5 @@ $container['Mailer'] = function ($c) {
         $c->get('view')
     );
 };
+
+$container['uploads'] = __DIR__.'/../Assets/images';

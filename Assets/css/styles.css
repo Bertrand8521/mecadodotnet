@@ -305,6 +305,11 @@ body {
   margin-top: 2%;
 }
 
+.containerFormItem{
+  margin-left: 200px;
+  margin-top: 2%;
+}
+
 .containerInput{
   margin-top: 2%;
   margin-bottom: 2%;
@@ -578,7 +583,9 @@ ul.navbar li.right {float: right;}
   .floatRight{
     float: right;
   }
-
+  .alignright{
+    text-align: right;
+  }
   .floatLeft{
     float: left;
   }
@@ -586,7 +593,7 @@ ul.navbar li.right {float: right;}
   .alignright{
     text-align: right;
   }
-
+  
   .aligncentert{
     text-align: center;
   }
