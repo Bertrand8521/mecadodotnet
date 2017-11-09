@@ -108,6 +108,10 @@ $container['ShowListsController'] = function($c){
 $container['ContactController'] = function($c){
   return new \App\Controllers\ContactController($c);
 };
+
+$container['CommentaireController'] = function($c){
+  return new \App\Controllers\CommentaireController($c);
+};
 /*
 **Adding the Shop Controller to the container
 */

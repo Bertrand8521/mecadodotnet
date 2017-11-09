@@ -22,7 +22,7 @@ final class ListController extends BaseController
         return "le nom doit être rempli et faire moins de 25 caractères";
       }
       if (!$this->valid($p['description'], 250)) {
-        return "la description doit être remplie et faire moins de 500 caractères";
+        return "la description doit être remplie et faire moins de 250 caractères";
       }
       $date = strtotime($p['date']);
       if ($date === FALSE) {

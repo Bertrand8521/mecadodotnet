@@ -22,23 +22,27 @@ final class ItemController extends BaseController
       $items_query = Item::where('liste_id', '=', $liste->id)->get();
 
       $items = $items_query->toArray();
-      return $this->container->view->render($response, "addItem.twig", [items => $items, token=>$args['token'] ] );
-
+      $nbCommentaires = []; // liste de nombre de commnetaires (dans le meme ordre que les listes)
+      $items_query->map(function ($item) use (&$nbCommentaires) {
+        $nbCommentaires[] = CommentaireController::nbCommentaireItem($item->id);
+      });
+      var_dump($nbCommentaires);
+      return $this->container->view->render($response, "addItem.twig", ['items' => $items, 'nbCommentaires' => $nbCommentaires, 'token' => $args['token']] );
     }
 
 
     public function addItem(Request $request, Response $response, $args)
     {
-        $liste = Liste::where('token', '=', $args['token'])->first();
-        $items_query = Item::where('liste_id', '=', $liste->id)->get();
-
-        $items = $items_query->toArray();
-
-        $nbCommentaires = []; // liste de nombre de commnetaires (dans le meme ordre que les listes)
-        $items_query->map(function ($item) use (&$nbCommentaires) {
-          $nbCommentaires[] = CommentaireController::nbCommentaireListe($item->id);
-        });
-        return $this->container->view->render($response, "testItem.twig", ['items' => $items, 'nbCommentaires' => $nbCommentaires, 'token' => $args['token'] ] );
+        // $liste = Liste::where('token', '=', $args['token'])->first();
+        // $items_query = Item::where('liste_id', '=', $liste->id)->get();
+        //
+        // $items = $items_query->toArray();
+        //
+        // $nbCommentaires = []; // liste de nombre de commnetaires (dans le meme ordre que les listes)
+        // $items_query->map(function ($item) use (&$nbCommentaires) {
+        //   $nbCommentaires[] = CommentaireController::nbCommentaireListe($item->id);
+        // });
+        // return $this->container->view->render($response, "testItem.twig", ['items' => $items, 'nbCommentaires' => $nbCommentaires, 'token' => $args['token'] ] );
     }
 
     public function postItem(Request $request, Response $response, $args) {
