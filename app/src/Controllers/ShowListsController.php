@@ -27,25 +27,28 @@ final class ShowListsController extends BaseController
         $listes = Liste::find($option_id);
         $nom = $listes->nom;
 
+        $commentaire_list = Commentaire_liste::where('liste_id', '=', $option_id)->get();
+        var_dump('test'); return ;
+/*
+        foreach ($commentaire_item as $value) {
+          $id = $items->id;
+          Item::destroy($id)
+        }
+*/
 
-        $items = Item::where('liste_token', '=', $listes->nom)->get()->toArray();
-        var_dump($items);
-        return;
 
-        //liste::destroy($option_id);
-        
+
+
+        $items = Item::where('liste_id', '=', $option_id)->get();
+/*
+        foreach ($items as $value) {
+          $id = $items->id;
+          Item::destroy($id)
+        }
+*/
+        //Liste::destroy($option_id);
         $this->container->flash->addMessage("Success", $nom." a été supprimé");
-        //return $response->withRedirect("/showlists");
+        return $response->withRedirect("/showlists");
     }
 
  }
-
-/*
-$liste = new Liste();
-$liste->createur_id = $createur_id;
-$liste->token = md5(time() . mt_rand());
-$liste->nom = $post['name'];
-$liste->description = $post['description'];
-$liste->date_val = $post['date'];
-$liste->destinataire = $post['check_dest'] ? Createur::where('id', '=', $createur_id)->first()['nom'] : $post['nom_dest'];
-$liste->save();
