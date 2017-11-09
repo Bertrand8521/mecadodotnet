@@ -618,4 +618,9 @@ ul.navbar li.right {float: right;}
 .commentaires {
     transition: all 0.8s cubic-bezier(1, 0, 0, 1) 0s;
     max-height: 0px;
+    visibility: hidden;
+    
+
      }
+
+  }

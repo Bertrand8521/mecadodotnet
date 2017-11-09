@@ -9,10 +9,12 @@
         if (! $( event.target).is(':input')) {
           let commentaires = $(this).find('.commentaires')
           if (commentaires.css('max-height') == '0px') {
-            commentaires.css('max-height', '40000px');
+            commentaires.css('max-height', '20000px');
+            commentaires.css('visibility', 'visible');
           }
           else {
             commentaires.css('max-height', '0px');
+            commentaires.css('visibility', 'hidden');
           }
         }
       });
