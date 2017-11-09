@@ -49,6 +49,7 @@ final class ItemController extends BaseController
         if ($item['reserve'] = 0) {
             $item['reserve'] = 1;
             $item->save();
+            return $this->container->view->render($response, 'showlists.twig');
         }
     }
 
