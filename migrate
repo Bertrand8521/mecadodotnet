@@ -70,11 +70,11 @@ class Migrator {
             Capsule::schema()->create('Item', function($table)
             {
                 $table->integer('id', true);
-                $table->string('liste_token');
+                $table->inetger('liste_id');
                 $table->string('nom');
                 $table->text('description');
-                $table->string('lien_image');
-                $table->string('lien_url');
+                $table->string('lien_image')->nullable();
+                $table->string('lien_url')->nullable()->default('');
                 $table->integer('tarif');
                 $table->boolean('reserve')->default('0');
                 $table->boolean('cagnotte')->default('0');
@@ -86,7 +86,7 @@ class Migrator {
                 $table->engine = 'InnoDB';
 
                  //Foreign keys
-                $table->foreign('liste_token')->references('token')->on('Liste');
+                $table->foreign('liste_id')->references('token')->on('Liste');
             });
         }
 

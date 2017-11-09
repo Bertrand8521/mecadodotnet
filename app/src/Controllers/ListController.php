@@ -46,7 +46,6 @@ final class ListController extends BaseController
       $valid = $this->validate($post);
       if ($valid === "ok") {
         $createur_id = $_SESSION['id'];
-
         $liste = new Liste();
         $liste->createur_id = $createur_id;
         $liste->token = md5(time() . mt_rand());
