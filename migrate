@@ -70,7 +70,7 @@ class Migrator {
             Capsule::schema()->create('Item', function($table)
             {
                 $table->integer('id', true);
-                $table->integer('liste_id');
+                $table->inetger('liste_id');
                 $table->string('nom');
                 $table->text('description');
                 $table->string('lien_image')->nullable();
@@ -83,7 +83,7 @@ class Migrator {
                 $table->engine = 'InnoDB';
 
                  //Foreign keys
-                $table->foreign('liste_id')->references('id')->on('Liste');
+                $table->foreign('liste_id')->references('token')->on('Liste');
             });
         }
 

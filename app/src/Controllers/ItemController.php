@@ -14,8 +14,8 @@ final class ItemController extends BaseController
 {   
 
     public function getItemsFromToken(Request $request, Response $response, $args)
-    {var_dump(items => $items);
-        $items = Item::where('token', '=', $args['token'])->get()->toArray();
+    {
+        $item = Item::where('liste_id', '=', $args['token'])->get()->toArray();
         return $this->container->view->render($response, "addItem.twig", [items => $items, token=>$args['token'] ] );
 
     }

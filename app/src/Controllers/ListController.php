@@ -45,22 +45,21 @@ final class ListController extends BaseController
       $post = $request->getParsedBody();
       $valid = $this->validate($post);
       if ($valid === "ok") {
-        $createur_id = 1; // TODO get user id from auth
-
+        $createur_id = $_SESSION['id'];
         $liste = new Liste();
         $liste->createur_id = $createur_id;
         $liste->token = md5(time() . mt_rand());
         $liste->nom = $post['name'];
         $liste->description = $post['description'];
         $liste->date_val = $post['date'];
-        $liste->destinataire = $post['nom_dest'] || Createur::whereId($createur_id)->first()['nom'];
+        $liste->destinataire = $post['check_dest'] ? Createur::where('id', '=', $createur_id)->first()['nom'] : $post['nom_dest'];
         $liste->save();
         $this->container->flash->addMessage("Success", "Votre liste a bien été crée");
         return $response->withRedirect("/showlists");
       }
       else {
         $this->container->flash->addMessage("Error", $valid);
-        return $this->container->view->render($response, 'addlist.twig');
+        return $response->withRedirect('/newlist');
       }
     }
 

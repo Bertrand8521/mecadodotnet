@@ -81,7 +81,7 @@ final class CreatorController extends BaseController
     }
 
      public function creatorLogged(Request $request, Response $response, $args)
-    {   
+    {
         $postDonne=$request->getParsedBody();
         $errorsLogin=[];
 
@@ -115,26 +115,28 @@ final class CreatorController extends BaseController
                 if(isset($postDonne["remember"])){
                     $token= $this->randomString(20);
                     setcookie("remember",$token,time()+60*60,"/");
-                    $creator->token=$token; 
+                    $creator->token=$token;
                     $creator->save();
 
                 }
 
-                $_SESSION['isConnected'] = $creator;                            
-                
+                $_SESSION['isConnected'] = $creator;
+                $_SESSION['id'] = $creator->id;
+
                 $this->container->flash->addMessage("InfoSuccess","Connexion réussie");
                 return $response->withRedirect("/");
             }else{
                 $this->container->flash->addMessage("ErreurPassLog","Votre mot de passe est incorrecte");
                 return $response->withRedirect("/CreatorLogin");
             }
-            
+
         }
 
     }
 
      public function creatorLogOut(Request $request, Response $response, $args){
         unset($_SESSION['isConnected']);
+        unset($_SESSION['id']);
         setcookie("remember",null,-1,"/");
         $this->container->flash->addMessage("InfoDeconnected","Vous avez été déconnecté");
         return $response->withRedirect("/");
