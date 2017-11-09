@@ -359,7 +359,7 @@ ul.navbar li.right {float: right;}
   color: black;
   display: flex;
   flex-flow: column;
-  justify-content: flex-end;
+  justify-content: flex-start;
   margin: 0;
   padding: 0;
   overflow: hidden;
@@ -593,7 +593,16 @@ ul.navbar li.right {float: right;}
   .alignright{
     text-align: right;
   }
-  
+
   .aligncentert{
     text-align: center;
   }
+
+  .commentaires {
+    transition: all 0.8s cubic-bezier(1, 0, 0, 1) 0s;
+    max-height: 0px;
+  }
+  li.main_link:first-child{
+    margin-left: 0px;
+  }
+

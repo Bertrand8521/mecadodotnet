@@ -3,6 +3,42 @@
 
 {% block custom_assets %}
   <link rel="stylesheet" type="text/css" href="/Assets/css/item.css">
+  <script>
+    $(function () {
+      $('.box').on('click', function(event) {
+        if (! $( event.target).is(':input')) {
+          let commentaires = $(this).find('.commentaires')
+          if (commentaires.css('max-height') == '0px') {
+            commentaires.css('max-height', '40000px');
+          }
+          else {
+            commentaires.css('max-height', '0px');
+          }
+        }
+      });
+    });
+    function validateForm() {
+      return false; // TODO
+      let ret = true;
+      $(".nonempty").each(function() {
+        if ($(this).val() === "") {
+          $(this).addClass("form-error");
+          ret = false;
+        }
+        else {
+          $(this).removeClass("form-error");
+        }
+      });
+      if (! $("#check_dest").is("checked") && $("#nom_dest").val() === "") {
+        $("#nom_dest").addClass("form-error");
+        ret = false;
+      }
+      else {
+        $("#nom_dest").removeClass("form-error");
+      }
+      return ret;
+    }
+  </script>
 {% endblock %}
 
 {% block content %}
@@ -10,6 +46,12 @@
     <strong>Lien de la liste : </strong> <a href="{{ path_for('item') }}/{{ token }}">
     www.mecado.net/{{ path_for('item') }}/{{ token }}</a>
   </p>
+
+  {% set i = 0 %}
+  {% for item in items %}
+    {% include "templates/item.twig" %}
+    {% set i = i + 1 %}
+  {% endfor %}
 
   <h2 class="section-container">Ajouter un nouvel item </h2>
 
@@ -64,11 +106,6 @@
   </div>
 </form>
 
-{% set i = 0 %}
-{% for item in items %}
-  {% include "templates/item.twig" %}
-  {% set i = i + 1 %}
-{% endfor %}
 
 </br>
 {% endblock %}
