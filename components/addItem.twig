@@ -75,7 +75,7 @@
       <label for="delete_item">Selectionner la liste à supprimer</label>
       <select class="" name="delete_item_option">
         {% for item in items %}
-          <option value="{{ item.id }}">{{ liste.nom }}</option>
+          <option value="{{ item.id }}">{{ item.nom }}</option>
         {% endfor %}
       </select>
       <input type="submit" class="button alert" name="delete_item" id="delete_item" value="supprimer item">

@@ -57,7 +57,7 @@ final class ShowListsController extends BaseController
           $it = $item[$n] ;
           $item_id = $it['id'];
 
-          $commentaire_item = Commentaire_item::where('item_id', '=', $item_id )->get();
+          $commentaire_item = Commentaire_item::where('item_id', '=', $item_id )->get()->toArray();
 
           $j = 0 ;//TODO pas bien :(
           foreach ($commentaire_item as $value) {//chaque commentaire de chaque item de la liste à supprimer
@@ -70,13 +70,13 @@ final class ShowListsController extends BaseController
           }
 
 
-          //Item::destroy($item_id);
+          Item::destroy($item_id);
           $n++;
         }
 
 
 
-        //Liste::destroy($option_id);
+        Liste::destroy($option_id);
         $this->container->flash->addMessage("Success", $nom." a été supprimé");
         return $response->withRedirect("/showlists");
     }
