@@ -122,6 +122,11 @@ input{
   border-radius: 5px
 }
 
+.cell_animation {
+  animation-name: cell_unhover;
+  animation-duration: 1.2s;
+  cursor: pointer;
+}
 
 .cell {
   overflow: hidden;
@@ -134,20 +139,17 @@ input{
   margin-bottom: 5px;
   min-height: 0px;
   min-width: 0px;
-  animation-name: cell_unhover;
-  animation-duration: 1.2s;
-  cursor: pointer;
 }
 
 
-.cell:hover {
+.cell_animation:hover {
   animation-name: cell_hover;
   animation-duration: 0.6s;
   animation-direction: alternate;
   background-color: #ff944d;
 }
 
-.cell * {
+.cell div, .cell p, .cell img, .cell h1, .cell h2, .cell h3, .cell h4, .cell h5, .cell h6{
   margin: 10px;
 }
 
@@ -271,6 +273,9 @@ body {
   font-size: 120%;
 }
 
+.small{
+    font-size: 80%;
+}
 
 .section-container{
   background-color:#D3D3D3;
@@ -372,7 +377,7 @@ ul.navbar li.right {float: right;}
     background-color: #111;
 }
 
-@media screen and (min-width: 1400px) {
+@media screen and (min-width: 1100px) {
   .main_list {
     flex-flow: row; } }
 @media screen and (min-width: 600px) and (max-width: 1400px) {
@@ -400,7 +405,7 @@ ul.navbar li.right {float: right;}
   }
 
 
-  @media screen and (  max-width:1400px  ){
+  @media screen and (  max-width:1100px  ){
     .cell{
       display: block;
       width: calc( 98% - 2% );
@@ -408,13 +413,6 @@ ul.navbar li.right {float: right;}
   }
 
 
-/*
-  @media screen and ( min-width: 600px )
-                and ( max-width: 1400px){
-    .main_list{
-      flex-flow: row;
-      justify-content: center;
-    }*/
 
   .no-style{
     animation : none;
@@ -613,8 +611,4 @@ ul.navbar li.right {float: right;}
 
 .titre {
   text-align: left;
-  font-family: "Christmas Time";
-  font-weight: inherit;
-  /*font-size: 200%;*/
-  }
-
+}

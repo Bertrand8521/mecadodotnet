@@ -8,6 +8,13 @@
 
 
 {% block content %}
+  {% if not session.isConnected %}
+    <div class="containerForm">
+      <h1>Vous n'êtes pas connecté !</h1>
+      <p><a href="{{ path_for('login') }}">Connectez</a> vous dès maintenant ou <a href="{{ path_for('register') }}">rejoignez</a> nous si vous n'avez pas de compte !</p>
+
+    </div>
+  {% else %}
   <!--if connected-->
     {% if flash.getMessage('Error')[0] %}
         <div class="alertDanger">
@@ -15,10 +22,10 @@
         </div>
     {% endif %}
     {% if flash.getMessage('Success')[0] %}
-   			 <div class="alertSuccess">
-        		<b>{{ flash.getMessage('Success')[0] }}</b>
-    		</div>
-		{% endif %}
+         <div class="alertSuccess">
+            <b>{{ flash.getMessage('Success')[0] }}</b>
+        </div>
+    {% endif %}
 
     {% set nbCommentairesIndex = 0 %}
     {% for liste in listes %}
@@ -39,6 +46,21 @@
         </div>
       </a>
       {% set nbCommentairesIndex = nbCommentairesIndex + 1 %}
+
     {% endfor %}
+    <!-- suppresion de la liste-->
+    <h1>TODO supprimer les objets dans la liste</h1>
+      <div class="containerForm">
+        <form name="newlist" onsubmit="return validateForm()" method="post" action="{{ path_for('deletelist') }}">
+          <label for="delete_list">Selectionner la liste à supprimer</label>
+          <select class="" name="delete_list_option">
+            {% for liste in listes %}
+              <option value="{{ liste.id }}">{{ liste.nom }}</option>
+            {% endfor %}
+          </select>
+          <input type="submit" class="button alert" name="delete_list" id="delete_list" value="supprimer liste">
+        </form>
+      </div>
+  {% endif %}
 
 {% endblock %}

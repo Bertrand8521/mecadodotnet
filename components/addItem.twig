@@ -28,7 +28,9 @@
       </div>
   {% endif %}
 
-<form name="addItem" enctype="multipart/form-data" method="post" action="{{ path_for('postItem') }}">
+
+<form name="addItem" enctype="multipart/form-data" method="post" action="{{ path_for('addItem') }}">
+
   <div class="containerFormItem">
 
       <div class="containerInput">
@@ -68,6 +70,20 @@
   {% include "templates/item.twig" %}
   {% set i = i + 1 %}
 {% endfor %}
+
+  {% if  session.isConnected %}
+  <div class="containerForm">
+    <form name="newlist" onsubmit="return validateForm()" method="post" action="{{ path_for('deleteitem') }}">
+      <label for="delete_item">Selectionner la liste à supprimer</label>
+      <select class="" name="delete_item_option">
+        {% for item in items %}
+          <option value="{{ item.id }}">{{ liste.nom }}</option>
+        {% endfor %}
+      </select>
+      <input type="submit" class="button alert" name="delete_item" id="delete_item" value="supprimer item">
+    </form>
+  </div>
+  {% endif %}
 
 </br>
 {% endblock %}

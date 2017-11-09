@@ -42,6 +42,7 @@ final class ItemController extends BaseController
     }
 
 
+
     public function reservationItem(Request $request, Response $response, $args)
     {
         $item = Item::where('id', '=', $args['id'])->first();
@@ -96,6 +97,18 @@ final class ItemController extends BaseController
 
     }
 
+    public function deleteitem(Request $request, Response $response, $args){
+      $post = $request->getParsedBody();
+
+        $option_id = $post['delete_item_option'];
+        $items = Item::find($option_id);
+        $nom = $items->nom;
+        //liste::destroy($option_id);
+
+        $this->container->flash->addMessage("Success", $nom." a été supprimer");
+      //  return $response->withRedirect("/showlists");
+
+
+    }
  }
 unset($_SESSION['errorItem']);
-
