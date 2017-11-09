@@ -34,6 +34,10 @@
 
     {% if true %} {# TODO si l'utilisateur a acces aux commentaires #}
       <div class="commentaires">
+        {% for commentaire in commentaires[i] %}
+          {% include "templates/commentaire.twig" %}
+        {% endfor %}
+        <hr>
         <form name="form" onsubmit="return validateForm()" method="post" action="{{ path_for('postCommentItem') }}">
           <label for="nom">Votre nom</label>
           <span class="required">*<br></span>

@@ -23,12 +23,14 @@ final class ItemController extends BaseController
       $items_query = Item::where('liste_id', '=', $liste->id)->get();
 
       $items = $items_query->toArray();
+      $commentaires = []; // liste de listes de commentaires
       $nbCommentaires = []; // liste de nombre de commnetaires (dans le meme ordre que les listes)
-      $items_query->map(function ($item) use (&$nbCommentaires) {
-      $nbCommentaires[] = CommentaireController::nbCommentaireItem($item->id);
+      $items_query->map(function ($item) use (&$commentaires, &$nbCommentaires) {
+        $commentaireDeLItem = CommentaireController::getCommentaireItem($item->id);
+        $commentaires[] = $commentaireDeLItem;
+        $nbCommentaires[] = count($commentaireDeLItem);
       });
-      var_dump($nbCommentaires);
-      return $this->container->view->render($response, "addItem.twig", ['items' => $items, 'nbCommentaires' => $nbCommentaires, 'token' => $args['token']] );
+      return $this->container->view->render($response, "addItem.twig", ['items' => $items, 'commentaires' => $commentaires, 'nbCommentaires' => $nbCommentaires, 'token' => $args['token']] );
     }
 
 
