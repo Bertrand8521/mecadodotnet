@@ -19,10 +19,9 @@
         }
       });
     });
-    function validateForm() {
-      return true; // TODO
+    function validateForm(i) {
       let ret = true;
-      $(".nonempty").each(function() {
+      $(".nonempty.form" + i).each(function() {
         if ($(this).val() === "") {
           $(this).addClass("form-error");
           ret = false;
@@ -31,19 +30,24 @@
           $(this).removeClass("form-error");
         }
       });
-      if (! $("#check_dest").is("checked") && $("#nom_dest").val() === "") {
-        $("#nom_dest").addClass("form-error");
-        ret = false;
-      }
-      else {
-        $("#nom_dest").removeClass("form-error");
-      }
       return ret;
     }
   </script>
 {% endblock %}
 
 {% block content %}
+
+{% if flash.getMessage('Error')[0] %}
+    <div class="alertDanger">
+        <b>{{ flash.getMessage('Error')[0] }}</b>
+    </div>
+{% endif %}
+{% if flash.getMessage('Success')[0] %}
+     <div class="alertSuccess">
+        <b>{{ flash.getMessage('Success')[0] }}</b>
+    </div>
+{% endif %}
+
   <p class="tall aligncentert">
     <strong>Lien de la liste : </strong> <a href="{{ path_for('item') }}/{{ token }}">
     www.mecado.net/{{ path_for('item') }}/{{ token }}</a>

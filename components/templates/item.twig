@@ -38,13 +38,13 @@
           {% include "templates/commentaire.twig" %}
         {% endfor %}
         <hr>
-        <form name="form" onsubmit="return validateForm()" method="post" action="{{ path_for('postCommentItem') }}">
+        <form name="form" onsubmit="return validateForm({{i}})" method="post" action="{{ path_for('postCommentItem') }}">
           <label for="nom">Votre nom</label>
           <span class="required">*<br></span>
-          <input class= "form newlist nonempty" type="textarea" name="nom"  id="nom" value="" maxlength="25"><br>
+          <input class= "form newlist nonempty form{{i}}" type="textarea" name="nom"  id="nom" value="" maxlength="25"><br>
           <label for="comment">Commentaire</label>
           <span class="required">*<br></span>
-          <textarea class="form newlist hight-10 nonempty" type="text" name="commentaire"  id="commentaire" value="" maxlength="250"></textarea> <br>
+          <textarea class="form newlist hight-10 nonempty form{{i}}" type="text" name="commentaire"  id="commentaire" value="" maxlength="250"></textarea> <br>
           <input type="submit" class="button" name="validate" id="validate" value="Ajouter commentaire">
           <input type="hidden" name="token" value="{{token}}">
           <input type="hidden" name="idItem" value ="{{items[i].id}}">
