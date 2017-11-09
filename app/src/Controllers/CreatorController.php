@@ -7,6 +7,7 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 use Slim\Flash\Messages;
 use App\Models\Createur;
+use App\Models\Liste;
 
 final class CreatorController extends BaseController
 {
@@ -142,6 +143,16 @@ final class CreatorController extends BaseController
         return $response->withRedirect("/");
     }
 
+
+    public function removeCreator(Request $request, Response $response, $args){
+
+        $creator=$_SESSION['isConnected']['id'];
+        Createur::destroy($creator);
+        unset($_SESSION['isConnected']);
+        setcookie("remember",null,-1,"/");        
+        $this->container->flash->addMessage("SuccèssRemoveCreator","Votre compte a été supprimé avec succès");
+         return $response->withRedirect("/");
+    }
 
     // method generates a random string for tocken
     function randomString($length) {

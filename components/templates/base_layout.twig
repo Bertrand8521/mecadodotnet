@@ -11,7 +11,7 @@
 
 
 		<script src="/Assets/js/jquery-3.2.1.min.js"></script>
-	  <script src="/Assets/js/function_base.js"></script>
+	  	<script src="/Assets/js/function_base.js"></script>
 
 		<meta charset="UTF-8">
 		<title>
@@ -40,7 +40,6 @@
 							<li class="main_link"><a class="main_link" href ="{{ path_for('contact') }}">Contact</a></li>
 							<li class="main_link"><a class="active" href ="{{ path_for('login') }}">Sign In</a></li>
 							<li class="main_link floatRight"><a class="active" href ="{{ path_for('register') }}">Register</a></li>
-							<li class="welcome">Bonjour <span>{{ session.isConnected.login }}</span></li>
 						{% else %}
 							<li class="main_link margin"><a href ="{{ path_for('home') }}">Home</a></li>
 							<li class="main_link"><a class="main_link" href ="{{ path_for('showLists') }}">My Lists</a></li>
@@ -55,24 +54,7 @@
 					
 				</div>
 			</div>
-
-
-
-
-
-
-
-
-   				 	<a class="" href=""></a>
-   				 	<div class="">
-
-   				 	</div>
-
-			</div>
-
-
 		</header>
-
 
 			{% block content %}
 
@@ -82,17 +64,18 @@
 		<footer>
 
 			<div>
-
 				<a class="linksfooter" href ="{{ path_for('home') }}">Home</a> -
 				<a class="linksfooter" href="{{ path_for('showLists') }}">Add a list</a> -
 				<a class="linksfooter" href="{{ path_for('contact') }}">Contact</a><br>
 
 				<p></p>
 			</div>
+
 			<p class="footerPara">Site par BISELX Charles, ESCAMILLA Valentin, MEDJMADJ Issam, PENGUILLY Bertrand<br>
 			©Mecado.net - 2017</p>
-
-			<a class="removeAccount" href="{{ path_for('removeAccount') }}">Remove account</a>
+			{% if session.isConnected %}
+				<a class="removeAccount" href="{{ path_for('removeAccount') }}">Remove account</a>
+			{% endif %}			
 		</footer>
 	</body>
 </html>
