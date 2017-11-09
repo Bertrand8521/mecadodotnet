@@ -15,15 +15,17 @@ $app->post('/CreatorLogged', 'CreatorController:creatorLogged')->setName('logged
 
 $app->get('/LogOut', 'CreatorController:creatorLogOut')->setName('LogOut');
 
+$app->post('/postCommentItem', 'CommentaireController:postCommentItem')->setName('postCommentItem');
+
 $app->get('/item', 'ItemController:item')->setName('item');
 
 $app->get('/item/{token}', 'ItemController:getItemsFromToken');
 
-
 $app->post('/item', 'ItemController:deleteitem')->setName('deleteitem');
 
-$app->post('/addItem', 'ItemController:addItem')->setName('addItem');
+$app->get('/addItem', 'ItemController:addItem')->setName('addItem');
 
+$app->post('/postItem', 'ItemController:postItem')->setName('postItem');
 
 $app->get('/newlist', 'NewListController:addlist')->setName('addList');
 

@@ -28,7 +28,7 @@
       </div>
   {% endif %}
 
-<form name="addItem" enctype="multipart/form-data" method="post" action="{{ path_for('addItem') }}">
+<form name="addItem" enctype="multipart/form-data" method="post" action="{{ path_for('postItem') }}">
   <div class="containerFormItem">
 
       <div class="containerInput">
@@ -63,9 +63,11 @@
   </div>
 </form>
 
-  {% for item in items %}
-    {% include "templates/item.twig" %}
-  {% endfor %}
+{% set i = 0 %}
+{% for item in items %}
+  {% include "templates/item.twig" %}
+  {% set i = i + 1 %}
+{% endfor %}
 
   {% if  session.isConnected %}
   <div class="containerForm">
