@@ -47,7 +47,7 @@ final class ItemController extends BaseController
     {
         $item = Item::where('id', '=', $args['id'])->first();
         if ($item['reserve'] = 0) {
-            $item['reserve'] = 1
+            $item['reserve'] = 1;
             $item->save();
         }
     }

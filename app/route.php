@@ -44,3 +44,5 @@ $app->post('/showlists', 'ShowListsController:deletelist')->setName('deletelist'
 $app->get('/contact', 'ContactController:contact')->setName('contact');
 
 $app->post('/contact', 'ContactController:sendmail')->setName('sendmail');
+
+$app->post('/reservationItem', 'ItemController:reservationItem')->setName('reservationItem');

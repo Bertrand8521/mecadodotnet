@@ -18,10 +18,10 @@
     {% endif %}
 
     {% if item.reserve == 0 %}
-    <input type="submit" class="button" name="Reserver_{{i}}" id="reserver_{{i}}" value="Reserver">
+    <input type="submit" class="button" method="post" action="{{ path_for('reservationItem', {'id': item.id }) }}" name="Reserver_{{i}}" id="reserver_{{i}}" value="Reserver">
     {% else %}
     <p>Cet item est deja reservé</p>
-
+    {% endif %}
     {% if nbCommentaires[i] == 0 %}
       <p>Pas de commentaire</p>
     {% elseif nbCommentaires[i] == 1 %}
