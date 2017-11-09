@@ -122,6 +122,11 @@ input{
   border-radius: 5px
 }
 
+.cell_animation {
+  animation-name: cell_unhover;
+  animation-duration: 1.2s;
+  cursor: pointer;
+}
 
 .cell {
   overflow: hidden;
@@ -134,20 +139,17 @@ input{
   margin-bottom: 5px;
   min-height: 0px;
   min-width: 0px;
-  animation-name: cell_unhover;
-  animation-duration: 1.2s;
-  cursor: pointer;
 }
 
 
-.cell:hover {
+.cell_animation:hover {
   animation-name: cell_hover;
   animation-duration: 0.6s;
   animation-direction: alternate;
   background-color: #ff944d;
 }
 
-.cell * {
+.cell div, .cell p, .cell img, .cell h1, .cell h2, .cell h3, .cell h4, .cell h5, .cell h6{
   margin: 10px;
 }
 
@@ -271,12 +273,16 @@ body {
   font-size: 120%;
 }
 
+.small{
+    font-size: 80%;
+}
 
 .section-container{
   background-color:#D3D3D3;
   text-align: center;
   padding: 2px 0 4px 0;
   margin-top: 5%;
+  border-radius: 5px;
 }
 .required{
   color:red;
@@ -348,6 +354,7 @@ body {
 
 footer {
 	background-color: #C6C6C6;
+  border-radius: 10px;
 }
 ul.navbar li.right {float: right;}
 
@@ -366,11 +373,12 @@ ul.navbar li.right {float: right;}
   background-color: #333;
    }
 
+
 .main_list li a:hover:not(.active) {
     background-color: #111;
 }
 
-@media screen and (min-width: 1400px) {
+@media screen and (min-width: 1100px) {
   .main_list {
     flex-flow: row; } }
 @media screen and (min-width: 600px) and (max-width: 1400px) {
@@ -398,7 +406,7 @@ ul.navbar li.right {float: right;}
   }
 
 
-  @media screen and (  max-width:1400px  ){
+  @media screen and (  max-width:1100px  ){
     .cell{
       display: block;
       width: calc( 98% - 2% );
@@ -406,13 +414,6 @@ ul.navbar li.right {float: right;}
   }
 
 
-/*
-  @media screen and ( min-width: 600px )
-                and ( max-width: 1400px){
-    .main_list{
-      flex-flow: row;
-      justify-content: center;
-    }*/
 
   .no-style{
     animation : none;
@@ -598,6 +599,7 @@ ul.navbar li.right {float: right;}
     text-align: center;
   }
 
+
   .commentaires {
     transition: all 0.8s cubic-bezier(1, 0, 0, 1) 0s;
     max-height: 0px;
@@ -606,3 +608,36 @@ ul.navbar li.right {float: right;}
     margin-left: 0px;
   }
 
+a.removeAccount{
+  text-decoration: none;
+  color:#000000;
+  font-size: 0.5em;
+}
+
+.logo {
+  float: left;
+  height: 50px;
+  width: 50px;
+  vertical-align : middle;
+}
+
+@font-face {
+  font-family: "Christmas Time";
+  src: url("../fonts/ChristmasTime.ttf"); }
+
+.titre {
+  text-align: left;
+}
+.welcome{
+  color: #FFF;
+  font-size: 0.8em;
+  margin-top: 18px;
+  margin-right:300px;
+  /*float: left;*/
+}
+span{
+  color:#FFFF00;
+}
+p.footerPara{
+  margin-bottom: 0px;
+}

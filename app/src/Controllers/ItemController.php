@@ -11,6 +11,7 @@ use App\Controllers\CommentaireController;
 
 use App\Models\Item;
 use App\Models\Liste;
+use App\Models\Commentaire_item;
 
 
 final class ItemController extends BaseController
@@ -86,6 +87,35 @@ final class ItemController extends BaseController
 
     }
 
+    public function deleteitem(Request $request, Response $response, $args){
+      $post = $request->getParsedBody();
+
+        $option_id = $post['delete_item_option'];
+        $items = Item::find($option_id);
+        $nom = $items['nom'];
+
+          $commentaire_item = Commentaire_item::where('item_id', '=', $option_id )->get()->toArray();
+
+          $j = 0 ;//TODO pas bien :(
+          foreach ($commentaire_item as $value) {//chaque commentaire de chaque item de la liste à supprimer
+            $coI = $commentaire_item[$j];
+            $comItem_id = $coI['id'];
+
+            Commentaire_item::destroy($comItem_id);
+
+            $j++;
+          }
+
+        Item::destroy($option_id);
+        $test = $items['liste_id'];
+        $list = Liste::where('id', '=', $test )->first();
+        $token = $list->token;
+
+
+        $this->container->flash->addMessage("Success", $nom." a été supprimé");
+        return $response->withRedirect("/item/".$token);
+
+
+    }
  }
 unset($_SESSION['errorItem']);
-

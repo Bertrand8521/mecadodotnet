@@ -32,7 +32,7 @@ final class CreatorController extends BaseController
             $error['name']="Vous avez pas rentré un nom ou nom incorrect";
         }
 
-        if(!array_key_exists('pseudo',$_POST)|| $_POST['pseudo']=='' ||  !preg_match("/[a-zA-Z0-9]+$/", $_POST['pseudo'])){
+        if(!array_key_exists('pseudo',$_POST)|| $_POST['pseudo']=='' ||  !preg_match("/[-a-zA-Z0-9_]+$/", $_POST['pseudo'])){
             $error['pseudo']="Vous n'avez pas rentré un pseudo ou pseudo incorrect";
         }
 

@@ -29,15 +29,18 @@
 
 		<header>
 			<div class="header">
-				<h1>Mecado.net</h1>
+				<img src="/Assets/img/favicon.png" class="logo"> <h1 class="titre">Mecado</h1>
 				<div class ="main_list">
+					{% if session.isConnected %}
+						<p class="welcome">Bonjour <span>{{ session.isConnected.login }}</span></p>
+					{% endif %}
 					<ul class = "main_list">
 						{% if not session.isConnected %}
 							<li class="main_link"><a href ="{{ path_for('home') }}">Home</a></li>
 							<li class="main_link"><a class="main_link" href ="{{ path_for('contact') }}">Contact</a></li>
 							<li class="main_link"><a class="active" href ="{{ path_for('login') }}">Sign In</a></li>
 							<li class="main_link floatRight"><a class="active" href ="{{ path_for('register') }}">Register</a></li>
-
+							<li class="welcome">Bonjour <span>{{ session.isConnected.login }}</span></li>
 						{% else %}
 							<li class="main_link margin"><a href ="{{ path_for('home') }}">Home</a></li>
 							<li class="main_link"><a class="main_link" href ="{{ path_for('showLists') }}">My Lists</a></li>
@@ -45,8 +48,11 @@
 							<li class="main_link"><a class="main_link" href ="{{ path_for('contact') }}">Contact</a></li>
 							<li class="main_link"><a class="active" href ="{{ path_for('LogOut') }}">Logout</a></li>
 						{% endif %}
-
+					
+   				 			
+   				 	
 					</ul>
+					
 				</div>
 			</div>
 
@@ -79,12 +85,14 @@
 
 				<a class="linksfooter" href ="{{ path_for('home') }}">Home</a> -
 				<a class="linksfooter" href="{{ path_for('showLists') }}">Add a list</a> -
-				<a class="linksfooter" href="{{ path_for('contact') }}">Contact</a>
+				<a class="linksfooter" href="{{ path_for('contact') }}">Contact</a><br>
 
 				<p></p>
 			</div>
-			Site par BISELX Charles, ESCAMILLA Valentin, MEDJMADJ Issam, PENGUILLY Bertrand<br>
-			©Mecado.net - 2017
+			<p class="footerPara">Site par BISELX Charles, ESCAMILLA Valentin, MEDJMADJ Issam, PENGUILLY Bertrand<br>
+			©Mecado.net - 2017</p>
+
+			<a class="removeAccount" href="{{ path_for('removeAccount') }}">Remove account</a>
 		</footer>
 	</body>
 </html>
