@@ -17,6 +17,11 @@
       <a href="{{item.lien_url }}"> ici</a> </p>
     {% endif %}
 
+    {% if item.reserve == 0 %}
+    <input type="submit" class="button" name="Reserver_{{i}}" id="reserver_{{i}}" value="Reserver">
+    {% else %}
+    <p>Cet item est deja reservé</p>
+
     {% if nbCommentaires[i] == 0 %}
       <p>Pas de commentaire</p>
     {% elseif nbCommentaires[i] == 1 %}
