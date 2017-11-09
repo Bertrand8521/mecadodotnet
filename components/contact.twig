@@ -10,19 +10,47 @@
 
 	<h2 class="section-container">Formulaire de contact</h2>
 
-	{# <form name="contact"  method="post" action="{{ path_for('sendmail') }}"> #}
+	{% if session.errorContact %}
+			<div class="alertDanger">
+				<b>{{ flash.getMessage('Error')[0] }}</b>
+				{% for session in session.errorContact %}
+						<p>{{ session }}</p>
+					{% endfor %}
+			</div>
+	{% endif %}
+
+	{% if flash.getMessage('Erreur')[0] %}
+			<div class="alertDanger">
+					<b>{{ flash.getMessage('Erreur')[0] }}</b>
+			</div>
+	{% endif %}
+
+	{% if flash.getMessage('PassError')[0] %}
+			 <div class="alertDanger">
+					<b>{{ flash.getMessage('PassError')[0] }}</b>
+			</div>
+	{% endif %}
+
+	{% if flash.getMessage('RegisterSuccss')[0] %}
+			 <div class="alertSuccess">
+					<b>{{ flash.getMessage('RegisterSuccss')[0] }}</b>
+			</div>
+	{% endif %}
+
+	{% if flash.getMessage('ErrorEmail')[0] %}
+			 <div class="alertDanger">
+					<b>{{ flash.getMessage('ErrorEmail')[0] }}</b>
+			</div>
+	{% endif %}
+
+
+	 <form name="contact"  method="post" action="{{ path_for('sendmail') }}">
 		<div class="containerFormLogin">
 
 			<div class="containerInput">
 				<label for="name">Nom</label>
 				<span class="required">*</span><br>
 				<input class= "form contact" id="nom" type="text" name="nom" placeholder="Entrez votre nom">
-			</div>
-
-			<div class="containerInput">
-				<label for="name">Prénom</label>
-				<span class="required">*</span><br>
-				<input class= "form contact" id="prenom" type="text" name="prenom" placeholder="Entrez votre prénom">
 			</div>
 
 			<div class="containerInput">

@@ -18,26 +18,31 @@ final class ContactController extends BaseController
 
     public function sendmail(Request $request, Response $response, $args)
     {
-      return $this->container->view->render($response, 'home.twig');
+      $postDonne=$request->getParsedBody();
 
+      $error=[];
+      if(!array_key_exists('nom',$_POST)|| $_POST['nom']=='' ||  !preg_match("/[a-zA-Z0-9]+$/", $_POST['nom'])){
+          $error['nom']="Vous avez rentré nom invalide ou laissé vide";
+      }
+      if(!array_key_exists('mail',$_POST)|| $_POST['mail']=='' || !filter_var($_POST['mail'], FILTER_VALIDATE_EMAIL)){
+          $error['mail']="Vous n'avez pas rentré une adresse mail valide";
+      }
+      if(!array_key_exists('message',$_POST) || $_POST['message']==''){
+          $error['message']="Vous n'avez pas rentré de message";
+      }
 
-      if ((isset($_POST['prenom'])) && (isset($_POST['mail'])) && (isset($_POST['nom'])) && (isset($_POST['message']))  ) {
-      // si les 3 variables ne sont pas vides, et si l'adresse E-mail est valide, alors, et seulement dans ce cas, on fera notre insertion dans la base
-        if ((!empty($_POST['prenom'])) && (!empty($_POST['mail'])) && (!empty($_POST['nom'])) && (!empty($_POST['message']))  ) {
-          // on verifie le format de l'adresse E-mail saisie
-          $test_mail =  preg_match('/^[_a-z0-9-]+(.[_a-z0-9-]+)*@[a-z0-9-]+(.[a-z0-9-]+)+$/', $_POST['email']);
+        $_SESSION['errorContact']=$error;
 
-
-          if ($test_mail){
+        if( $postDonne['buttonSubmit']=="submit"){
+          if(!empty($_SESSION['errorContact'])){
+              $this->container->flash->addMessage("Error", "Erreur lors de l'enregistrement :");
+              return $response->withRedirect("/contact");
+          }
 
             $email_dest = "mecadodotnet@yopmail.fr";
-            $prenom = utf8_encode($_POST['prenom']);
             $nom = utf8_encode($_POST['nom']);
             $msg = utf8_encode($_POST['message']);
-            //$tel = $_POST['tel'];
             $email = $_POST['mail'];
-
-
 
             $headers = 'From: <'.$email.'>'."\n";
             $headers .= 'Return-Path: <'.$email.'>'."\n";
@@ -52,13 +57,12 @@ final class ContactController extends BaseController
 //message 1
             $message = "Message depuis le site mecado.net :\n
             Nom : ".$nom."
-            Prénom : ".$prenom."
             Email : ".$email."
             -------------------------------------
             ".$msg."
             -------------------------------------";
 //message 2
-            $message2 = "Chèr(e) ".$prenom." ".$nom.",
+            $message2 = "Chèr(e) ".$nom.",
             Merci pour votre message et votre visite sur www.mecado.net,\n
 
             Corps du message :
@@ -68,13 +72,13 @@ final class ContactController extends BaseController
             \n
             A très bientôt.\n";
 
-            mail($email_dest,utf8_decode('ccMirecourtDompaire : message depuis le site'),utf8_decode($message),$headers);
-            mail($email,utf8_decode('ccMirecourtDompaire.fr : Merci pour votre message'),utf8_decode($message2),$headers2);
+            mail($email_dest,utf8_decode('mecado.net : message depuis le site'),utf8_decode($message),$headers);
+            mail($email,utf8_decode('mecado.net : Merci pour votre message'),utf8_decode($message2),$headers2);
 
-          }
-        }
+
+
+        return $response->withRedirect("/");
       }
-      //return $this->container->view->render($response, 'home.twig');
     }
 
 
