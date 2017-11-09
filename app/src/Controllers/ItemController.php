@@ -25,4 +25,18 @@ final class ItemController extends BaseController
         $items = Item::where('liste_token', '=', $args['token'])->get()->toArray();
         return $this->container->view->render($response, "testItem.twig", [items => $items, token=>$args['token'] ] );
     }
+
+    public function deleteitem(Request $request, Response $response, $args){
+      $post = $request->getParsedBody();
+
+        $option_id = $post['delete_item_option'];
+        $items = Item::find($option_id);
+        $nom = $items->nom;
+        //liste::destroy($option_id);
+
+        $this->container->flash->addMessage("Success", $nom." a été supprimer");
+      //  return $response->withRedirect("/showlists");
+
+
+    }
  }
