@@ -18,11 +18,11 @@ final class ItemController extends BaseController
 
     public function getItemsFromToken(Request $request, Response $response, $args)
     {
-      $liste = Liste::where('token', '=', $args['token'])->first();
+      $liste = Liste::where('token', '=', $request->getAttribute('route')->getArgument('token'))->first();
       $items_query = Item::where('liste_id', '=', $liste->id)->get();
 
       $items = $items_query->toArray();
-      return $this->container->view->render($response, "addItem.twig", [items => $items, token=>$args['token'] ] );
+      return $this->container->view->render($response, "addItem.twig", ['items'=> $items, 'token'=>$args['token'] , 'liste' => $liste] );
 
     }
 
@@ -63,8 +63,9 @@ final class ItemController extends BaseController
           if(!empty($_SESSION['errorItem'])){
               $this->container->flash->addMessage("ErrorItem", "Votre item n'a pas été enregistré :");
               return $response->withRedirect("/item/{token}");
-          }
-          $item->liste_id=1;
+          }       
+      
+          $item->liste_id=$postDonne['liste_id'];
           $item->nom=$postDonne["name"];
           $item->tarif=$postDonne["tarif"];
           $item->description=$postDonne["description"];
