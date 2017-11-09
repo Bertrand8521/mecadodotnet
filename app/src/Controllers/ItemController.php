@@ -14,9 +14,10 @@ final class ItemController extends BaseController
 {   
 
     public function getItemsFromToken(Request $request, Response $response, $args)
-    {
-        $items = Item::where('liste_id', '=', $args['token'])->get()->toArray();
+    {var_dump(items => $items);
+        $items = Item::where('token', '=', $args['token'])->get()->toArray();
         return $this->container->view->render($response, "addItem.twig", [items => $items, token=>$args['token'] ] );
+
     }
 
 
@@ -48,14 +49,16 @@ final class ItemController extends BaseController
                 $this->container->flash->addMessage("ErrorItem", "Votre item n'a pas été enregistré :");
                 return $response->withRedirect("/item/{token}");
             }
+            $item->liste_id=1;
             $item->nom=$postDonne["name"];
             $item->tarif=$postDonne["tarif"];
             $item->description=$postDonne["description"];
 
-            $uploads_dir = '/Assets/images/';
+            $uploads_dir ="/Assets/images/" ;
             $error = $_FILES["image"]["error"] ;
             if ($error == UPLOAD_ERR_OK) {
-                $tmp_name = $_FILES["image"]["tmp_name"];
+                $tmp_name = $_FILES['image']['tmp_name'];
+                // var_dump($_FILE);return;
                 $name = uniqid('img-'.date('Ymd').'-');                           
                 move_uploaded_file($tmp_name, $uploads_dir.''.$name);
                 $item->lien_image = $name;
