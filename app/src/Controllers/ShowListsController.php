@@ -7,6 +7,9 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 use Slim\Flash\Messages;
 use App\Models\Liste;
+use App\Models\Item;
+use App\Models\Commentaire_liste;
+use App\Models\Commentaire_item;
 
 use App\Controllers\CommentaireController;
 
@@ -35,25 +38,44 @@ final class ShowListsController extends BaseController
         $listes = Liste::find($option_id);
         $nom = $listes->nom;
 
-        $commentaire_list = Commentaire_liste::where('liste_id', '=', $option_id)->get();
-        var_dump('test'); return ;
-/*
-        foreach ($commentaire_item as $value) {
-          $id = $items->id;
-          Item::destroy($id)
+        $commentaire_list =  Commentaire_liste::where('liste_id', '=', $option_id)->get();
+
+        $i = 0 ;//TODO pas bien :(
+        foreach ($commentaire_list as $value) {//chaque commentaire de la liste à supprimer
+          $coL = $commentaire_list[$i] ;
+          $comList_id = $coL['id'];
+
+          Commentaire_liste::destroy($comList_id);
+          $i++;
         }
-*/
+
+        $item = Item::where('liste_id', '=', $option_id)->get()->toArray();
 
 
+        $n = 0;//TODO pas bien :(
+        foreach ($item as $value) { //chaque item de la liste à supprimer
+          $it = $item[$n] ;
+          $item_id = $it['id'];
+
+          $commentaire_item = Commentaire_item::where('item_id', '=', $item_id )->get();
+
+          $j = 0 ;//TODO pas bien :(
+          foreach ($commentaire_item as $value) {//chaque commentaire de chaque item de la liste à supprimer
+            $coI = $commentaire_item[$j];
+            $comItem_id = $coI['id'];
+
+            Commentaire_item::destroy($comItem_id);
+
+            $j++;
+          }
 
 
-        $items = Item::where('liste_id', '=', $option_id)->get();
-/*
-        foreach ($items as $value) {
-          $id = $items->id;
-          Item::destroy($id)
+          //Item::destroy($item_id);
+          $n++;
         }
-*/
+
+
+
         //Liste::destroy($option_id);
         $this->container->flash->addMessage("Success", $nom." a été supprimé");
         return $response->withRedirect("/showlists");
