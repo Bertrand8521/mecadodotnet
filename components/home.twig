@@ -16,6 +16,12 @@
       </div>
   {% endif %}
 
+  {% if flash.getMessage('SuccèssRemoveCreator')[0] %}
+         <div class="alertSuccess">
+            <b>{{ flash.getMessage('SuccèssRemoveCreator')[0] }}</b>
+        </div>
+    {% endif %}
+
 <div class="cell large-12">
   <h1>Bienvenue sur Mecado.net !</h1>
 

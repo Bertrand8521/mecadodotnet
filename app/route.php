@@ -46,3 +46,5 @@ $app->get('/contact', 'ContactController:contact')->setName('contact');
 $app->post('/contact', 'ContactController:sendmail')->setName('sendmail');
 
 $app->post('/reservationItem', 'ItemController:reservationItem')->setName('reservationItem');
+
+$app->get('/removeAccount', 'CreatorController:removeCreator')->setName('removeAccount');
