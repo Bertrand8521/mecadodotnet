@@ -28,8 +28,9 @@
   <div class="cell large-12">
     <p>Vous êtes vous déja retrouvé a échanger des cadeaux qui ne vous plaisaient pas ? Fini avec Mecado.net ! <br>
     Mecado.net vous offre un moyen de faire une liste de cadeaux et d'éviter les déceptions en invitant vos amis à reserver les cadeaux qu'ils vous acheterons en évitant les doublons.</p>
-
+      {% if not session.isConnected %}
     <p>Interessé ? <a href="{{ path_for('login') }}">Connectez</a> vous dès maintenant ou <a href="{{ path_for('register') }}">rejoignez</a> nous si vous n'avez pas de compte !</p>
+      {% endif %}
   </div>
 </div>
 {# exemple de présentation
