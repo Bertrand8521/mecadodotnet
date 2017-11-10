@@ -76,7 +76,7 @@ class Migrator {
                 $table->string('lien_image')->nullable();
                 $table->string('lien_url')->nullable()->default('');
                 $table->integer('tarif');
-                $table->boolean('reserveBy')->default('0');
+                $table->string('reservedBy')->nullable();
                 $table->boolean('isCagnotte')->default('0');
                 $table->integer('sommereservee')->nullable();
                 $table->timestamps();
