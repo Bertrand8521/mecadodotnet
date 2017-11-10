@@ -23,7 +23,7 @@
       <form name="addItem" enctype="multipart/form-data" method="post" action="{{ path_for('reservationItem') }}">
         <label for="nom">Votre nom</label>
         <span class="required">*<br></span>
-        <input class= "form newlist nonempty form{{i}}" type="textarea" name="nom"  id="nom" value="" maxlength="25"><br>
+        <input class= "form newlist form{{i}}" type="textarea" name="nom"  id="nom" value="" maxlength="25"><br>
         <input type="hidden" name="token" value="{{token}}">
         <input type="hidden" name="idItem" value ="{{items[i].id}}">
       <input type="submit" class="button" name="Reserver_{{i}}" id="reserver_{{i}}" value="Confirmer">
