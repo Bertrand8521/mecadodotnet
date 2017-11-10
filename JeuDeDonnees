@@ -1,0 +1,116 @@
+
+SET NAMES utf8;
+SET time_zone = '+00:00';
+SET foreign_key_checks = 0;
+SET sql_mode = 'NO_AUTO_VALUE_ON_ZERO';
+
+DROP TABLE IF EXISTS `mecadodotnet_Commentaire_item`;
+CREATE TABLE `mecadodotnet_Commentaire_item` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `item_id` int(11) NOT NULL,
+  `nom` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `message` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `commentaire_item_item_id_foreign` (`item_id`),
+  CONSTRAINT `commentaire_item_item_id_foreign` FOREIGN KEY (`item_id`) REFERENCES `mecadodotnet_Item` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+INSERT INTO `mecadodotnet_Commentaire_item` (`id`, `item_id`, `nom`, `message`, `created_at`, `updated_at`) VALUES
+(1,	2,	'petit voie ',	'BIP BIP',	'2017-11-10 14:28:13',	'2017-11-10 14:28:13'),
+(2,	6,	'fred ',	'oh la belle bleue',	'2017-11-10 14:40:58',	'2017-11-10 14:40:58'),
+(3,	7,	'qdnqdfv',	'wdfvwdfv',	'2017-11-10 15:18:08',	'2017-11-10 15:18:08'),
+(4,	2,	'xwvcxwc',	'wdfvwd',	'2017-11-10 15:18:20',	'2017-11-10 15:18:20'),
+(5,	9,	'<sds',	'dfvsdfv',	'2017-11-10 15:45:09',	'2017-11-10 15:45:09');
+
+DROP TABLE IF EXISTS `mecadodotnet_Commentaire_liste`;
+CREATE TABLE `mecadodotnet_Commentaire_liste` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `liste_id` int(11) NOT NULL,
+  `nom` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `message` text COLLATE utf8_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `commentaire_liste_liste_id_foreign` (`liste_id`),
+  CONSTRAINT `commentaire_liste_liste_id_foreign` FOREIGN KEY (`liste_id`) REFERENCES `mecadodotnet_Liste` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+INSERT INTO `mecadodotnet_Commentaire_liste` (`id`, `liste_id`, `nom`, `message`, `created_at`, `updated_at`) VALUES
+(1,	2,	'Marcel ',	'Super je vais pourvoir à nouveau klaxonner',	'2017-11-10 14:06:25',	'2017-11-10 14:06:25'),
+(2,	3,	'Jack Sparrow',	'Hello',	'2017-11-10 14:15:40',	'2017-11-10 14:15:40'),
+(3,	2,	'dfgdwvw',	'wfvwxv<wvd',	'2017-11-10 16:29:32',	'2017-11-10 16:29:32');
+
+DROP TABLE IF EXISTS `mecadodotnet_Createur`;
+CREATE TABLE `mecadodotnet_Createur` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nom` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `prenom` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `login` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `password` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `token` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `createur_email_unique` (`email`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+INSERT INTO `mecadodotnet_Createur` (`id`, `nom`, `prenom`, `email`, `login`, `password`, `token`, `created_at`, `updated_at`) VALUES
+(2,	'Jean-Kevin',	NULL,	'admin@mecado.net',	'admin',	'$2y$10$2Qk0tUrrIUdFa4MI8HtWm.NPotUy580tQweXxUhKjjl0gxBaZaSNq',	NULL,	'2017-11-10 13:54:36',	'2017-11-10 13:54:36'),
+(3,	'Charles Biselx',	NULL,	'cha.biselx@yopmail.fr',	'cha.biselx',	'$2y$10$/eUIXhnBdfceA0076Caym.RfxX.pLnRVsjYSS7O.Y7rPSvtMnMeqa',	NULL,	'2017-11-10 13:58:25',	'2017-11-10 13:58:25'),
+(4,	'mami gateau',	NULL,	'gat@yopmail.fr',	'gateaudu88',	'$2y$10$TsBzoys.q7CizeEpoLqD8OfDF.zHzXH6Y9pN/ieAqSGKrZCx59JRq',	NULL,	'2017-11-10 14:00:49',	'2017-11-10 14:00:49'),
+(5,	'jACK',	NULL,	'jack.sparrow@em-marche.com',	'Sparrow',	'$2y$10$ZDXqzEbY4Ldzl2uI/pgUy.qi6Psnuw34VTQRLgdhYTQx3Q99QRfOi',	NULL,	'2017-11-10 14:11:41',	'2017-11-10 14:11:41'),
+(6,	'jean Kevin',	NULL,	'Jean+kevin@gmail.com',	'jeank',	'$2y$10$vZRwtcN9/xTbSmx/HnhVKecKVvzYuSlI1StliQxab30PPW3UMi9rq',	NULL,	'2017-11-10 14:20:13',	'2017-11-10 14:20:13');
+
+DROP TABLE IF EXISTS `mecadodotnet_Item`;
+CREATE TABLE `mecadodotnet_Item` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `liste_id` int(11) NOT NULL,
+  `nom` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `description` text COLLATE utf8_unicode_ci NOT NULL,
+  `lien_image` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `lien_url` varchar(255) COLLATE utf8_unicode_ci DEFAULT '',
+  `tarif` int(11) NOT NULL,
+  `reservedBy` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `isCagnotte` tinyint(1) NOT NULL DEFAULT '0',
+  `sommereservee` int(11) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `item_liste_id_foreign` (`liste_id`),
+  CONSTRAINT `item_liste_id_foreign` FOREIGN KEY (`liste_id`) REFERENCES `mecadodotnet_Liste` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+INSERT INTO `mecadodotnet_Item` (`id`, `liste_id`, `nom`, `description`, `lien_image`, `lien_url`, `tarif`, `reservedBy`, `isCagnotte`, `sommereservee`, `created_at`, `updated_at`) VALUES
+(2,	2,	'Camion',	'Pour partir à l\'aventure et réaliser des expériences',	NULL,	'',	20000,	'fred',	0,	NULL,	'2017-11-10 14:08:52',	'2017-11-10 15:17:01'),
+(3,	3,	'Loi travaille',	'Un cadeau',	NULL,	'',	10000000,	NULL,	0,	NULL,	'2017-11-10 14:16:54',	'2017-11-10 14:16:54'),
+(6,	2,	'tube a essai',	'Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l\'imprimerie depuis les années 1500,',	'img-20171110-5a05ba2b6645b',	'',	20,	NULL,	0,	NULL,	'2017-11-10 14:39:39',	'2017-11-10 14:39:39'),
+(7,	2,	'test',	'sdv<wdv',	NULL,	'',	20,	'nosdqsd',	0,	NULL,	'2017-11-10 14:54:34',	'2017-11-10 16:30:38'),
+(8,	2,	'wxfvxcv',	'qsvsv',	NULL,	'https://secure.php.net/manual/fr/function.empty.php',	50,	NULL,	0,	NULL,	'2017-11-10 14:55:15',	'2017-11-10 14:55:15'),
+(9,	2,	'qsdfqs',	'sqdfqsc',	'img-20171110-5a05c979198cf',	'',	1,	NULL,	0,	NULL,	'2017-11-10 15:44:57',	'2017-11-10 15:44:57'),
+(10,	4,	'wdfgsd',	'sdfjvlqidfvsdfv',	NULL,	'https://fr.lipsum.com/feed/html',	20,	NULL,	0,	NULL,	'2017-11-10 16:36:26',	'2017-11-10 16:36:26'),
+(11,	4,	'objet 2',	'sdfjvnqdmfinvqdmiwjfnv qmjnvpi<j pq qph qod goqdj qosdjf qdj fqo ',	'img-20171110-5a05d5d9c587f',	'https://fr.lipsum.com/feed/html',	50,	NULL,	0,	NULL,	'2017-11-10 16:37:45',	'2017-11-10 16:37:45');
+
+DROP TABLE IF EXISTS `mecadodotnet_Liste`;
+CREATE TABLE `mecadodotnet_Liste` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `createur_id` int(11) NOT NULL,
+  `token` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `nom` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `description` text COLLATE utf8_unicode_ci NOT NULL,
+  `date_val` date NOT NULL,
+  `destinataire` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `liste_token_unique` (`token`),
+  KEY `liste_createur_id_foreign` (`createur_id`),
+  CONSTRAINT `liste_createur_id_foreign` FOREIGN KEY (`createur_id`) REFERENCES `mecadodotnet_Createur` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+INSERT INTO `mecadodotnet_Liste` (`id`, `createur_id`, `token`, `nom`, `description`, `date_val`, `destinataire`, `created_at`, `updated_at`) VALUES
+(2,	2,	'c01a232ed6ad077a19f8e201a9de6a7c',	'Liste de jammy',	'Jammy souhaite refaire c\'est pas sorcier et il a besoin de materiel',	'2018-01-20',	'Jammy',	'2017-11-10 14:05:33',	'2017-11-10 14:05:33'),
+(3,	5,	'9032a6e138ccc132e0f3583050c2f4da',	'Truc liberaux',	'Un truc pour les gens d\'extreme droite',	'2017-11-30',	'Donald Trump',	'2017-11-10 14:15:19',	'2017-11-10 14:15:19'),
+(4,	2,	'73208459e42160c7c1ba63228858feb0',	'liste pour moi',	'qsdqsdv',	'2017-12-24',	'wbwvb',	'2017-11-10 15:05:07',	'2017-11-10 15:05:07');
