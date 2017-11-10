@@ -13,7 +13,7 @@
 		{% if session.errorSignupUser %}
    			<div class="alertDanger">
 	   			<b>{{ flash.getMessage('Error')[0] }}</b>
-	   			{% for session in session.errorSignupUser %}	
+	   			{% for session in session.errorSignupUser %}
 	        		<p>{{ session }}</p>
 	        	{% endfor %}
     		</div>
@@ -42,45 +42,45 @@
         		<b>{{ flash.getMessage('ErrorEmail')[0] }}</b>
     		</div>
 		{% endif %}
-			
+
 	<form name="register"  method="post" action="{{ path_for('creatorRegistered') }}">
 		<div class="containerForm">
 
 			<div class="containerInput">
 				<label for="name">Nom</label>
 				<span class="required">*</span><br>
-				<input class= "form register" id="name" type="text" name="name" placeholder="Entrez votre nom">	
-			</div>	
+				<input class= "form register" id="name" type="text" name="name" placeholder="Entrez votre nom">
+			</div>
 
 			<div class="containerInput">
 				<label for="name">Pseudo</label>
-				<span class="red">*</span><br>
-				<input class= "form register" id="pseudo" type="text" name="pseudo" placeholder="Entrez votre pseudo">	
-			</div>			
+				<span class="required">*</span><br>
+				<input class= "form register" id="pseudo" type="text" name="pseudo" placeholder="Entrez votre pseudo">
+			</div>
 
 			<div class="containerInput">
 				<label for="mail">E-mail</label>
 				<span class="required">*</span><br>
-				<input class="form register" id="mail" type="text" name="email" placeholder="Entrez votre adresse E-mail">	
+				<input class="form register" id="mail" type="text" name="email" placeholder="Entrez votre adresse E-mail">
 			</div>
 
 			<div class="containerInput">
 				<label for="password">Mot de passe</label>
 				<span class="required">*</span><br>
-				<input class="form register" id="password" type="password" name="password" placeholder="Entrez votre mot de passe">					
+				<input class="form register" id="password" type="password" name="password" placeholder="Entrez votre mot de passe">
 			</div>
 
 			<div class="containerInput">
 				<label for="password">Confirmation de mot de passe</label>
 				<span class="required">*</span><br>
-				<input class="form register" id="passwordConfirm" type="password" name="passwordConfirm" placeholder="Confirmez votre mot de passe" />					
+				<input class="form register" id="passwordConfirm" type="password" name="passwordConfirm" placeholder="Confirmez votre mot de passe" />
 			</div>
 
 			<div>
 				<button class="button success marginButton" type="submit" value="submit" name="buttonSubmit">Envoyer</button>
 			</div>
 
-		</div>					
+		</div>
 	</form>
 
 {% endblock %}
