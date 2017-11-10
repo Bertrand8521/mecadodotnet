@@ -183,12 +183,5 @@ final class ItemController extends BaseController
 
     }
 
-    public function valid($s, $max_len) {
-      $len = strlen($s);
-      return $len > 0 && $len <= $max_len;
-    }
-
-
-
  }
 unset($_SESSION['errorItem']);
