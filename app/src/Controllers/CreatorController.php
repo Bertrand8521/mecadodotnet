@@ -58,7 +58,7 @@ final class CreatorController extends BaseController
             }
 
 
-            $existingCreator=Createur::where("login",$postDonne["pseudo"])->first();
+            $existingCreator=Createur::where("login",$postDonne["pseudo"])->orWhere("email", $postDonne["email"])->first();
 
             if(null !== $existingCreator){
                 $this->container->flash->addMessage("Erreur", "Ce compte existe déja!");

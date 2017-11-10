@@ -30,28 +30,31 @@
 		<header>
 			<div class="header">
 				<img src="/Assets/img/favicon.png" class="logo"> <h1 class="titre">Mecado</h1>
-				<div class ="main_list">
+				<div class="bar_nav">
+
+
 					{% if session.isConnected %}
 						<p class="welcome">Bonjour <span>{{ session.isConnected.login }}</span></p>
 					{% endif %}
-					<ul class = "main_list">
-						{% if not session.isConnected %}
-							<li class="main_link"><a href ="{{ path_for('home') }}">Home</a></li>
-							<li class="main_link"><a class="main_link" href ="{{ path_for('contact') }}">Contact</a></li>
-							<li class="main_link"><a class="active" href ="{{ path_for('login') }}">Sign In</a></li>
-							<li class="main_link floatRight"><a class="active" href ="{{ path_for('register') }}">Register</a></li>
-						{% else %}
-							<li class="main_link margin"><a href ="{{ path_for('home') }}">Home</a></li>
-							<li class="main_link"><a class="main_link" href ="{{ path_for('showLists') }}">My Lists</a></li>
-							<li class="main_link"><a class="main_link" href ="{{ path_for('addList') }}">New List</a></li>
-							<li class="main_link"><a class="main_link" href ="{{ path_for('contact') }}">Contact</a></li>
-							<li class="main_link"><a class="active" href ="{{ path_for('LogOut') }}">Logout</a></li>
-						{% endif %}
+					<div class ="main_list">
+						<ul class = "main_list">
+							<li class="main_link"><a href ="{{ path_for('home') }}">Accueil</a></li>
+							{% if not session.isConnected %}
+								<li class="main_link"><a class="main_link" href ="{{ path_for('contact') }}">Contact</a></li>
+								<li class="main_link"><a class="active" href ="{{ path_for('login') }}">Se connecter </a></li>
+								<li class="main_link floatRight"><a class="active" href ="{{ path_for('register') }}">s'enregistrer</a></li>
+							{% else %}
+								<li class="main_link"><a class="main_link" href ="{{ path_for('showLists') }}">Mes listes</a></li>
+								<li class="main_link"><a class="main_link" href ="{{ path_for('addList') }}">Nouvelle liste</a></li>
+								<li class="main_link"><a class="main_link" href ="{{ path_for('contact') }}">Contact</a></li>
+								<li class="main_link"><a class="active" href ="{{ path_for('LogOut') }}">Deconnexion</a></li>
+							{% endif %}
 
 
 
-					</ul>
+						</ul>
 
+					</div>
 				</div>
 			</div>
 		</header>
@@ -64,8 +67,10 @@
 		<footer>
 
 			<div>
-				<a class="linksfooter" href ="{{ path_for('home') }}">Home</a> -
-				<a class="linksfooter" href="{{ path_for('showLists') }}">Show lists</a> -
+				<a class="linksfooter" href ="{{ path_for('home') }}">Accueil</a> -
+				{% if session.isConnected %}
+					<a class="linksfooter" href="{{ path_for('showLists') }}">Mes listes</a> -
+				{% endif %}
 				<a class="linksfooter" href="{{ path_for('contact') }}">Contact</a><br>
 
 				<p></p>
@@ -74,7 +79,7 @@
 			<p class="footerPara">Site par BISELX Charles, ESCAMILLA Valentin, MEDJMADJ Issam, PENGUILLY Bertrand<br>
 			©Mecado.net - 2017</p>
 			{% if session.isConnected %}
-				<a class="removeAccount" href="{{ path_for('removeAccount') }}">Remove account</a>
+				<a class="removeAccount" href="{{ path_for('removeAccount') }}">Supprimer compte</a>
 			{% endif %}
 		</footer>
 	</body>

@@ -361,12 +361,31 @@ ul.navbar li.right {float: right;}
 
 
 /* another navbar style */
+.welcome{
+  display: block;
+  text-align: center;
+  color: #FFF;
+  background-color: #333;
+  font-size: 0.8em;
+  padding: 17px;
+  margin: 0;
+
+}
+
+.bar_nav{
+    background-color: #333;
+    overflow: hidden;
+}
+
+.welcome span{
+  color:#FFFF00;
+}
 
 .main_list {
   color: black;
   display: flex;
   flex-flow: column;
-  justify-content: flex-start;
+  justify-content: flex-end;
   margin: 0;
   padding: 0;
   overflow: hidden;
@@ -380,11 +399,24 @@ ul.navbar li.right {float: right;}
 
 @media screen and (min-width: 1100px) {
   .main_list {
-    flex-flow: row; } }
-@media screen and (min-width: 600px) and (max-width: 1400px) {
+    flex-flow: row;
+  }
+  .welcome{
+    float: left;
+    vertical-align:baseline;
+  }
+}
+@media screen and (min-width: 600px) and (max-width: 1100px) {
   .main_list {
     flex-flow: row;
-    justify-content: center; } }
+    justify-content: center;
+  }
+  .welcome{
+    display: block;
+    width: 98%;
+
+  }
+}
 .main_link {
   display: inline;
   text-align: center; }
@@ -628,16 +660,7 @@ a.removeAccount{
   font-family: "ChristmasTime";
 }
 
-.welcome{
-  color: #FFF;
-  font-size: 0.8em;
-  margin-top: 18px;
-  margin-right:300px;
-  /*float: left;*/
-}
-span{
-  color:#FFFF00;
-}
+
 p.footerPara{
   margin-bottom: 0px;
 }
