@@ -41,6 +41,13 @@
         <b>{{ flash.getMessage('Error')[0] }}</b>
     </div>
 {% endif %}
+
+{% if flash.getMessage('ErrorPostItem')[0] %}
+    <div class="alertDanger">
+        <b>{{ flash.getMessage('ErrorPostItem')[0] }}</b>
+    </div>
+{% endif %}
+
 {% if flash.getMessage('Success')[0] %}
      <div class="alertSuccess">
         <b>{{ flash.getMessage('Success')[0] }}</b>
@@ -80,7 +87,7 @@
       <div class="containerInput">
         <label for="name">Nom de l'item</label>
         <span class="required">*</span><br>
-        <input class= "form login" id="name" type="text" name="name" placeholder="Enrez le nom de l'item">
+        <input class= "form login" id="name" type="text" name="name" maxlength="25" placeholder="Enrez le nom de l'item">
       </div>
 
       <div class="containerInput">
@@ -97,7 +104,7 @@
       <div class="containerInput">
         <label for="description">Description</label>
         <span class="required">*</span><br>
-        <textarea class= "form login hight-10 nonempty" id="description" type="text" name="description" placeholder="" ></textarea>
+        <textarea class= "form login hight-10 nonempty" id="description" maxlength="250" type="text" name="description" placeholder="" ></textarea>
       </div>
 
       <div>

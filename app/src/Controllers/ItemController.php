@@ -84,30 +84,32 @@ final class ItemController extends BaseController
               $this->container->flash->addMessage("ErrorItem", "Votre item n'a pas été enregistré :");
               return $response->withRedirect("/item/".$lists->token);
           }
+          $valid=$this->validate($postDonne);
+          if($valid=="ok"){
+              $item->liste_id=$postDonne['liste_id'];//ToVerify
+              $item->tarif=$postDonne["tarif"];              
+              $item->nom=$postDonne["name"];
+              $item->description=$postDonne["description"];           
 
-          $item->liste_id=$postDonne['liste_id'];
-          // $validate=ListController::validate($postDonne);
-          // if($validate===true){
-            $item->nom=$postDonne["name"];
-            $item->tarif=$postDonne["tarif"];
-            $item->description=$postDonne["description"];
-          // }else{
-            // $this->container->flash->addMessage("ErrorValidateInput",$validate);
-          // }
-
-          $uploads_dir =$this->container->uploads.DIRECTORY_SEPARATOR ;
-          $error = $_FILES["image"]["error"] ;
-          if ($error == UPLOAD_ERR_OK) {
-              $tmp_name = $_FILES['image']['tmp_name'];
-              $name = uniqid('img-'.date('Ymd').'-');
-              move_uploaded_file($tmp_name, $uploads_dir.''.$name);
-              $item->lien_image = $name;
+            $uploads_dir =$this->container->uploads.DIRECTORY_SEPARATOR ;
+            $error = $_FILES["image"]["error"] ;
+            if ($error == UPLOAD_ERR_OK) {
+                $tmp_name = $_FILES['image']['tmp_name'];
+                $name = uniqid('img-'.date('Ymd').'-');
+                move_uploaded_file($tmp_name, $uploads_dir.''.$name);
+                $item->lien_image = $name;               
+            }
+            $item->save();
+            $this->container->flash->addMessage("successAddItem","L'item a été ajoutée avec succès");
+            return $response->withRedirect("/item/".$lists->token);
+           }else{
+              $this->container->flash->addMessage("ErrorPostItem",$valid);
+              return $response->withRedirect("/item/".$lists->token);              
           }
 
-          $item->save();
-          $this->container->flash->addMessage("successAddItem","L'item a été ajoutée avec succès");
-          return $response->withRedirect("/item/".$lists->token);
-        }
+          
+         
+      }
 
 
     }
@@ -143,9 +145,19 @@ final class ItemController extends BaseController
 
     }
 
-    public function valid($s, $max_len) {
+    private function valid($s, $max_len) {
       $len = strlen($s);
       return $len > 0 && $len <= $max_len;
+    }
+
+    private function validate($p) {
+      if (!$this->valid($p['name'], 25)) {
+        return "le nom de l'item doit être rempli et faire moins de 25 caractères";
+      }
+      if (!$this->valid($p['description'], 250)) {
+        return "la description doit être remplie et faire moins de 250 caractères";
+      }     
+      return "ok";
     }
 
 
