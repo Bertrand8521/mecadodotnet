@@ -37,6 +37,8 @@
 
 
 {% block content %}
+{% if  session.isConnected %}
+
 
   {% if flash.getMessage('Error')[0] %}
       <div class="alertDanger">
@@ -75,11 +77,15 @@
       <div class="containerInput">
         <label for="nom_dest">nom du destinataire</label><br>
         <small>(25 caractères max)</small><br>
-        <input class= "form newlist" type="text" name="nom_dest" id="nom_dest" value="nom" maxlength="25"><br>
+        <input class= "form newlist" type="text" name="nom_dest" id="nom_dest" placeholder="nom" maxlength="25"><br>
       </div>
 
       <input type="submit" class="button" name="validate" id="validate" value="Créer la liste">
     </div>
   </form>
-
+{% else %}
+  <script type="text/javascript">
+    document.location.href="{{ path_for('home') }}";
+  </script>
+{% endif %}
 {% endblock %}
