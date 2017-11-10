@@ -64,7 +64,7 @@ final class ItemController extends BaseController
       $postDonne=$request->getParsedBody();
       $item=new Item();
       $errorAddItem=[];
-      if(!array_key_exists('name',$_POST)|| $_POST['name']=='' ||  !preg_match("/[a-zA-Z]+$/", $_POST['name'])){
+      if(!array_key_exists('name',$_POST)|| $_POST['name']=='' ||  !preg_match("/[a-zA-Z0-9]+$/", $_POST['name'])){
           $errorAddItem['name']="Vous avez pas rentré un nom d'item ou nom incorrect";
       }
 
