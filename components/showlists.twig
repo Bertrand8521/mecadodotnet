@@ -48,7 +48,7 @@
       {% set nbCommentairesIndex = nbCommentairesIndex + 1 %}
     {% endfor %}
     <!-- suppresion de la liste-->
-    <h1>TODO supprimer les objets dans la liste</h1>
+
       <div class="containerForm">
         <form name="newlist" onsubmit="return validateForm()" method="post" action="{{ path_for('deletelist') }}">
           <label for="delete_list">Selectionner la liste à supprimer</label>
