@@ -97,24 +97,20 @@ input{
 @keyframes alert_annimation {
   0% {
     background-color: #ff0000;
-    left: 0px;
-    top: 0px; }
+   }
   25% {
     background-color: #ff8000;
-    left: 200px;
-    top: 0px; }
+  }
   50% {
     background-color: #ffd11a;
-    left: 200px;
-    top: 200px; }
+  }
   75% {
     background-color: #e65c00;
-    left: 0px;
-    top: 200px; }
+  }
   100% {
     background-color: #ff0000;
-    left: 0px;
-    top: 0px; } }
+    }
+}
 
 .button.alert {
   background-color: #cc4b37;
