@@ -184,12 +184,7 @@ final class ItemController extends BaseController
 
     }
 
-<<<<<<< HEAD
-=======
-    private function valid($s, $max_len) {
-      $len = strlen($s);
-      return $len > 0 && $len <= $max_len;
-    }
+
 
     private function validate($p) {
       if (!$this->valid($p['name'], 25)) {
@@ -203,6 +198,5 @@ final class ItemController extends BaseController
 
 
 
->>>>>>> origin/issam
  }
 unset($_SESSION['errorItem']);
