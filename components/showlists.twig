@@ -67,7 +67,7 @@
             <h2>date de validité : {{ liste.date_val }} </h2>
             <h2>destinataire : {{ liste.destinataire }}</h2>
             <p>{{ liste.description }}</p>
-            <a href="{{path_for('item') }}/{{liste.token}}">www.mecado.net{{path_for('item') }}/{{liste.token}}</a>
+            <a href="{{path_for('item') }}/{{liste.token}}" title="accéder à la liste">www.mecado.net{{path_for('item') }}/{{liste.token}}</a>
             {% if nbCommentaires[i] == 0 %}
               <p>Pas de commentaire</p>
             {% elseif nbCommentaires[i] == 1 %}
