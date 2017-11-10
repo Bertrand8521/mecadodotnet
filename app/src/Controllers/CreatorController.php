@@ -146,6 +146,11 @@ final class CreatorController extends BaseController
 
     public function removeCreator(Request $request, Response $response, $args){
 
+        $lists=Liste::where('createur_id', '=', $_SESSION['isConnected']['id'])->get()->toArray();       
+        foreach ($lists as $l) {
+            ShowListsController::functionDeleteList($l);
+        }
+
         $creator=$_SESSION['isConnected']['id'];
         Createur::destroy($creator);
         unset($_SESSION['isConnected']);
