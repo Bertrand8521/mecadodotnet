@@ -184,8 +184,6 @@ final class ItemController extends BaseController
 
     }
 
-
-
     private function validate($p) {
       if (!$this->valid($p['name'], 25)) {
         return "le nom de l'item doit être rempli et faire moins de 25 caractères";
@@ -195,8 +193,6 @@ final class ItemController extends BaseController
       }
       return "ok";
     }
-
-
 
  }
 unset($_SESSION['errorItem']);
