@@ -57,9 +57,29 @@
         <b>{{ flash.getMessage('Error')[0] }}</b>
     </div>
 {% endif %}
+
+{% if flash.getMessage('ErrorPostItem')[0] %}
+    <div class="alertDanger">
+        <b>{{ flash.getMessage('ErrorPostItem')[0] }}</b>
+    </div>
+{% endif %}
+
 {% if flash.getMessage('Success')[0] %}
      <div class="alertSuccess">
         <b>{{ flash.getMessage('Success')[0] }}</b>
+    </div>
+{% endif %}
+{% if session.errorItem %}
+    <div class="alertDanger">
+      <b>{{ flash.getMessage('ErrorItem')[0] }}</b>
+      {% for session in session.errorItem %}
+          <p>{{ session }}</p>
+      {% endfor %}
+    </div>
+{% endif %}
+{% if flash.getMessage('successAddItem')[0] %}
+    <div class="alertSuccess">
+      <b>{{ flash.getMessage('successAddItem')[0] }}</b>
     </div>
 {% endif %}
 
@@ -76,27 +96,15 @@
 
   <h2 class="section-container">Ajouter un nouvel item </h2>
 
-  {% if session.errorItem %}
-      <div class="alertDanger">
-        <b>{{ flash.getMessage('ErrorItem')[0] }}</b>
-        {% for session in session.errorItem %}
-            <p>{{ session }}</p>
-        {% endfor %}
-      </div>
-  {% endif %}
-
-   {% if flash.getMessage('successAddItem')[0] %}
-      <div class="alertSuccess">
-        <b>{{ flash.getMessage('successAddItem')[0] }}</b>
-      </div>
-  {% endif %}
 <form name="addItem" enctype="multipart/form-data" method="post" action="{{ path_for('postItem') }}">
   <div class="containerFormItem">
 
       <div class="containerInput">
         <label for="name">Nom de l'item</label>
         <span class="required">*</span><br>
-        <input class= "form login" id="name" type="text" name="name" placeholder="Entrez le nom de l'item">
+
+        <input class= "form login" id="name" type="text" name="name" maxlength="25" placeholder="Entrez le nom de l'item">
+
       </div>
 
       <div class="containerInput">
@@ -113,7 +121,7 @@
       <div class="containerInput">
         <label for="description">Description</label>
         <span class="required">*</span><br>
-        <textarea class= "form login hight-10 nonempty" id="description" type="text" name="description" placeholder="" ></textarea>
+        <textarea class= "form login hight-10 nonempty" id="description" maxlength="250" type="text" name="description" placeholder="" ></textarea>
       </div>
 
       <div>
