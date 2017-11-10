@@ -633,9 +633,17 @@ ul.navbar li.right {float: right;}
 
 
   .commentaires {
-    transition: all 0.8s cubic-bezier(1, 0, 0, 1) 0s;
+    transition: max-height 1s linear 0s, opacity 1s;
     max-height: 0px;
     visibility: hidden;
+    opacity: 0;
+  }
+
+  .confirmReservation {
+    transition: all 0.2s linear 0s;
+    max-height: 0px;
+    visibility: hidden;
+    opacity: 0;
   }
 
 a.removeAccount{

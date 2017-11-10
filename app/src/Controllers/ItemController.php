@@ -48,16 +48,51 @@ final class ItemController extends BaseController
         // return $this->container->view->render($response, "testItem.twig", ['items' => $items, 'nbCommentaires' => $nbCommentaires, 'token' => $args['token'] ] );
     }
 
+    private function valid($s, $max_len) {
+  		$len = strlen($s);
+  		return $len > 0 && $len <= $max_len;
+  	}
+
+    private function validateReservationItem($p) {
+  		if (!$this->valid($p['nom'], 25)) {
+  			return "le nom doit être rempli et faire moins de 25 caractères";
+  		}
+  		$item = Item::where('id', '=', $p['idItem'])->first();
+  		if (! $item) {
+  			return "item non existant";
+  		}
+      if ($item['reservedBy']) {
+        return "item déjà reservé";
+      }
+  		$liste = Liste::where('token', '=', $p['token'])->first();
+  		if (! $liste) {
+  			return "token invalide";
+  		}
+  		$list_of_item = Liste::where('id', '=', $item->liste_id)->first();
+  		if ($list_of_item->id != $liste->id) {
+  			// nice try, hackerman
+  			return "token invalide pour cet item";
+  		}
+
+  		return "ok";
+  	}
 
 
     public function reservationItem(Request $request, Response $response, $args)
     {
-        $item = Item::where('id', '=', $args['id'])->first();
-        if ($item['reserve'] = 0) {
-            $item['reserve'] = 1;
-            $item->save();
-            return $this->container->view->render($response, 'showlists.twig');
-        }
+      $post = $request->getParsedBody();
+      $valid = $this->validateReservationItem($post);
+      if ($valid === "ok") {
+        $item = Item::where('id', '=', $post['idItem'])->first();
+        $item['reservedBy'] = $post['nom'];
+        $item->save();
+        $this->container->flash->addMessage("Success", "Votre reservation a été enregistrée");
+        return $response->withRedirect("/item/" . $post['token']);
+      }
+      else {
+        $this->container->flash->addMessage("Error", $valid);
+        return $response->withRedirect("/item/" . $post['token']);
+      }
     }
 
     public function postItem(Request $request, Response $response, $args) {

@@ -9,12 +9,14 @@
         if (! $( event.target).is(':input')) {
           let commentaires = $(this).find('.commentaires')
           if (commentaires.css('max-height') == '0px') {
-            commentaires.css('max-height', '20000px');
+            commentaires.css('max-height', '2000px');
             commentaires.css('visibility', 'visible');
+            commentaires.css('opacity', '1');
           }
           else {
-            commentaires.css('max-height', '0px');
             commentaires.css('visibility', 'hidden');
+            commentaires.css('max-height', '0px');
+            commentaires.css('opacity', '0');
           }
         }
       });
@@ -31,6 +33,20 @@
         }
       });
       return ret;
+    }
+    function showConfirmReservation(i) {
+      $(".confirmReservation" + i).each(function() {
+        if ($(this).css('max-height') == '0px') {
+          $(this).css('max-height', '100px');
+          $(this).css('visibility', 'visible');
+          $(this).css('opacity', '1');
+        }
+        else {
+          $(this).css('visibility', 'hidden');
+          $(this).css('max-height', '0px');
+          $(this).css('opacity', '0');
+        }
+      });
     }
   </script>
 {% endblock %}
