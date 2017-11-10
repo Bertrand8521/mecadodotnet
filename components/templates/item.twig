@@ -38,7 +38,7 @@
           {% include "templates/commentaire.twig" %}
         {% endfor %}
         <hr>
-        <form name="form" onsubmit="return validateForm({{i}})" method="post" action="{{ path_for('postCommentItem') }}">
+        <form name="form" onsubmit="return validateCommentForm({{i}})" method="post" action="{{ path_for('postCommentItem') }}">
           <label for="nom">Votre nom</label>
           <span class="required">*<br></span>
           <input class= "form newlist nonempty form{{i}}" type="textarea" name="nom"  id="nom" value="" maxlength="25"><br>
