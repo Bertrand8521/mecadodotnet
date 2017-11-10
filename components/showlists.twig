@@ -1,0 +1,112 @@
+{% extends "templates/base_layout.twig" %}
+
+{% block title %}
+  {{ parent() }} Listes
+{% endblock %}
+
+{% block custom_assets %}
+  <link rel="stylesheet" type="text/css" href="/Assets/css/item.css">
+  <script>
+    $(function () {
+      $('.box').on('click', function(event) {
+        if (! $( event.target).is(':input')) {
+          let commentaires = $(this).find('.commentaires')
+          if (commentaires.css('max-height') == '0px') {
+            commentaires.css('max-height', '2000px');
+            commentaires.css('visibility', 'visible');
+            commentaires.css('opacity', '1');
+          }
+          else {
+            commentaires.css('visibility', 'hidden');
+            commentaires.css('max-height', '0px');
+            commentaires.css('opacity', '0');
+          }
+        }
+      });
+    });
+    function validateCommentForm(i) {
+      let ret = true;
+      $(".nonempty.form" + i).each(function() {
+        if ($(this).val() === "") {
+          $(this).addClass("form-error");
+          ret = false;
+        }
+        else {
+          $(this).removeClass("form-error");
+        }
+      });
+      return ret;
+    }
+  </script>
+{% endblock %}
+
+{% block content %}
+  {% if not session.isConnected %}
+    <div class="containerForm">
+      <h1>Vous n'êtes pas connecté !</h1>
+      <p><a href="{{ path_for('login') }}">Connectez</a> vous dès maintenant ou <a href="{{ path_for('register') }}">rejoignez</a> nous si vous n'avez pas de compte !</p>
+
+    </div>
+  {% else %}
+  <!--if connected-->
+    {% if flash.getMessage('Error')[0] %}
+        <div class="alertDanger">
+            <b>{{ flash.getMessage('Error')[0] }}</b>
+        </div>
+    {% endif %}
+    {% if flash.getMessage('Success')[0] %}
+         <div class="alertSuccess">
+            <b>{{ flash.getMessage('Success')[0] }}</b>
+        </div>
+    {% endif %}
+
+    {% set i = 0 %}
+    {% for liste in listes %}
+        <div class="box cell cell_animation large-6" >
+            <h1>{{ liste.nom }}</h1>
+            <h2>date de validité : {{ liste.date_val }} </h2>
+            <h2>destinataire : {{ liste.destinataire }}</h2>
+            <p>{{ liste.description }}</p>
+            <a href="{{path_for('item') }}/{{liste.token}}" title="accéder à la liste">www.mecado.net{{path_for('item') }}/{{liste.token}}</a>
+            {% if nbCommentaires[i] == 0 %}
+              <p>Pas de commentaire</p>
+            {% elseif nbCommentaires[i] == 1 %}
+              <p>1 commentaire</p>
+            {% else %}
+              <p>{{ nbCommentaires[i] }} commentaires</p>
+            {% endif %}
+            <div class="commentaires">
+              {% for commentaire in commentaires[i] %}
+                {% include "templates/commentaire.twig" %}
+              {% endfor %}
+              <hr>
+              <form name="form" onsubmit="return validateCommentForm({{i}})" method="post" action="{{ path_for('postCommentListe') }}">
+                <label for="nom">Votre nom</label>
+                <span class="required">*<br></span>
+                <input class= "form newlist nonempty form{{i}}" type="textarea" name="nom"  id="nom" value="" maxlength="25"><br>
+                <label for="comment">Commentaire</label>
+                <span class="required">*<br></span>
+                <textarea class="form newlist hight-10 nonempty form{{i}}" type="text" name="commentaire"  id="commentaire" value="" maxlength="250"></textarea> <br>
+                <input type="submit" class="button" name="validate" id="validate" value="Ajouter commentaire">
+                <input type="hidden" name="token" value="{{liste.token}}">
+              </form>
+            </div>
+        </div>
+      {% set i = i + 1 %}
+    {% endfor %}
+    <!-- suppresion de la liste-->
+
+      <div class="containerForm">
+        <form name="newlist" method="post" action="{{ path_for('deletelist') }}">
+          <label for="delete_list">Selectionner la liste à supprimer</label>
+          <select class="" name="delete_list_option">
+            {% for liste in listes %}
+              <option value="{{ liste.id }}">{{ liste.nom }}</option>
+            {% endfor %}
+          </select>
+          <input type="submit" class="button alert" name="delete_list" id="delete_list" value="supprimer liste">
+        </form>
+      </div>
+  {% endif %}
+
+{% endblock %}

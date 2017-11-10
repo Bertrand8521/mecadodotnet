@@ -1,0 +1,66 @@
+
+<div class="box cell cell_animation large-4" >
+  <div class="inline large-8" >
+    <h3>{{ item.nom }}</h3>
+  </div>
+  <div class="inline floatRight  alignright large-3" >
+    <h2>{{ item.tarif }} €</h2>
+  </div>
+  <div class="large-12 no-marge">
+    {% if item.lien_image is not null %}
+      <img class="img_item " src="/Assets/images/{{ item.lien_image }}" alt="image de {{ item.nom }} ">
+    {% endif %}
+    <p>{{ item.description }}</p>
+
+    {% if item.lien_url is not empty %}
+      <p>lien fourni :
+      <a href="{{item.lien_url }}"> ici</a> </p>
+    {% endif %}
+
+    {% if item.reservedBy == null %}
+    <button class="button" onClick="showConfirmReservation({{i}})">Reservation</button>
+    <div class="confirmReservation confirmReservation{{i}}">
+      <form name="addItem" enctype="multipart/form-data" method="post" action="{{ path_for('reservationItem') }}">
+        <label for="nom">Votre nom</label>
+        <span class="required">*<br></span>
+        <input class= "form newlist form{{i}}" type="textarea" name="nom"  id="nom" value="" maxlength="25"><br>
+        <input type="hidden" name="token" value="{{token}}">
+        <input type="hidden" name="idItem" value ="{{items[i].id}}">
+      <input type="submit" class="button" name="Reserver_{{i}}" id="reserver_{{i}}" value="Confirmer">
+    </div>
+  </form>
+    {% else %}
+    <p><strong>Cet item est deja reservé par {{item.reservedBy}}</strong></p>
+    {% endif %}
+    {% if nbCommentaires[i] == 0 %}
+      <p>Pas de commentaire</p>
+    {% elseif nbCommentaires[i] == 1 %}
+      <p>1 commentaire</p>
+    {% else %}
+      <p>{{ nbCommentaires[i] }} commentaires</p>
+    {% endif %}
+
+    {% if true %} {# TODO si l'utilisateur a acces aux commentaires #}
+      <div class="commentaires">
+        {% for commentaire in commentaires[i] %}
+          {% include "templates/commentaire.twig" %}
+        {% endfor %}
+        <hr>
+        <form name="form" onsubmit="return validateCommentForm({{i}})" method="post" action="{{ path_for('postCommentItem') }}">
+          <label for="nom">Votre nom</label>
+          <span class="required">*<br></span>
+          <input class= "form newlist nonempty form{{i}}" type="textarea" name="nom"  id="nom" value="" maxlength="25"><br>
+          <label for="comment">Commentaire</label>
+          <span class="required">*<br></span>
+          <textarea class="form newlist hight-10 nonempty form{{i}}" type="text" name="commentaire"  id="commentaire" value="" maxlength="250"></textarea> <br>
+          <input type="submit" class="button" name="validate" id="validate" value="Ajouter commentaire">
+          <input type="hidden" name="token" value="{{token}}">
+          <input type="hidden" name="idItem" value ="{{items[i].id}}">
+        </form>
+      </div>
+    {% endif %}
+  </div>
+
+
+
+</div>

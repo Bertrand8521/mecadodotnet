@@ -22,13 +22,14 @@ $container['view'] = function ($c) {
         $c['request']->getUri()
     ));
     $view->addExtension(new Twig_Extension_Debug());
-	
+    $view->getEnvironment()->addGlobal('session', $_SESSION);
+    $view->getEnvironment()->addGlobal('flash', $c['flash']);
     return $view;
 };
 
 // Flash messages
 $container['flash'] = function ($c) {
-    return new \Slim\Flash\Messages;
+    return new Slim\Flash\Messages;
 };
 
 // monolog
@@ -76,21 +77,49 @@ $container['activation'] = function ($c) {
 # Action factories Controllers
 # -----------------------------------------------------------------------------
 
-$container['App\Controllers\HomeController'] = function ($c) {
-    return new App\Controllers\HomeController(
-		$c->get('view'), 
-		$c->get('logger'),
-		$c->get('App\Repositories\HomeRepository')
-    );
+/*
+** The Base Controller allow access to all the app container services / dependencies
+*/
+
+$container['BaseController'] = function($c){
+  return new \App\Controllers\BaseController($c);
 };
 
-$container['App\Controllers\UserController'] = function ($c) {
-    return new App\Controllers\UserController(
-		$c->get('view'), 
-		$c->get('logger'),
-		$c->get('App\Repositories\UserRepository')
-    );
+$container['CreatorController'] = function($c){
+  return new \App\Controllers\CreatorController($c);
 };
+
+$container['HomeController'] = function($c){
+  return new \App\Controllers\HomeController($c);
+};
+
+$container['ItemController'] = function($c){
+  return new \App\Controllers\ItemController($c);
+};
+
+$container['NewListController'] = function($c){
+  return new \App\Controllers\ListController($c);
+};
+
+$container['ShowListsController'] = function($c){
+  return new \App\Controllers\ShowListsController($c);
+};
+
+$container['ContactController'] = function($c){
+  return new \App\Controllers\ContactController($c);
+};
+
+$container['CommentaireController'] = function($c){
+  return new \App\Controllers\CommentaireController($c);
+};
+/*
+**Adding the Shop Controller to the container
+*/
+
+
+
+
+
 # -----------------------------------------------------------------------------
 # Factories Models
 # -----------------------------------------------------------------------------
@@ -124,3 +153,5 @@ $container['Mailer'] = function ($c) {
         $c->get('view')
     );
 };
+
+$container['uploads'] = __DIR__.'/../Assets/images';
