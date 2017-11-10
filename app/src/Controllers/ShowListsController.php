@@ -38,47 +38,56 @@ final class ShowListsController extends BaseController
         $listes = Liste::find($option_id);
         $nom = $listes->nom;
 
-        $commentaire_list =  Commentaire_liste::where('liste_id', '=', $option_id)->get();
+        $this->functionDeleteList($option_id);
 
-        $i = 0 ;//TODO pas bien :(
-        foreach ($commentaire_list as $value) {//chaque commentaire de la liste à supprimer
-          $coL = $commentaire_list[$i] ;
-          $comList_id = $coL['id'];
-
-          Commentaire_liste::destroy($comList_id);
-          $i++;
-        }
-
-        $item = Item::where('liste_id', '=', $option_id)->get()->toArray();
-
-
-        $n = 0;//TODO pas bien :(
-        foreach ($item as $value) { //chaque item de la liste à supprimer
-          $it = $item[$n] ;
-          $item_id = $it['id'];
-
-          $commentaire_item = Commentaire_item::where('item_id', '=', $item_id )->get()->toArray();
-
-          $j = 0 ;//TODO pas bien :(
-          foreach ($commentaire_item as $value) {//chaque commentaire de chaque item de la liste à supprimer
-            $coI = $commentaire_item[$j];
-            $comItem_id = $coI['id'];
-
-            Commentaire_item::destroy($comItem_id);
-
-            $j++;
-          }
-
-
-          Item::destroy($item_id);
-          $n++;
-        }
-
-
-
-        Liste::destroy($option_id);
         $this->container->flash->addMessage("Success", $nom." a été supprimé");
         return $response->withRedirect("/showlists");
+
     }
 
+    public function functionDeleteList($idListe){
+      $listes = Liste::find($idListe);
+
+
+      $commentaire_list =  Commentaire_liste::where('liste_id', '=', $idListe)->get();
+
+      $i = 0 ;//TODO pas bien :(
+      foreach ($commentaire_list as $value) {//chaque commentaire de la liste à supprimer
+        $coL = $commentaire_list[$i] ;
+        $comList_id = $coL['id'];
+
+        Commentaire_liste::destroy($comList_id);
+        $i++;
+      }
+
+      $item = Item::where('liste_id', '=', $idListe)->get()->toArray();
+
+
+      $n = 0;//TODO pas bien :(
+      foreach ($item as $value) { //chaque item de la liste à supprimer
+        $it = $item[$n] ;
+        $item_id = $it['id'];
+
+        $commentaire_item = Commentaire_item::where('item_id', '=', $item_id )->get()->toArray();
+
+        $j = 0 ;//TODO pas bien :(
+        foreach ($commentaire_item as $value) {//chaque commentaire de chaque item de la liste à supprimer
+          $coI = $commentaire_item[$j];
+          $comItem_id = $coI['id'];
+
+          Commentaire_item::destroy($comItem_id);
+
+          $j++;
+        }
+
+
+        Item::destroy($item_id);
+        $n++;
+      }
+
+
+
+      Liste::destroy($idListe);
+
+    }
  }

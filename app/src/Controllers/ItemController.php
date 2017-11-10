@@ -30,7 +30,7 @@ final class ItemController extends BaseController
         $commentaires[] = $commentaireDeLItem;
         $nbCommentaires[] = count($commentaireDeLItem);
       });
-      return $this->container->view->render($response, "addItem.twig", ['items' => $items, 'commentaires' => $commentaires, 'nbCommentaires' => $nbCommentaires, 'token' => $args['token']] );
+      return $this->container->view->render($response, "addItem.twig", ['items' => $items, 'commentaires' => $commentaires, 'nbCommentaires' => $nbCommentaires, 'token' => $args['token'],'liste'=>$liste] );
     }
 
 
