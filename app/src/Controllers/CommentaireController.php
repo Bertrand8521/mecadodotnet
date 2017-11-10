@@ -83,4 +83,37 @@ final class CommentaireController extends BaseController {
 			return $response->withRedirect("/item/" . $post['token']);
 		}
 	}
+
+	private function validateCommentListe($p) {
+		if (!$this->valid($p['nom'], 25)) {
+			return "le nom doit être rempli et faire moins de 25 caractères";
+		}
+		if (!$this->valid($p['commentaire'], 250)) {
+			return "le commentaire doit être rempli et faire moins de 250 caractères";
+		}
+		$liste = Liste::where('token', '=', $p['token'])->first();
+		if (! $liste) {
+			return "token invalide";
+		}
+
+		return "ok";
+	}
+
+	public function postCommentListe(Request $request, Response $response, $args) {
+		$post = $request->getParsedBody();
+		$valid = $this->validateCommentListe($post);
+		if ($valid === "ok") {
+			$commentaire = new Commentaire_liste();
+			$commentaire->liste_id = Liste::where('token', '=', $post['token'])->first()['id'];
+			$commentaire->nom = $post['nom'];
+			$commentaire->message = $post['commentaire'];
+			$commentaire->save();
+			$this->container->flash->addMessage("Success", "Votre commentaire a été ajouté");
+			return $response->withRedirect("/showlists");
+		}
+		else {
+			$this->container->flash->addMessage("Error", $valid);
+			return $response->withRedirect("/showlists");
+		}
+	}
 }

@@ -4,8 +4,39 @@
   {{ parent() }} show list
 {% endblock %}
 
-
-
+{% block custom_assets %}
+  <link rel="stylesheet" type="text/css" href="/Assets/css/item.css">
+  <script>
+    $(function () {
+      $('.box').on('click', function(event) {
+        if (! $( event.target).is(':input')) {
+          let commentaires = $(this).find('.commentaires')
+          if (commentaires.css('max-height') == '0px') {
+            commentaires.css('max-height', '20000px');
+            commentaires.css('visibility', 'visible');
+          }
+          else {
+            commentaires.css('max-height', '0px');
+            commentaires.css('visibility', 'hidden');
+          }
+        }
+      });
+    });
+    function validateCommentForm(i) {
+      let ret = true;
+      $(".nonempty.form" + i).each(function() {
+        if ($(this).val() === "") {
+          $(this).addClass("form-error");
+          ret = false;
+        }
+        else {
+          $(this).removeClass("form-error");
+        }
+      });
+      return ret;
+    }
+  </script>
+{% endblock %}
 
 {% block content %}
   {% if not session.isConnected %}
@@ -27,30 +58,44 @@
         </div>
     {% endif %}
 
-    {% set nbCommentairesIndex = 0 %}
+    {% set i = 0 %}
     {% for liste in listes %}
-      <a class="no-style" href="{{path_for('item') }}/{{liste.token}}">
         <div class="box cell cell_animation large-6" >
             <h1>{{ liste.nom }}</h1>
             <h2>date de validité : {{ liste.date_val }} </h2>
             <h2>destinataire : {{ liste.destinataire }}</h2>
             <p>{{ liste.description }}</p>
-            <p>www.mecado.net{{path_for('item') }}/{{liste.token}}</p>
-            {% if nbCommentaires[nbCommentairesIndex] == 0 %}
+            <a href="{{path_for('item') }}/{{liste.token}}">www.mecado.net{{path_for('item') }}/{{liste.token}}</a>
+            {% if nbCommentaires[i] == 0 %}
               <p>Pas de commentaire</p>
-            {% elseif nbCommentaires[nbCommentairesIndex] == 1 %}
+            {% elseif nbCommentaires[i] == 1 %}
               <p>1 commentaire</p>
             {% else %}
-              <p>{{ nbCommentaires[nbCommentairesIndex] }} commentaires</p>
+              <p>{{ nbCommentaires[i] }} commentaires</p>
             {% endif %}
+            <div class="commentaires">
+              {% for commentaire in commentaires[i] %}
+                {% include "templates/commentaire.twig" %}
+              {% endfor %}
+              <hr>
+              <form name="form" onsubmit="return validateCommentForm({{i}})" method="post" action="{{ path_for('postCommentListe') }}">
+                <label for="nom">Votre nom</label>
+                <span class="required">*<br></span>
+                <input class= "form newlist nonempty form{{i}}" type="textarea" name="nom"  id="nom" value="" maxlength="25"><br>
+                <label for="comment">Commentaire</label>
+                <span class="required">*<br></span>
+                <textarea class="form newlist hight-10 nonempty form{{i}}" type="text" name="commentaire"  id="commentaire" value="" maxlength="250"></textarea> <br>
+                <input type="submit" class="button" name="validate" id="validate" value="Ajouter commentaire">
+                <input type="hidden" name="token" value="{{liste.token}}">
+              </form>
+            </div>
         </div>
-      </a>
-      {% set nbCommentairesIndex = nbCommentairesIndex + 1 %}
+      {% set i = i + 1 %}
     {% endfor %}
     <!-- suppresion de la liste-->
     <h1>TODO supprimer les objets dans la liste</h1>
       <div class="containerForm">
-        <form name="newlist" onsubmit="return validateForm()" method="post" action="{{ path_for('deletelist') }}">
+        <form name="newlist" method="post" action="{{ path_for('deletelist') }}">
           <label for="delete_list">Selectionner la liste à supprimer</label>
           <select class="" name="delete_list_option">
             {% for liste in listes %}

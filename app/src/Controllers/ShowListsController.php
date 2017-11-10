@@ -24,11 +24,14 @@ final class ShowListsController extends BaseController
 
         $listes = $listes_query->toArray();
 
+        $commentaires = []; // liste de listes de commentaires
         $nbCommentaires = []; // liste de nombre de commnetaires (dans le meme ordre que les listes)
-        $listes_query->map(function ($liste) use (&$nbCommentaires) {
-          $nbCommentaires[] = CommentaireController::nbCommentaireListe($liste->id);
+        $listes_query->map(function ($liste) use (&$commentaires, &$nbCommentaires) {
+          $commentaireDeLaListe = CommentaireController::getCommentaireListe($liste->id);
+          $commentaires[] = $commentaireDeLaListe;
+          $nbCommentaires[] = count($commentaireDeLaListe);
         });
-        return $this->container->view->render($response, 'showlists.twig', ['listes' => $listes, 'nbCommentaires' => $nbCommentaires]);
+        return $this->container->view->render($response, 'showlists.twig', ['listes' => $listes, 'commentaires' => $commentaires, 'nbCommentaires' => $nbCommentaires]);
     }
 
     public function deletelist(Request $request, Response $response, $args){
