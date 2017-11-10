@@ -94,6 +94,11 @@ final class ItemController extends BaseController
           // }else{
             // $this->container->flash->addMessage("ErrorValidateInput",$validate);
           // }
+          $url = $postDonne["url"];
+          if( !empty($url)){
+            $item->lien_url=$url;
+          }
+
 
           $uploads_dir =$this->container->uploads.DIRECTORY_SEPARATOR ;
           $error = $_FILES["image"]["error"] ;
