@@ -30,7 +30,7 @@
     </div>
   </form>
     {% else %}
-    <p>Cet item est deja reservé par {{item.reservedBy}}</p>
+    <p><strong>Cet item est deja reservé par {{item.reservedBy}}</strong></p>
     {% endif %}
     {% if nbCommentaires[i] == 0 %}
       <p>Pas de commentaire</p>
