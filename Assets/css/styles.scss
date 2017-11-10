@@ -4,7 +4,7 @@
 }
 
 $intercolumn : 2% ;
-$img_max_size : 200px;
+$img_max_size : 160px;
 $color_hover_div : #ff944d;
 $phone-width : 600px;
 $tablet-width : 1100px;
@@ -50,7 +50,7 @@ input{
 }
 
 .img_item{
-  float: left;
+  float: right;
   max-width: #{$img_max_size};
   max-height: #{$img_max_size};
 }
