@@ -63,6 +63,7 @@ final class ItemController extends BaseController
     public function postItem(Request $request, Response $response, $args) {
       $postDonne=$request->getParsedBody();
       $item=new Item();
+      $lists=Liste::where('id','=', $postDonne['liste_id'])->first();
       $errorAddItem=[];
       if(!array_key_exists('name',$_POST)|| $_POST['name']=='' ||  !preg_match("/[a-zA-Z0-9]+$/", $_POST['name'])){
           $errorAddItem['name']="Vous avez pas rentré un nom d'item ou nom incorrect";
@@ -81,13 +82,18 @@ final class ItemController extends BaseController
       if(isset ($postDonne) && $postDonne['buttonAjoutItem']=="ajoutItem"){
           if(!empty($_SESSION['errorItem'])){
               $this->container->flash->addMessage("ErrorItem", "Votre item n'a pas été enregistré :");
-              return $response->withRedirect("/item/{token}");
+              return $response->withRedirect("/item/".$lists->token);
           }
 
           $item->liste_id=$postDonne['liste_id'];
-          $item->nom=$postDonne["name"];
-          $item->tarif=$postDonne["tarif"];
-          $item->description=$postDonne["description"];
+          // $validate=ListController::validate($postDonne);
+          // if($validate===true){
+            $item->nom=$postDonne["name"];
+            $item->tarif=$postDonne["tarif"];
+            $item->description=$postDonne["description"];
+          // }else{
+            // $this->container->flash->addMessage("ErrorValidateInput",$validate);
+          // }
 
           $uploads_dir =$this->container->uploads.DIRECTORY_SEPARATOR ;
           $error = $_FILES["image"]["error"] ;
@@ -100,7 +106,7 @@ final class ItemController extends BaseController
 
           $item->save();
           $this->container->flash->addMessage("successAddItem","L'item a été ajoutée avec succès");
-          return $response->withRedirect("/item/{token}");
+          return $response->withRedirect("/item/".$lists->token);
         }
 
 
@@ -136,6 +142,12 @@ final class ItemController extends BaseController
 
 
     }
+
+    public function valid($s, $max_len) {
+      $len = strlen($s);
+      return $len > 0 && $len <= $max_len;
+    }
+
 
 
  }
