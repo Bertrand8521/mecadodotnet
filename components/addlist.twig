@@ -37,6 +37,8 @@
 
 
 {% block content %}
+{% if  session.isConnected %}
+
 
   {% if flash.getMessage('Error')[0] %}
       <div class="alertDanger">
@@ -49,21 +51,21 @@
       <div class="containerInput">
         <label for="name">Nom de la liste </label>
         <span class="required">*</span>
-        <small>(25 charactère max)</small><br>
-        <input class= "form newlist nonempty" type="textarea" name="name"  id="name" value="" maxlength="25"><br>
+        <small>(25 caractères max)</small><br>
+        <input class= "form newlist nonempty" type="textarea" name="name" placeholder="Nom de la liste"  id="name" value="" maxlength="25"><br>
       </div>
 
       <div class="containerInput">
         <label for="description">Description de la liste de cadeau</label>
         <span class="required">*</span>
         <small>(500 caractères max)</small><br>
-        <textarea class="form newlist hight-10 nonempty" type="text" name="description"  id="description" value="" maxlength="250"></textarea> <br>
+        <textarea class="form newlist hight-10 nonempty" type="text" name="description" placeholder="Description"  id="description" value="" maxlength="250"></textarea> <br>
       </div>
 
       <div class="containerInput">
         <label for="">Date de validité</label>
         <span class="required">*</span><br>
-        <input class="form newlist nonempty" name="date" type="text" id="datepicker" id="datepicker"><br>
+        <input class="form newlist nonempty" name="date" type="text" placeholder="YYYY-MM-DD"  id="datepicker" id="datepicker"><br>
       </div>
 
 
@@ -74,11 +76,16 @@
 
       <div class="containerInput">
         <label for="nom_dest">nom du destinataire</label><br>
-        <input class= "form newlist" type="text" name="nom_dest" id="nom_dest" value="nom"><br>
+        <small>(25 caractères max)</small><br>
+        <input class= "form newlist" type="text" name="nom_dest" id="nom_dest" placeholder="nom du destinataire" maxlength="25"><br>
       </div>
 
       <input type="submit" class="button" name="validate" id="validate" value="Créer la liste">
     </div>
   </form>
-
+{% else %}
+  <script type="text/javascript">
+    document.location.href="{{ path_for('home') }}";
+  </script>
+{% endif %}
 {% endblock %}

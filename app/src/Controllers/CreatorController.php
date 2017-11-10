@@ -58,7 +58,7 @@ final class CreatorController extends BaseController
             }
 
 
-            $existingCreator=Createur::where("login",$postDonne["pseudo"])->first();
+            $existingCreator=Createur::where("login",$postDonne["pseudo"])->orWhere("email", $postDonne["email"])->first();
 
             if(null !== $existingCreator){
                 $this->container->flash->addMessage("Erreur", "Ce compte existe déja!");
@@ -75,8 +75,8 @@ final class CreatorController extends BaseController
             $creator->email=$postDonne["email"];
             $creator->password=password_hash($postDonne["password"], PASSWORD_DEFAULT);
             $creator->save();
-            $this->container->flash->addMessage("RegisterSuccss","Votre inscription a bien été enregistrée");
-            return $response->withRedirect("/CreatorRegister");
+            $this->container->flash->addMessage("InfoSuccess","Votre inscription a bien été enregistrée");
+            return $response->withRedirect("/");
 
         }
     }
@@ -136,17 +136,23 @@ final class CreatorController extends BaseController
     }
 
      public function creatorLogOut(Request $request, Response $response, $args){
+       if($_SESSION['isConnected']!= NULL){
         unset($_SESSION['isConnected']);
         unset($_SESSION['id']);
         setcookie("remember",null,-1,"/");
         $this->container->flash->addMessage("InfoDeconnected","Vous avez été déconnecté");
+
+      }
+
         return $response->withRedirect("/");
+
+
     }
 
 
     public function removeCreator(Request $request, Response $response, $args){
-
-        $lists=Liste::where('createur_id', '=', $_SESSION['isConnected']['id'])->get()->toArray();       
+      if($_SESSION['isConnected']!= NULL){
+        $lists=Liste::where('createur_id', '=', $_SESSION['isConnected']['id'])->get()->toArray();
         foreach ($lists as $l) {
             ShowListsController::functionDeleteList($l);
         }
@@ -154,9 +160,11 @@ final class CreatorController extends BaseController
         $creator=$_SESSION['isConnected']['id'];
         Createur::destroy($creator);
         unset($_SESSION['isConnected']);
-        setcookie("remember",null,-1,"/");        
+        setcookie("remember",null,-1,"/");
         $this->container->flash->addMessage("SuccèssRemoveCreator","Votre compte a été supprimé avec succès");
-         return $response->withRedirect("/");
+
+       }
+       return $response->withRedirect("/");
     }
 
     // method generates a random string for tocken

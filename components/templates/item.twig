@@ -7,8 +7,8 @@
     <h2>{{ item.tarif }} €</h2>
   </div>
   <div class="large-12 no-marge">
-    {% if item.lien_image is not empty %}
-      <img class="img_item " src="{{ item.lien_image }}" alt="image de {{ item.nom }} ">
+    {% if item.lien_image is not null %}
+      <img class="img_item " src="/Assets/images/{{ item.lien_image }}" alt="image de {{ item.nom }} ">
     {% endif %}
     <p>{{ item.description }}</p>
 
