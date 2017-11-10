@@ -23,7 +23,7 @@
           $(this).removeClass("form-error");
         }
       });
-      if (! $("#check_dest").is("checked") && $("#nom_dest").val() === "") {
+      if (! $("#check_dest")[0].checked && $("#nom_dest").val() === "") {
         $("#nom_dest").addClass("form-error");
         ret = false;
       }
