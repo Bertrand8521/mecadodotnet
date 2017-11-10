@@ -136,17 +136,23 @@ final class CreatorController extends BaseController
     }
 
      public function creatorLogOut(Request $request, Response $response, $args){
+       if($_SESSION['isConnected']!= NULL){
         unset($_SESSION['isConnected']);
         unset($_SESSION['id']);
         setcookie("remember",null,-1,"/");
         $this->container->flash->addMessage("InfoDeconnected","Vous avez été déconnecté");
+
+      }
+
         return $response->withRedirect("/");
+
+
     }
 
 
     public function removeCreator(Request $request, Response $response, $args){
 
-        $lists=Liste::where('createur_id', '=', $_SESSION['isConnected']['id'])->get()->toArray();       
+        $lists=Liste::where('createur_id', '=', $_SESSION['isConnected']['id'])->get()->toArray();
         foreach ($lists as $l) {
             ShowListsController::functionDeleteList($l);
         }
@@ -154,7 +160,7 @@ final class CreatorController extends BaseController
         $creator=$_SESSION['isConnected']['id'];
         Createur::destroy($creator);
         unset($_SESSION['isConnected']);
-        setcookie("remember",null,-1,"/");        
+        setcookie("remember",null,-1,"/");
         $this->container->flash->addMessage("SuccèssRemoveCreator","Votre compte a été supprimé avec succès");
          return $response->withRedirect("/");
     }
