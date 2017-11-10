@@ -3,7 +3,8 @@
   src: url("../fonts/ChristmasTime.ttf"); }
 /* Body */
 body {
-  font-family: sans-serif; }
+  font-family: sans-serif;
+  background-color: white; }
 
 footer {
   background-color: #C6C6C6;
@@ -181,62 +182,62 @@ input {
 .large-1 {
   display: inline-block;
   vertical-align: text-top;
-  width: calc( 7.3% - $intercolumn ); }
+  width: calc( 7.3% - 2% ); }
 
 .large-2 {
   display: inline-block;
   vertical-align: text-top;
-  width: calc( 19.7% - $intercolumn ); }
+  width: calc( 19.7% - 2% ); }
 
 .large-3 {
   display: inline-block;
   vertical-align: text-top;
-  width: calc( 24% - $intercolumn ); }
+  width: calc( 24% - 2% ); }
 
 .large-4 {
   display: inline-block;
   vertical-align: text-top;
-  width: calc( 32.3% - $intercolumn ); }
+  width: calc( 32.3% - 2% ); }
 
 .large-5 {
   display: inline-block;
   vertical-align: text-top;
-  width: calc( 40.6% - $intercolumn ); }
+  width: calc( 40.6% - 2% ); }
 
 .large-6 {
   display: inline-block;
   vertical-align: text-top;
-  width: calc( 49% - $intercolumn ); }
+  width: calc( 49% - 2% ); }
 
 .large-7 {
   display: inline-block;
   vertical-align: text-top;
-  width: calc( 57.3% - $intercolumn ); }
+  width: calc( 57.3% - 2% ); }
 
 .large-8 {
   display: inline-block;
   vertical-align: text-top;
-  width: calc( 65.7% - $intercolumn ); }
+  width: calc( 65.7% - 2% ); }
 
 .large-9 {
   display: inline-block;
   vertical-align: text-top;
-  width: calc( 74% - $intercolumn ); }
+  width: calc( 74% - 2% ); }
 
 .large-10 {
   display: inline-block;
   vertical-align: text-top;
-  width: calc( 82.3%- $intercolumn ); }
+  width: calc( 82.3%- 2% ); }
 
 .large-11 {
   display: inline-block;
   vertical-align: text-top;
-  width: calc( 90.6% - $intercolumn ); }
+  width: calc( 90.6% - 2% ); }
 
 .large-12 {
   display: inline-block;
   vertical-align: text-top;
-  width: calc( 99% - $intercolumn ); }
+  width: calc( 99% - 2% ); }
 
 /* another navbar style */
 .welcome {
