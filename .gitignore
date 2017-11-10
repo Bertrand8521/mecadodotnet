@@ -3,3 +3,4 @@ storage/cache/
 storage/log/
 config/database.php
 Assets/css/.sass-cache/
+Assets/images/*
